@@ -20,13 +20,21 @@
 
 -->
 
-            
+
 <page-set>
-   <page>
-      <name>demo</name>
-      <title>demo</title>
-      <access-permissions>*:/platform/users</access-permissions>
-      <edit-permission>*:/platform/administrators</edit-permission>
-      <show-max-window>false</show-max-window>
-   </page>
+  <page>
+    <name>demo</name>
+    <title>demo</title>
+    <access-permissions>*:/platform/users</access-permissions>
+    <edit-permission>*:/platform/administrators</edit-permission>
+    <show-max-window>false</show-max-window>
+    <portlet-application>
+      <portlet>
+        <application-ref>populator</application-ref>
+        <portlet-ref>PopulatorApplication</portlet-ref>
+      </portlet>
+      <access-permissions>Everyone</access-permissions>
+      <show-info-bar>false</show-info-bar>
+    </portlet-application>
+  </page>
 </page-set>
