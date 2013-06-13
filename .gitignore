@@ -1,0 +1,41 @@
+#
+# Default excludes
+#
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+
+# Maven
+target/
+pom.xml.releaseBackup
+pom.xml.tag
+pom.xml.versionsBackup
+release.properties
+
+# IntelliJ project files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
