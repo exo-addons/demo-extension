@@ -1,0 +1,5 @@
+<div id="populator_div"></div>
+
+<script>
+    $('#populator_div').html('${size}');
+</script>
