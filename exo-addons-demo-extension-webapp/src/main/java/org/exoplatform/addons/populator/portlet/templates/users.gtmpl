@@ -1,0 +1,14 @@
+#{decorate path=nav.gtmpl/}
+
+<div ng-controller="demoExtension.phoneListCtrl">
+  <ul>
+    <li ng-repeat="phone in phones">
+      {{phone.name}}
+      <p>{{phone.snippet}}</p>
+    </li>
+  </ul>
+</div>
+
+<script>
+  var demoExtension = new DemoExtension();
+</script>

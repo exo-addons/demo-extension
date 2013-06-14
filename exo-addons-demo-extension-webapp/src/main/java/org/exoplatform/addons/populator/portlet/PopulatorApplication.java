@@ -1,12 +1,12 @@
 package org.exoplatform.addons.populator.portlet;
 
-import juzu.*;
+import juzu.Path;
+import juzu.Response;
+import juzu.View;
 import juzu.template.Template;
-import juzu.request.RenderContext;
 import org.exoplatform.addons.populator.services.UserService;
 
 import javax.inject.Inject;
-import javax.portlet.PortletPreferences;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
 public class PopulatorApplication
@@ -16,18 +16,38 @@ public class PopulatorApplication
   @Path("index.gtmpl")
   Template indexTemplate;
 
+  /** . */
   @Inject
-  PortletPreferences portletPreferences;
+  @Path("users.gtmpl")
+  Template usersTemplate;
+
+  /** . */
+  @Inject
+  @Path("spaces.gtmpl")
+  Template spacesTemplate;
+
+//  @Inject
+//  PortletPreferences portletPreferences;
 
   @Inject
   UserService userService_;
 
   @View
-  public Response.Content index(RenderContext renderContext)
+  public Response.Content index(String category)
   {
-    String size = portletPreferences.getValue("size", "128");
+    if (category==null) category = "Summary";
 
-    return indexTemplate.with().set("size", size).ok();
+//    String size = portletPreferences.getValue("size", "128");
+    String[] categories = {"Summary", "Users", "Spaces"};
+    Template target = indexTemplate;
+    if ("Users".equals(category)) {
+      target = usersTemplate;
+    } else if ("Spaces".equals(category)) {
+      target = spacesTemplate;
+    }
+
+    return target.with().set("category", category).set("categories", categories).ok();
   }
+
 
 }

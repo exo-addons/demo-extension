@@ -1,0 +1,25 @@
+<div id="populator_div" ng-app>
+
+  <!--div class="uiGrayLightBox clearfix input-prepend no-user-selection">
+    <label>Demo Populator Application</label>
+  </div-->
+
+  <div class="uiLeftContainerArea no-user-selection">
+    <div class="uiBox">
+
+      <% categories.each() { cat -> %>
+        <a href="@{PopulatorApplication.index(category = cat)}">
+          <span class="category <%if (cat.equals(category)){%>active<%}%>">${cat}</span>
+        </a>
+        <br/>
+      <% } %>
+
+    </div>
+  </div>
+  <div class="uiRightContainerArea">
+    <div class="uiBox">
+      #{insert/}
+    </div>
+  </div>
+
+</div>
