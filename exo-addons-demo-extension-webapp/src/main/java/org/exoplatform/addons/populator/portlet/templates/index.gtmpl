@@ -1,0 +1,17 @@
+<div id="populator_div" ng-app>
+  Nothing here {{'yet' + '!'}}
+
+  <div ng-controller="demoExtension.phoneListCtrl">
+    <ul>
+      <li ng-repeat="phone in phones">
+        {{phone.name}}
+        <p>{{phone.snippet}}</p>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  var demoExtension = new DemoExtension();
+</script>

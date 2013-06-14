@@ -1,4 +1,4 @@
-package org.exoplatform.addons.populator;
+package org.exoplatform.addons.populator.portlet;
 
 import juzu.*;
 import juzu.template.Template;
@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.portlet.PortletPreferences;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
-public class Controller
+public class PopulatorApplication
 {
   /** . */
   @Inject

@@ -1,21 +1,3 @@
-var demoExtension = new DemoExtension();
-
-$(document).ready(function(){
-
-
-
-});
-
-
-
-/**
- ##################                           ##################
- ##################                           ##################
- ##################   DEMO EXTENSION          ##################
- ##################                           ##################
- ##################                           ##################
- */
-
 /**
  * Demo Extension class
  * @constructor
@@ -24,6 +6,8 @@ function DemoExtension() {
 
 }
 
-DemoExtension.prototype.createUsers = function() {
-
-};
+DemoExtension.prototype.phoneListCtrl = function ($scope, $http) {
+  $http.get('/demo-extension/phones.json').success(function(data) {
+    $scope.phones = data;
+  });
+}
