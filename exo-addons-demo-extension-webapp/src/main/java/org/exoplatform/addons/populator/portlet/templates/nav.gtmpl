@@ -9,9 +9,10 @@
 
       <% categories.each() { cat -> %>
         <a href="@{PopulatorApplication.index(category = cat)}">
-          <span class="category <%if (cat.equals(category)){%>active<%}%>">${cat}</span>
+          <span class="category <%if (cat.equals(category)){%>active<%}%>">
+            <label>${cat}</label>
+          </span>
         </a>
-        <br/>
       <% } %>
 
     </div>
