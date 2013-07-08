@@ -4,7 +4,6 @@ import juzu.Path;
 import juzu.Response;
 import juzu.View;
 import juzu.template.Template;
-import org.exoplatform.addons.populator.services.UserService;
 
 import javax.inject.Inject;
 
@@ -28,9 +27,6 @@ public class PopulatorApplication
 
 //  @Inject
 //  PortletPreferences portletPreferences;
-
-  @Inject
-  UserService userService_;
 
   @View
   public Response.Content index(String category)

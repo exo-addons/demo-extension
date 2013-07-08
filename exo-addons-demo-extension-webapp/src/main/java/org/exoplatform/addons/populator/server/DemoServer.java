@@ -2,6 +2,7 @@ package org.exoplatform.addons.populator.server;
 
 import juzu.*;
 import juzu.template.Template;
+import org.exoplatform.addons.populator.services.SpaceService;
 import org.exoplatform.addons.populator.services.UserService;
 
 import javax.inject.Inject;
@@ -20,9 +21,11 @@ public class DemoServer
   @Path("users.gtmpl")
   Template usersTemplate;
 
-
   @Inject
   UserService userService_;
+
+  @Inject
+  SpaceService spaceService_;
 
   @View
   public Response.Content index()
@@ -43,6 +46,8 @@ public class DemoServer
   {
     StringBuilder sb = new StringBuilder() ;
     sb.append("{\"status\": \"OK\"}");
+    userService_.createUsers();
+    userService_.attachAvatars();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }
