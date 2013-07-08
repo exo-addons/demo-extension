@@ -2,7 +2,9 @@ package org.exoplatform.addons.populator.services;
 
 import org.exoplatform.services.organization.*;
 import org.exoplatform.social.core.identity.model.Profile;
+import org.exoplatform.social.core.identity.provider.OrganizationIdentityProvider;
 import org.exoplatform.social.core.image.ImageUtils;
+import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.model.AvatarAttachment;
 import org.exoplatform.social.webui.Utils;
 
@@ -10,7 +12,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -20,6 +21,7 @@ public class UserService {
 
   OrganizationService organizationService_;
   UserHandler userHandler_;
+  IdentityManager identityManager_;
   Logger log = Logger.getLogger("UserService");
 
   private final static String PLATFORM_USERS_GROUP = "/platform/administrators";
@@ -27,10 +29,11 @@ public class UserService {
   private final static int WIDTH = 200;
 
   @Inject
-  public UserService(OrganizationService organizationService)
+  public UserService(OrganizationService organizationService, IdentityManager identityManager)
   {
     organizationService_ = organizationService;
     userHandler_ = organizationService_.getUserHandler();
+    identityManager_ = identityManager;
   }
 
   public void createUsers() {
@@ -55,7 +58,7 @@ public class UserService {
     try {
       user = userHandler_.findUserByName(username);
     } catch (Exception e) {
-      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+      log.info(e.getMessage());
     }
 
     if (user!=null)
@@ -107,33 +110,39 @@ public class UserService {
     return ok;
   }
 
-  private void saveUserAvatar(String username, String fileName) {
-    try
-    {
-      String mimeType = "image/png";
-      InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("/medias/images/"+fileName);
+  public static AvatarAttachment getAvatarAttachment(String fileName) throws Exception
+  {
+    String mimeType = "image/png";
+    InputStream inputStream = UserService.class.getClassLoader().getResourceAsStream("/medias/images/"+fileName);
 
-      // Resize avatar to fixed width if can't(avatarAttachment == null) keep
-      // origin avatar
-      AvatarAttachment avatarAttachment = ImageUtils.createResizedAvatarAttachment(inputStream,
-              WIDTH,
-              0,
-              null,
+    // Resize avatar to fixed width if can't(avatarAttachment == null) keep
+    // origin avatar
+    AvatarAttachment avatarAttachment = ImageUtils.createResizedAvatarAttachment(inputStream,
+            WIDTH,
+            0,
+            null,
+            fileName,
+            mimeType,
+            null);
+    if (avatarAttachment == null) {
+      avatarAttachment = new AvatarAttachment(null,
               fileName,
               mimeType,
-              null);
-      if (avatarAttachment == null) {
-        avatarAttachment = new AvatarAttachment(null,
-                fileName,
-                mimeType,
-                inputStream,
-                null,
-                System.currentTimeMillis());
-      }
+              inputStream,
+              null,
+              System.currentTimeMillis());
+    }
 
+    return avatarAttachment;
+  }
 
+  private void saveUserAvatar(String username, String fileName)
+  {
+    try
+    {
 
-      Profile p = Utils.getUserIdentity(username, true).getProfile();
+      AvatarAttachment avatarAttachment = getAvatarAttachment(fileName);
+      Profile p = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username, true).getProfile();
       p.setProperty(Profile.AVATAR, avatarAttachment);
       Map<String, Object> props = p.getProperties();
 
@@ -144,7 +153,7 @@ public class UserService {
         }
       }
 
-      Utils.getIdentityManager().updateProfile(p);
+      identityManager_.updateProfile(p);
 
     }
     catch (Exception e)

@@ -19,8 +19,11 @@
 
 package org.exoplatform.addons.provider;
 
+import org.exoplatform.container.ExoContainer;
+import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.container.PortalContainer;
 import org.exoplatform.container.RootContainer;
+import org.exoplatform.portal.mop.navigation.NavigationService;
 
 import javax.inject.Provider;
 
@@ -31,12 +34,17 @@ public class GateInMetaProvider implements juzu.inject.ProviderFactory
   {
     return new Provider<T>() {
       public T get() {
-        RootContainer rootContainer = RootContainer.getInstance();
-        T ret = (T)rootContainer.getComponentInstanceOfType(implementationType);
+        ExoContainer container = ExoContainerContext.getCurrentContainer();
+        T ret = (T)container.getComponentInstance(implementationType);
         if(ret == null)
         {
           PortalContainer portalContainer = PortalContainer.getInstance();
           ret = (T)portalContainer.getComponentInstanceOfType(implementationType);
+          if(ret == null)
+          {
+            RootContainer rootContainer = RootContainer.getInstance();
+            ret = (T)rootContainer.getComponentInstanceOfType(implementationType);
+          }
         }
         return ret;
       }

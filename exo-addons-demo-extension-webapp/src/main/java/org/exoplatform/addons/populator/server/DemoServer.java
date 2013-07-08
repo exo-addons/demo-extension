@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import java.util.Random;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
+@SessionScoped
 public class DemoServer
 {
   /** . */
@@ -48,6 +49,8 @@ public class DemoServer
     sb.append("{\"status\": \"OK\"}");
     userService_.createUsers();
     userService_.attachAvatars();
+
+    //spaceService_.createSpaces();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }
