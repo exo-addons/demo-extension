@@ -5,6 +5,7 @@ import juzu.template.Template;
 import org.exoplatform.addons.populator.services.UserService;
 
 import javax.inject.Inject;
+import java.util.Random;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
 public class DemoServer
@@ -37,17 +38,28 @@ public class DemoServer
   }
 
   @Resource
-  @Route("/phones.json")
-  public Response.Content phones()
+  @Route("/start")
+  public Response.Content start()
   {
     StringBuilder sb = new StringBuilder() ;
+    sb.append("{\"status\": \"OK\"}");
+
+    return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
+  }
+
+  @Resource
+  @Route("/elements.json")
+  public Response.Content elements()
+  {
+    Random random = new Random();
+    StringBuilder sb = new StringBuilder() ;
     sb.append("[");
-    sb.append("{\"name\": \"Nexus S\",");
-    sb.append("\"snippet\": \"Fast just got faster with Nexus S.\"},");
-    sb.append("{\"name\": \"Motorola XOOM with Wi-Fi\",");
-    sb.append("\"snippet\": \"The Next, Next Generation tablet.\"},");
-    sb.append("{\"name\": \"MOTOROLA XOOM\",");
-    sb.append("\"snippet\": \"The Next, Next Generation tablet.\"}");
+    sb.append("{\"name\": \"Users\",");
+    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"},");
+    sb.append("{\"name\": \"Spaces\",");
+    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"},");
+    sb.append("{\"name\": \"Documents\",");
+    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"}");
     sb.append("]");
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
