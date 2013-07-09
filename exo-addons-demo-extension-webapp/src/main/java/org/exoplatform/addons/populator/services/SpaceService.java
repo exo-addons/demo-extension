@@ -41,6 +41,12 @@ public class SpaceService {
 
   private void createSpace(String name, String prettyName, String creator, String avatarFile)
   {
+    Space target = spaceService_.getSpaceByDisplayName(name);
+    if (target!=null)
+    {
+      spaceService_.deleteSpace(target);
+    }
+
     Space space = new Space();
     space.setDisplayName(name);
     space.setPrettyName(prettyName);
@@ -52,20 +58,15 @@ public class SpaceService {
 //    }
     space.setGroupId("/spaces/" + space.getPrettyName());
     space.setRegistration(Space.OPEN);
-    space.setType(DefaultSpaceApplicationHandler.NAME);
     space.setVisibility(Space.PUBLIC);
     space.setPriority(Space.INTERMEDIATE_PRIORITY);
 
-    Space target = spaceService_.getSpaceByDisplayName(name);
-    if (target!=null)
-    {
-      spaceService_.deleteSpace(target);
-    }
 
     Identity identity = identityManager_.getOrCreateIdentity(SpaceIdentityProvider.NAME, space.getPrettyName(), true);
     if (identity != null) {
       space.setPrettyName(SpaceUtils.buildPrettyName(space));
     }
+    space.setType(DefaultSpaceApplicationHandler.NAME);
 
 
     spaceService_.createSpace(space, creator);
