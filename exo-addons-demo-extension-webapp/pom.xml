@@ -100,6 +100,12 @@
       <artifactId>social-component-webui</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.exoplatform.calendar</groupId>
+      <artifactId>calendar-service</artifactId>
+      <!--<version>4.0.0</version>-->
+      <scope>provided</scope>
+    </dependency>
 
 
   </dependencies>

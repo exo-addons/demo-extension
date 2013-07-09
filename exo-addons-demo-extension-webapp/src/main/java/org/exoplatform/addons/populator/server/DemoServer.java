@@ -2,6 +2,7 @@ package org.exoplatform.addons.populator.server;
 
 import juzu.*;
 import juzu.template.Template;
+import org.exoplatform.addons.populator.services.CalendarService;
 import org.exoplatform.addons.populator.services.SpaceService;
 import org.exoplatform.addons.populator.services.UserService;
 
@@ -28,6 +29,9 @@ public class DemoServer
   @Inject
   SpaceService spaceService_;
 
+  @Inject
+  CalendarService calendarService_;
+
   @View
   public Response.Content index()
   {
@@ -52,6 +56,9 @@ public class DemoServer
     userService_.createRelations();
 
 //    spaceService_.createSpaces();
+
+    calendarService_.setCalendarColors();
+    calendarService_.createEvents();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }
