@@ -1,12 +1,13 @@
 package org.exoplatform.addons.populator.services;
 
 import org.exoplatform.services.organization.*;
+import org.exoplatform.social.core.identity.model.Identity;
 import org.exoplatform.social.core.identity.model.Profile;
 import org.exoplatform.social.core.identity.provider.OrganizationIdentityProvider;
 import org.exoplatform.social.core.image.ImageUtils;
 import org.exoplatform.social.core.manager.IdentityManager;
+import org.exoplatform.social.core.manager.RelationshipManager;
 import org.exoplatform.social.core.model.AvatarAttachment;
-import org.exoplatform.social.webui.Utils;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ public class UserService {
   OrganizationService organizationService_;
   UserHandler userHandler_;
   IdentityManager identityManager_;
+  RelationshipManager relationshipManager_;
   Logger log = Logger.getLogger("UserService");
 
   private final static String PLATFORM_USERS_GROUP = "/platform/administrators";
@@ -29,11 +31,12 @@ public class UserService {
   private final static int WIDTH = 200;
 
   @Inject
-  public UserService(OrganizationService organizationService, IdentityManager identityManager)
+  public UserService(OrganizationService organizationService, IdentityManager identityManager, RelationshipManager relationshipManager)
   {
     organizationService_ = organizationService;
     userHandler_ = organizationService_.getUserHandler();
     identityManager_ = identityManager;
+    relationshipManager_ = relationshipManager;
   }
 
   public void createUsers() {
@@ -97,6 +100,27 @@ public class UserService {
     }
 
     return ok;
+  }
+
+  public void createRelations()
+  {
+    Identity idJohn = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "john");
+    Identity idMary = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "mary");
+    Identity idJames = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "james");
+    Identity idJack = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "jack");
+    Identity idBenjamin = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "benjamin");
+
+    relationshipManager_.inviteToConnect(idBenjamin, idJohn);
+    relationshipManager_.confirm(idJohn, idBenjamin);
+    relationshipManager_.inviteToConnect(idBenjamin, idMary);
+    relationshipManager_.confirm(idMary, idBenjamin);
+    relationshipManager_.inviteToConnect(idJack, idBenjamin);
+
+    relationshipManager_.inviteToConnect(idJames, idJohn);
+    relationshipManager_.confirm(idJohn, idJames);
+    relationshipManager_.inviteToConnect(idJames, idMary);
+    relationshipManager_.confirm(idMary, idJames);
+
   }
 
   public boolean attachAvatars() {
