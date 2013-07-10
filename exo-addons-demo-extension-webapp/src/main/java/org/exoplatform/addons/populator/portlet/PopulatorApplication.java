@@ -70,6 +70,7 @@ public class PopulatorApplication
 
     spaceService_.createSpaces();
     spaceService_.addSpacesAvatars();
+    spaceService_.joinSpaces();
 
     calendarService_.setCalendarColors();
     calendarService_.createEvents();

@@ -58,7 +58,17 @@ public class SpaceService {
     log.info("UPDATE SPACES DONE");
   }
 
-  private void createSpaceAvatar(String name, String editor, String avatarFile)
+  public void joinSpaces()
+  {
+    Space space = spaceService_.getSpaceByDisplayName("Public Discussions");
+    if (space!=null)
+    {
+      spaceService_.addMember(space, "benjamin");
+    }
+
+
+  }
+    private void createSpaceAvatar(String name, String editor, String avatarFile)
   {
     Space space = spaceService_.getSpaceByDisplayName(name);
     if (space!=null)
@@ -79,7 +89,7 @@ public class SpaceService {
     Space target = spaceService_.getSpaceByDisplayName(name);
     if (target!=null)
     {
-      spaceService_.deleteSpace(target);
+      return;
     }
 
     Space space = new Space();
@@ -101,7 +111,6 @@ public class SpaceService {
 
 
     spaceService_.createSpace(space, creator);
-    //SpaceUtils.endRequest();
 
   }
 
