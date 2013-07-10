@@ -5,6 +5,7 @@ import juzu.template.Template;
 import org.exoplatform.addons.populator.services.CalendarService;
 import org.exoplatform.addons.populator.services.SpaceService;
 import org.exoplatform.addons.populator.services.UserService;
+import org.exoplatform.addons.populator.services.WikiService;
 
 import javax.inject.Inject;
 import java.util.Random;
@@ -31,6 +32,9 @@ public class DemoServer
 
   @Inject
   CalendarService calendarService_;
+
+  @Inject
+  WikiService wikiService_;
 
   @View
   public Response.Content index()
@@ -59,6 +63,8 @@ public class DemoServer
 
     calendarService_.setCalendarColors();
     calendarService_.createEvents();
+
+//    wikiService_.createUserWiki();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }

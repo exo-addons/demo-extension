@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Named("userService")
+@Named("calendarService")
 @ApplicationScoped
 public class CalendarService {
 

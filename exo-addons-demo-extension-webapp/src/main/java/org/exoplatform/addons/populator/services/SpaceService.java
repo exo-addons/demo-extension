@@ -15,7 +15,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.logging.Logger;
 
-@Named("userService")
+@Named("spaceService")
 @ApplicationScoped
 public class SpaceService {
 

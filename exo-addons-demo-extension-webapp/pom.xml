@@ -103,7 +103,11 @@
     <dependency>
       <groupId>org.exoplatform.calendar</groupId>
       <artifactId>calendar-service</artifactId>
-      <!--<version>4.0.0</version>-->
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.wiki</groupId>
+      <artifactId>wiki-service</artifactId>
       <scope>provided</scope>
     </dependency>
 
