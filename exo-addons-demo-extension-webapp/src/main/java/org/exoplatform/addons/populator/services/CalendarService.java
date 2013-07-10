@@ -9,7 +9,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @Named("calendarService")
@@ -30,22 +32,37 @@ public class CalendarService {
   public void setCalendarColors()
   {
     String username = "benjamin";
+    Map map = new HashMap();
+    map.put("Benjamin Paillereau", Calendar.N_POWDER_BLUE);
+    map.put("Public Discussions", Calendar.N_ORANGE);
+    map.put("Bank Project", Calendar.N_MOSS_GREEN);
+    map.put("Human Resources", Calendar.N_GRAY);
+    map.put("Marketing Analytics", Calendar.N_PINK);
+    String filtered=null;
     try {
-      List<Calendar> calendars = calendarService_.getUserCalendars(username, true);
-      Calendar benCalendar = calendars.get(0);
-      benCalendar.setCalendarColor(Calendar.N_POWDER_BLUE);
-
-      //Public Discussions
-      //  Calendar.N_ORANGE
-      //Bank Project
-      //  Calendar.N_MOSS_GREEN
-      //Human Resources
-      //  Calendar.N_GRAY
-      //Marketing Analytics
-      //  Calendar.N_PINK
-
-      calendarService_.saveUserCalendar(username, benCalendar, true);
-
+      String[] calendarIdList = getCalendarsIdList(username);
+      for (String calId:calendarIdList)
+      {
+        Calendar calendar = calendarService_.getCalendarById(calId);
+        String calName = calendar.getName();
+        if (map.containsKey(calName))
+        {
+          calendar.setCalendarColor((String)map.get(calName));
+          if ("Benjamin Paillereau".equals(calName))
+            calendarService_.saveUserCalendar(username, calendar, true);
+          else
+            calendarService_.savePublicCalendar(calendar, false);
+        }
+        else
+        {
+          filtered = calendar.getId();
+        }
+      }
+      if (filtered!=null) {
+        CalendarSetting setting = calendarService_.getCalendarSetting(username);
+        setting.setFilterPublicCalendars(new String[]{filtered});
+        calendarService_.saveCalendarSetting(username, setting);
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -142,6 +159,7 @@ public class CalendarService {
     return groups;
   }
 
+/*
   private List getAllCal(String username) throws Exception {
     List<org.exoplatform.calendar.service.Calendar> calList = calendarService_.getUserCalendars(username, true);
     List<GroupCalendarData> lgcd = calendarService_.getGroupCalendars(getUserGroups(username), true, username);
@@ -157,5 +175,6 @@ public class CalendarService {
     }
     return calList;
   }
+*/
 
 }
