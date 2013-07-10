@@ -8,13 +8,13 @@ import org.exoplatform.social.core.space.SpaceUtils;
 import org.exoplatform.social.core.space.impl.DefaultSpaceApplicationHandler;
 import org.exoplatform.social.core.space.model.Space;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.logging.Logger;
 
 @Named("spaceService")
-@RequestScoped
+@ApplicationScoped
 public class SpaceService {
 
   org.exoplatform.social.core.space.spi.SpaceService spaceService_;

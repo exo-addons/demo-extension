@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import java.util.Random;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
+@SessionScoped
 public class PopulatorApplication
 {
   /** . */
@@ -75,7 +76,7 @@ public class PopulatorApplication
     calendarService_.setCalendarColors();
     calendarService_.createEvents();
 
-//    wikiService_.createUserWiki();
+    wikiService_.createUserWiki();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }

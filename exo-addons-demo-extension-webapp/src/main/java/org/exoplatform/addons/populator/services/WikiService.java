@@ -1,6 +1,7 @@
 package org.exoplatform.addons.populator.services;
 
 import org.exoplatform.portal.config.model.PortalConfig;
+import org.exoplatform.wiki.resolver.TitleResolver;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -22,10 +23,11 @@ public class WikiService {
 
   public void createUserWiki()
   {
-    String username = "benjamin";
-
     try {
-      wikiService_.createPage(PortalConfig.PORTAL_TYPE, "intranet", "Intranet Usage", "WikiHome");
+      if (!wikiService_.isExisting(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId("Intranet Usage", false)))
+        wikiService_.createPage(PortalConfig.PORTAL_TYPE, "intranet", "Intranet Usage", "WikiHome");
+      if (!wikiService_.isExisting(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId("Cloud Management Specification", false)))
+        wikiService_.createPage(PortalConfig.PORTAL_TYPE, "intranet", "Cloud Management Specification", "WikiHome");
     } catch (Exception e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
     }
