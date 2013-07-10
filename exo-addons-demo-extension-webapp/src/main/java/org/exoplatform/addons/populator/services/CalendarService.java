@@ -1,6 +1,7 @@
 package org.exoplatform.addons.populator.services;
 
 import org.exoplatform.calendar.service.*;
+import org.exoplatform.calendar.service.Utils;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.Group;
 
@@ -32,7 +33,17 @@ public class CalendarService {
     try {
       List<Calendar> calendars = calendarService_.getUserCalendars(username, true);
       Calendar benCalendar = calendars.get(0);
-      benCalendar.setCalendarColor(Calendar.N_SKY_BLUE);
+      benCalendar.setCalendarColor(Calendar.N_POWDER_BLUE);
+
+      //Public Discussions
+      //  Calendar.N_ORANGE
+      //Bank Project
+      //  Calendar.N_MOSS_GREEN
+      //Human Resources
+      //  Calendar.N_GRAY
+      //Marketing Analytics
+      //  Calendar.N_PINK
+
       calendarService_.saveUserCalendar(username, benCalendar, true);
 
     } catch (Exception e) {

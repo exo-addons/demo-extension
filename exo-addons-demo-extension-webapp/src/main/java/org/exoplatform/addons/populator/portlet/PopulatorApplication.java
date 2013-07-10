@@ -1,11 +1,15 @@
 package org.exoplatform.addons.populator.portlet;
 
-import juzu.Path;
-import juzu.Response;
-import juzu.View;
+import juzu.*;
+import juzu.plugin.ajax.Ajax;
 import juzu.template.Template;
+import org.exoplatform.addons.populator.services.CalendarService;
+import org.exoplatform.addons.populator.services.SpaceService;
+import org.exoplatform.addons.populator.services.UserService;
+import org.exoplatform.addons.populator.services.WikiService;
 
 import javax.inject.Inject;
+import java.util.Random;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
 public class PopulatorApplication
@@ -25,8 +29,17 @@ public class PopulatorApplication
   @Path("spaces.gtmpl")
   Template spacesTemplate;
 
-//  @Inject
-//  PortletPreferences portletPreferences;
+  @Inject
+  UserService userService_;
+
+  @Inject
+  SpaceService spaceService_;
+
+  @Inject
+  CalendarService calendarService_;
+
+  @Inject
+  WikiService wikiService_;
 
   @View
   public Response.Content index(String category)
@@ -43,6 +56,45 @@ public class PopulatorApplication
     }
 
     return target.with().set("category", category).set("categories", categories).ok();
+  }
+
+  @Ajax
+  @Resource
+  public Response.Content start()
+  {
+    StringBuilder sb = new StringBuilder() ;
+    sb.append("{\"status\": \"OK\"}");
+    userService_.createUsers();
+    userService_.attachAvatars();
+    userService_.createRelations();
+
+    spaceService_.createSpaces();
+    spaceService_.addSpacesAvatars();
+
+    calendarService_.setCalendarColors();
+    calendarService_.createEvents();
+
+//    wikiService_.createUserWiki();
+
+    return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
+  }
+
+  @Ajax
+  @Resource
+  public Response.Content elements()
+  {
+    Random random = new Random();
+    StringBuilder sb = new StringBuilder() ;
+    sb.append("[");
+    sb.append("{\"name\": \"Users\",");
+    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"},");
+    sb.append("{\"name\": \"Spaces\",");
+    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"},");
+    sb.append("{\"name\": \"Documents\",");
+    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"}");
+    sb.append("]");
+
+    return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }
 
 

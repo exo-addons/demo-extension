@@ -12,7 +12,6 @@ import org.exoplatform.social.core.model.AvatarAttachment;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.InputStream;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -134,38 +133,12 @@ public class UserService {
     return ok;
   }
 
-  public static AvatarAttachment getAvatarAttachment(String fileName) throws Exception
-  {
-    String mimeType = "image/png";
-    InputStream inputStream = UserService.class.getClassLoader().getResourceAsStream("/medias/images/"+fileName);
-
-    // Resize avatar to fixed width if can't(avatarAttachment == null) keep
-    // origin avatar
-    AvatarAttachment avatarAttachment = ImageUtils.createResizedAvatarAttachment(inputStream,
-            WIDTH,
-            0,
-            null,
-            fileName,
-            mimeType,
-            null);
-    if (avatarAttachment == null) {
-      avatarAttachment = new AvatarAttachment(null,
-              fileName,
-              mimeType,
-              inputStream,
-              null,
-              System.currentTimeMillis());
-    }
-
-    return avatarAttachment;
-  }
-
   private void saveUserAvatar(String username, String fileName)
   {
     try
     {
 
-      AvatarAttachment avatarAttachment = getAvatarAttachment(fileName);
+      AvatarAttachment avatarAttachment = Utils.getAvatarAttachment(fileName);
       Profile p = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username, true).getProfile();
       p.setProperty(Profile.AVATAR, avatarAttachment);
       Map<String, Object> props = p.getProperties();
