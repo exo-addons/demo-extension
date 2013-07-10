@@ -73,171 +73,45 @@ public class CalendarService {
       String username = "benjamin";
       Map<String, String> map = getCalendarsMap(username);
 
-//      Calendar benCal = calendarService_.getUserCalendars(username, true).get(0);
-
       removeAllEvents(username);
 
-      String calId = map.get("Benjamin Paillereau");
-      CalendarEvent event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Spec Review");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      java.util.Calendar calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.MONDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 19);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.saveUserEvent(username, calId, event, true);
-
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Team Work");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.TUESDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 14);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 18);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.saveUserEvent(username, calId, event, true);
-
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("EOW Team Meeting");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.FRIDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 13);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 15);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.saveUserEvent(username, calId, event, true);
-
-      calId = map.get("Marketing Analytics");
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Lead Gen Study");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.TUESDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 9);
-      calendar.set(java.util.Calendar.MINUTE, 30);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 12);
-      calendar.set(java.util.Calendar.MINUTE, 30);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.savePublicEvent(calId, event, true);
-
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Analytics Update");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.WEDNESDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 19);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.savePublicEvent(calId, event, true);
-
-      calId = map.get("Public Discussions");
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Intranet Migration Process");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.WEDNESDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 10);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 14);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.savePublicEvent(calId, event, true);
-
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Company Dinner");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.THURSDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
-      calendar.set(java.util.Calendar.MINUTE, 30);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 20);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.savePublicEvent(calId, event, true);
-
-      calId = map.get("Bank Project");
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Intranet Demo");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.THURSDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 13);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.savePublicEvent(calId, event, true);
-
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Customer Q&R");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.FRIDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 16);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.savePublicEvent(calId, event, true);
-
-      calId = map.get("Human Resources");
-      event = new CalendarEvent();
-      event.setCalendarId(calId);
-      event.setSummary("Weekly HR Meeting");
-      event.setEventType(CalendarEvent.TYPE_EVENT);
-      calendar = java.util.Calendar.getInstance();
-      calendar.setTimeInMillis(calendar.getTime().getTime());
-      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.FRIDAY);
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 10);
-      calendar.set(java.util.Calendar.MINUTE, 0);
-      event.setFromDateTime(calendar.getTime());
-      calendar.set(java.util.Calendar.HOUR_OF_DAY, 11);
-      calendar.set(java.util.Calendar.MINUTE, 30);
-      event.setToDateTime(calendar.getTime());
-      calendarService_.savePublicEvent(calId, event, true);
-
-
-
+      saveEvent(username, true, map.get("Benjamin Paillereau"), "Spec Review", java.util.Calendar.MONDAY, 17, 0, 19, 0);
+      saveEvent(username, true, map.get("Benjamin Paillereau"), "Team Work", java.util.Calendar.TUESDAY, 14, 0, 18, 0);
+      saveEvent(username, true, map.get("Benjamin Paillereau"), "EOW Team Meeting", java.util.Calendar.FRIDAY, 13, 0, 15, 0);
+      saveEvent(username, false, map.get("Marketing Analytics"), "Lead Gen Study", java.util.Calendar.TUESDAY, 9, 30, 12, 30);
+      saveEvent(username, false, map.get("Marketing Analytics"), "Analytics Update", java.util.Calendar.WEDNESDAY, 17, 0, 19, 0);
+      saveEvent(username, false, map.get("Public Discussions"), "Intranet Migration Process", java.util.Calendar.WEDNESDAY, 10, 0, 14, 0);
+      saveEvent(username, false, map.get("Public Discussions"), "Company Dinner", java.util.Calendar.THURSDAY, 17, 30, 20, 0);
+      saveEvent(username, false, map.get("Bank Project"), "Intranet Demo", java.util.Calendar.THURSDAY, 13, 0, 17, 0);
+      saveEvent(username, false, map.get("Bank Project"), "Customer Q&R", java.util.Calendar.FRIDAY, 16, 0, 17, 0);
+      saveEvent(username, false, map.get("Human Resources"), "Weekly HR Meeting", java.util.Calendar.FRIDAY, 10, 0, 11, 30);
 
     } catch (Exception e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
     }
+  }
+
+  private void saveEvent(String username, boolean isUserEvent, String calId, String summary,
+                         int day, int fromHour, int fromMin, int toHour, int toMin) throws Exception
+  {
+    CalendarEvent event = new CalendarEvent();
+    event.setCalendarId(calId);
+    event.setSummary(summary);
+    event.setEventType(CalendarEvent.TYPE_EVENT);
+    event.setPrivate(isUserEvent);
+    java.util.Calendar calendar = java.util.Calendar.getInstance();
+    calendar.setTimeInMillis(calendar.getTime().getTime());
+    calendar.set(java.util.Calendar.DAY_OF_WEEK, day);
+    calendar.set(java.util.Calendar.HOUR_OF_DAY, fromHour);
+    calendar.set(java.util.Calendar.MINUTE, fromMin);
+    event.setFromDateTime(calendar.getTime());
+    calendar.set(java.util.Calendar.HOUR_OF_DAY, toHour);
+    calendar.set(java.util.Calendar.MINUTE, toMin);
+    event.setToDateTime(calendar.getTime());
+    if (isUserEvent)
+      calendarService_.saveUserEvent(username, calId, event, true);
+    else
+      calendarService_.savePublicEvent(calId, event, true);
   }
 
   private void removeAllEvents(String username) throws Exception
@@ -248,6 +122,10 @@ public class CalendarService {
       if (event.isPrivate())
       {
         calendarService_.removeUserEvent(username, event.getCalendarId(), event.getId());
+      }
+      else
+      {
+        calendarService_.removePublicEvent(event.getCalendarId(), event.getId());
       }
     }
   }
