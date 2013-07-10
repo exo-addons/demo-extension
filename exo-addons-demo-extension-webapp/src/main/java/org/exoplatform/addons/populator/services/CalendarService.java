@@ -1,6 +1,7 @@
 package org.exoplatform.addons.populator.services;
 
 import org.exoplatform.calendar.service.*;
+import org.exoplatform.calendar.service.Calendar;
 import org.exoplatform.calendar.service.Utils;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.Group;
@@ -8,10 +9,7 @@ import org.exoplatform.services.organization.Group;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 @Named("calendarService")
@@ -73,22 +71,170 @@ public class CalendarService {
   {
     try {
       String username = "benjamin";
-      Calendar benCal = calendarService_.getUserCalendars(username, true).get(0);
+      Map<String, String> map = getCalendarsMap(username);
+
+//      Calendar benCal = calendarService_.getUserCalendars(username, true).get(0);
 
       removeAllEvents(username);
 
-      String calId = benCal.getId();
+      String calId = map.get("Benjamin Paillereau");
       CalendarEvent event = new CalendarEvent();
       event.setCalendarId(calId);
-      event.setSummary("Event Test de Benjamin");
+      event.setSummary("Spec Review");
       event.setEventType(CalendarEvent.TYPE_EVENT);
       java.util.Calendar calendar = java.util.Calendar.getInstance();
       calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.MONDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
+      calendar.set(java.util.Calendar.MINUTE, 0);
       event.setFromDateTime(calendar.getTime());
-      calendar.setTimeInMillis(calendar.getTime().getTime()+1000*60*60);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 19);
+      calendar.set(java.util.Calendar.MINUTE, 0);
       event.setToDateTime(calendar.getTime());
-
       calendarService_.saveUserEvent(username, calId, event, true);
+
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Team Work");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.TUESDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 14);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 18);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.saveUserEvent(username, calId, event, true);
+
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("EOW Team Meeting");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.FRIDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 13);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 15);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.saveUserEvent(username, calId, event, true);
+
+      calId = map.get("Marketing Analytics");
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Lead Gen Study");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.TUESDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 9);
+      calendar.set(java.util.Calendar.MINUTE, 30);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 12);
+      calendar.set(java.util.Calendar.MINUTE, 30);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.savePublicEvent(calId, event, true);
+
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Analytics Update");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.WEDNESDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 19);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.savePublicEvent(calId, event, true);
+
+      calId = map.get("Public Discussions");
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Intranet Migration Process");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.WEDNESDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 10);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 14);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.savePublicEvent(calId, event, true);
+
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Company Dinner");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.THURSDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
+      calendar.set(java.util.Calendar.MINUTE, 30);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 20);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.savePublicEvent(calId, event, true);
+
+      calId = map.get("Bank Project");
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Intranet Demo");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.THURSDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 13);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.savePublicEvent(calId, event, true);
+
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Customer Q&R");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.FRIDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 16);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 17);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.savePublicEvent(calId, event, true);
+
+      calId = map.get("Human Resources");
+      event = new CalendarEvent();
+      event.setCalendarId(calId);
+      event.setSummary("Weekly HR Meeting");
+      event.setEventType(CalendarEvent.TYPE_EVENT);
+      calendar = java.util.Calendar.getInstance();
+      calendar.setTimeInMillis(calendar.getTime().getTime());
+      calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.FRIDAY);
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 10);
+      calendar.set(java.util.Calendar.MINUTE, 0);
+      event.setFromDateTime(calendar.getTime());
+      calendar.set(java.util.Calendar.HOUR_OF_DAY, 11);
+      calendar.set(java.util.Calendar.MINUTE, 30);
+      event.setToDateTime(calendar.getTime());
+      calendarService_.savePublicEvent(calId, event, true);
+
+
+
+
     } catch (Exception e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
     }
@@ -104,6 +250,23 @@ public class CalendarService {
         calendarService_.removeUserEvent(username, event.getCalendarId(), event.getId());
       }
     }
+  }
+
+  private Map<String, String> getCalendarsMap(String username)
+  {
+    Map<String, String> map = new HashMap<String, String>();
+    String[] calendarIdList = getCalendarsIdList(username);
+    for (String calId:calendarIdList)
+    {
+      Calendar calendar = null;
+      try {
+        calendar = calendarService_.getCalendarById(calId);
+        String calName = calendar.getName();
+        map.put(calName, calId);
+      } catch (Exception e) {
+      }
+    }
+    return map;
   }
 
   private String[] getCalendarsIdList(String username) {
