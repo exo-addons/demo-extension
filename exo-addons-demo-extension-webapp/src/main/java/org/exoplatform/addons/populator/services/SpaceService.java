@@ -89,7 +89,7 @@ public class SpaceService {
     space.setDescription(StringUtils.EMPTY);
     space.setGroupId("/spaces/" + space.getPrettyName());
     space.setRegistration(Space.OPEN);
-    space.setVisibility(Space.PUBLIC);
+    space.setVisibility(Space.PRIVATE);
     space.setPriority(Space.INTERMEDIATE_PRIORITY);
 
 
