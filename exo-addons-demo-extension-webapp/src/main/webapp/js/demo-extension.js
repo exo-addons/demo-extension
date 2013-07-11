@@ -9,16 +9,20 @@ function DemoExtension() {
 }
 
 DemoExtension.prototype.headerCtrl = function ($scope, $http) {
-  $scope.startPopulating = function() {
-
-    $http.get(demoExtension.jzStart).success(function(data) {
-      console.log("Status :: "+data.status);
-    });
-
-  }
 }
 
 DemoExtension.prototype.populateCtrl = function ($scope, $http, $timeout) {
+  $scope.startPopulating = function() {
+    $(".btn-start").addClass("disabled");
+
+    $http.get(demoExtension.jzStart).success(function(data) {
+      console.log("Status :: "+data.status);
+      $(".btn-start").removeClass("disabled");
+      $timeout.cancel(popto);
+      $scope.onElementsTimeout();
+    });
+
+  }
 
   $scope.onElementsTimeout = function(){
 
@@ -26,7 +30,7 @@ DemoExtension.prototype.populateCtrl = function ($scope, $http, $timeout) {
       $scope.elements = data;
     });
 
-    //popto = $timeout($scope.onElementsTimeout,3000);
+    popto = $timeout($scope.onElementsTimeout,500);
   }
   var popto = $timeout($scope.onElementsTimeout,100);
 

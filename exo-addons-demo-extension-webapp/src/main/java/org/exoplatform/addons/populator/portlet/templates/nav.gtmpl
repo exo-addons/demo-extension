@@ -1,6 +1,6 @@
-<div id="populator_div" ng-app>
+<div id="populator_div" ng-app  ng-controller="demoExtension.populateCtrl">
 
-  <div class="uiGrayLightBox clearfix no-user-selection" ng-controller="demoExtension.headerCtrl">
+  <div class="uiGrayLightBox clearfix no-user-selection">
     <span style="float: left">
       <label>Demo Populator Application</label>
     </span>
@@ -10,8 +10,7 @@
     </span>
   </div>
 
-<!--
-  <div class="uiLeftContainerArea no-user-selection">
+  <div class="uiLeftContainerArea no-user-selection" style="display:none;">
     <div class="uiBox">
 
       <% categories.each() { cat -> %>
@@ -29,7 +28,6 @@
       #{insert/}
     </div>
   </div>
--->
 
   <script>
     var demoExtension = new DemoExtension();

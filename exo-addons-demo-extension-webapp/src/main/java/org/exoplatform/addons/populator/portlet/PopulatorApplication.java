@@ -8,7 +8,6 @@ import org.exoplatform.addons.populator.services.PopulatorService;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.portlet.PortletPreferences;
-import java.util.Random;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
 @SessionScoped
@@ -35,8 +34,6 @@ public class PopulatorApplication
 
   @Inject
   Provider<PortletPreferences> providerPreferences;
-
-  String username, fullname;
 
   @View
   public Response.Content index(String category)
@@ -65,6 +62,7 @@ public class PopulatorApplication
   @Resource
   public Response.Content start()
   {
+    populatorService_.init();
     StringBuilder sb = new StringBuilder() ;
     sb.append("{\"status\": \"OK\"}");
 
@@ -77,18 +75,7 @@ public class PopulatorApplication
   @Resource
   public Response.Content elements()
   {
-    Random random = new Random();
-    StringBuilder sb = new StringBuilder() ;
-    sb.append("[");
-    sb.append("{\"name\": \"Users\",");
-    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"},");
-    sb.append("{\"name\": \"Spaces\",");
-    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"},");
-    sb.append("{\"name\": \"Documents\",");
-    sb.append("\"percentage\": \""+random.nextInt(100)+"%\"}");
-    sb.append("]");
-
-    return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
+    return Response.ok(populatorService_.getCompletionAsJson()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }
 
 
