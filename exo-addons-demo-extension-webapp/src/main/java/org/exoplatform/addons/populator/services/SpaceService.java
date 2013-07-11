@@ -30,32 +30,20 @@ public class SpaceService {
 
   public void createSpaces()
   {
-    log.info("1/5 : CREATE PUBLIC DISCUSSIONS SPACE");
     createSpace("Public Discussions", "public_discussions", "john");
-    log.info("2/5 : CREATE BANK PROJECT SPACE");
     createSpace("Bank Project", "bank_project", "benjamin");
-    log.info("3/5 : CREATE MARKETING ANALYTICS SPACE");
     createSpace("Marketing Analytics", "marketing_analytics", "benjamin");
-    log.info("4/5 : CREATE HUMAN RESOURCES SPACE");
     createSpace("Human Resources", "human_resources", "benjamin");
-    log.info("5/5 : CREATE HELP CENTER SPACE");
     createSpace("Help Center", "help_center", "john");
-    log.info("CREATE SPACES DONE");
   }
 
   public void addSpacesAvatars()
   {
-    log.info("1/5 : UPDATE PUBLIC DISCUSSIONS SPACE");
     createSpaceAvatar("Public Discussions", "john", "eXo-Space-Public-color.png");
-    log.info("2/5 : UPDATE BANK PROJECT SPACE");
     createSpaceAvatar("Bank Project", "benjamin", "eXo-Space-Sales-color.png");
-    log.info("3/5 : UPDATE MARKETING ANALYTICS SPACE");
     createSpaceAvatar("Marketing Analytics", "benjamin", "eXo-Space-Marketing-color.png");
-    log.info("4/5 : UPDATE HUMAN RESOURCES SPACE");
     createSpaceAvatar("Human Resources", "benjamin", "eXo-Space-RH-color.png");
-    log.info("5/5 : UPDATE HELP CENTER SPACE");
     createSpaceAvatar("Help Center", "john", "eXo-Space-Intranet-color.png");
-    log.info("UPDATE SPACES DONE");
   }
 
   public void joinSpaces()
@@ -64,6 +52,12 @@ public class SpaceService {
     if (space!=null)
     {
       spaceService_.addMember(space, "benjamin");
+    }
+
+    space = spaceService_.getSpaceByDisplayName("Bank Project");
+    if (space!=null)
+    {
+      spaceService_.addMember(space, "john");
     }
 
 

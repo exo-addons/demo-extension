@@ -7,6 +7,7 @@ import org.exoplatform.addons.populator.services.*;
 
 import javax.inject.Inject;
 import java.util.Random;
+import java.util.logging.Logger;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
 @SessionScoped
@@ -26,6 +27,8 @@ public class PopulatorApplication
   @Inject
   @Path("spaces.gtmpl")
   Template spacesTemplate;
+
+  Logger log = Logger.getLogger("PopulatorApplication");
 
   @Inject
   UserService userService_;
@@ -68,24 +71,31 @@ public class PopulatorApplication
   {
     StringBuilder sb = new StringBuilder() ;
     sb.append("{\"status\": \"OK\"}");
+    log.info("Users : Create Users, Avatars, Relations");
     userService_.createUsers();
     userService_.attachAvatars();
     userService_.createRelations();
 
+    log.info("Spaces : Create Spaces, Avatars, Members");
     spaceService_.createSpaces();
     spaceService_.addSpacesAvatars();
     spaceService_.joinSpaces();
 
+    log.info("Calendar : Create Calendars and set Colors");
     calendarService_.setCalendarColors();
     calendarService_.createEvents();
 
+    log.info("Wiki : Create Wikis");
     wikiService_.createUserWiki();
 
+    log.info("Documents : Upload Personal Documents, Space Documents");
     documentService_.uploadDocuments();
 
+    log.info("Forum : Create Categories, Discussions, Posts and Poll");
     forumService_.createCategoriesAndForum();
     forumService_.createPosts();
     forumService_.createPollAndVote();
+    log.info("Populate Completed");
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }

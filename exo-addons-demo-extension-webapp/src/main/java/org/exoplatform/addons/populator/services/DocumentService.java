@@ -4,12 +4,16 @@ import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
+import org.exoplatform.services.security.ConversationState;
+import org.exoplatform.services.security.Identity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jcr.Node;
+import javax.jcr.Repository;
 import javax.jcr.Session;
+import javax.jcr.SimpleCredentials;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.logging.Logger;
@@ -35,11 +39,23 @@ public class DocumentService {
   public void uploadDocuments()
   {
     storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null);
+    storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null);
+    storeFile("eXo_overview_feb2013_V2.pdf", "bank_project", false, null);
+    storeFile("YourOpinion-eXoPlatform35.pdf", "bank_project", false, null);
+    storeFile("Boston Logan WiFi Home.pdf", "benjamin", true, null);
   }
 
   protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid)
   {
-    SessionProvider sessionProvider = getUserSessionProvider();
+    SessionProvider sessionProvider;
+    if (isPrivateContext)
+    {
+      sessionProvider = startSessionAs(name);
+    }
+    else
+    {
+      sessionProvider = getUserSessionProvider();
+    }
     InputStream inputStream = Utils.getDocument(filename);
 
     try
@@ -140,4 +156,16 @@ public class DocumentService {
     return sessionProvider;
   }
 
+  protected SessionProvider startSessionAs(String user) {
+    Identity identity = new Identity(user);
+    ConversationState state = new ConversationState(identity);
+    ConversationState.setCurrent(state);
+    sessionProviderService_.setSessionProvider(null, new SessionProvider(state));
+    return sessionProviderService_.getSessionProvider(null);
+  }
+
+  protected void endSession() {
+    sessionProviderService_.removeSessionProvider(null);
+    ConversationState.setCurrent(null);
+  }
 }
