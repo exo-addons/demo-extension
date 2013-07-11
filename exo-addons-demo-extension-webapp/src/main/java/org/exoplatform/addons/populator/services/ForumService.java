@@ -22,4 +22,19 @@ public class ForumService {
   {
   }
 
+  public void createCategoriesAndForum()
+  {
+
+  }
+
+  public void createPosts()
+  {
+
+  }
+
+  public void createPollAndVote()
+  {
+
+  }
+
 }

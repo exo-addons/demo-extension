@@ -3,10 +3,7 @@ package org.exoplatform.addons.populator.portlet;
 import juzu.*;
 import juzu.plugin.ajax.Ajax;
 import juzu.template.Template;
-import org.exoplatform.addons.populator.services.CalendarService;
-import org.exoplatform.addons.populator.services.SpaceService;
-import org.exoplatform.addons.populator.services.UserService;
-import org.exoplatform.addons.populator.services.WikiService;
+import org.exoplatform.addons.populator.services.*;
 
 import javax.inject.Inject;
 import java.util.Random;
@@ -41,6 +38,9 @@ public class PopulatorApplication
 
   @Inject
   WikiService wikiService_;
+
+  @Inject
+  ForumService forumService_;
 
   @View
   public Response.Content index(String category)
@@ -77,6 +77,10 @@ public class PopulatorApplication
     calendarService_.createEvents();
 
     wikiService_.createUserWiki();
+
+    forumService_.createCategoriesAndForum();
+    forumService_.createPosts();
+    forumService_.createPollAndVote();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }
