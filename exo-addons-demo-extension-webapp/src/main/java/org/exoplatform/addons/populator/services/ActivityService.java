@@ -1,5 +1,6 @@
 package org.exoplatform.addons.populator.services;
 
+import org.exoplatform.social.common.RealtimeListAccess;
 import org.exoplatform.social.core.activity.model.ExoSocialActivity;
 import org.exoplatform.social.core.activity.model.ExoSocialActivityImpl;
 import org.exoplatform.social.core.identity.model.Identity;
@@ -11,6 +12,8 @@ import org.exoplatform.social.core.manager.IdentityManager;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
+import java.util.Random;
 import java.util.logging.Logger;
 
 @Named("activityService")
@@ -21,6 +24,8 @@ public class ActivityService {
 
   ActivityManager activityManager_;
   IdentityManager identityManager_;
+
+  Random random = new Random();
 
   @Inject
   public ActivityService(ActivityManager activityManager, IdentityManager identityManager)
@@ -56,6 +61,8 @@ public class ActivityService {
     comment.setUserId(identMary.getId());
     activityManager_.saveComment(activity, comment);
 
+    likeRandomActivities("mary");
+    likeRandomActivities("james");
   }
 
   private void sleep(long ms)
@@ -66,5 +73,32 @@ public class ActivityService {
     }
   }
 
+  private void likeRandomActivities (String username)
+  {
+    Identity identity = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username, false);
+    RealtimeListAccess rtla = activityManager_.getActivitiesWithListAccess(identity);
+    ExoSocialActivity[] la = (ExoSocialActivity[])rtla.load(0, rtla.getSize());
+    for (int iam = 0; iam<rtla.getSize() ; iam++)
+    {
+      ExoSocialActivity activityMary = la[iam];
+      boolean like = random.nextBoolean();
+      if (like)
+      {
+        activityManager_.saveLike(activityMary, identity);
+      }
+    }
+    rtla = activityManager_.getActivitiesOfUserSpacesWithListAccess(identity);
+    la = (ExoSocialActivity[])rtla.load(0, rtla.getSize());
+    for (int iam = 0; iam<rtla.getSize() ; iam++)
+    {
+      ExoSocialActivity activityMary = la[iam];
+      boolean like = random.nextBoolean();
+      if (like)
+      {
+        activityManager_.saveLike(activityMary, identity);
+      }
+    }
+
+  }
 
 }

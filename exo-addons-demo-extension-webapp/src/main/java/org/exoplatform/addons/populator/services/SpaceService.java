@@ -52,6 +52,8 @@ public class SpaceService {
     if (space!=null)
     {
       spaceService_.addMember(space, username);
+      spaceService_.addMember(space, "mary");
+      spaceService_.addMember(space, "james");
     }
 
     space = spaceService_.getSpaceByDisplayName("Bank Project");

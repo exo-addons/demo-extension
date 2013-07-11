@@ -120,6 +120,8 @@ public class UserService {
     relationshipManager_.confirm(idJohn, idJames);
     relationshipManager_.inviteToConnect(idJames, idMary);
     relationshipManager_.confirm(idMary, idJames);
+    relationshipManager_.inviteToConnect(idMary, idJohn);
+    relationshipManager_.confirm(idJohn, idMary);
 
   }
 
