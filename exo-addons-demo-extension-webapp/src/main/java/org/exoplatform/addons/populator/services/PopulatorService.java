@@ -27,6 +27,9 @@ public class PopulatorService {
   @Inject
   DocumentService documentService_;
 
+  @Inject
+  ActivityService activityService_;
+
   String currentState_;
 
   String username, fullname;
@@ -39,6 +42,7 @@ public class PopulatorService {
   private final String WIKI = "Wiki";
   private final String DOCUMENTS = "Documents";
   private final String FORUM = "Forum";
+  private final String ACTIVITIES = "Activities";
 
   public PopulatorService()
   {
@@ -53,6 +57,7 @@ public class PopulatorService {
     completion.put(WIKI, 0);
     completion.put(DOCUMENTS, 0);
     completion.put(FORUM, 0);
+    completion.put(ACTIVITIES, 0);
   }
 
   public String getCompletionAsJson()
@@ -95,7 +100,6 @@ public class PopulatorService {
     completion.put(CALENDAR, 20);
     calendarService_.createEvents(username, fullname);
     completion.put(CALENDAR, 100);
-
     setSate("Wiki : Create Wikis");
     wikiService_.createUserWiki();
     completion.put(WIKI, 100);
@@ -111,6 +115,11 @@ public class PopulatorService {
     completion.put(FORUM, 60);
     forumService_.createPollAndVote();
     completion.put(FORUM, 100);
+
+    setSate("Activities : Push new activities, Comments and Likes");
+    activityService_.pushActivities(username);
+    completion.put(ACTIVITIES, 100);
+
     setSate("Populate Completed");
   }
 
