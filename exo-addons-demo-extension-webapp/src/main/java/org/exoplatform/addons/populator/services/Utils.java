@@ -45,4 +45,11 @@ public class Utils {
     return writer.toString();
   }
 
+  public static InputStream getDocument(String fileName)
+  {
+    InputStream inputStream = Utils.class.getClassLoader().getResourceAsStream("/medias/documents/"+fileName);
+
+    return inputStream;
+  }
+
 }

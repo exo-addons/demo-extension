@@ -16,7 +16,10 @@
                 @Binding(value = org.exoplatform.social.core.manager.IdentityManager.class),
                 @Binding(value = org.exoplatform.social.core.manager.RelationshipManager.class),
                 @Binding(value = org.exoplatform.calendar.service.CalendarService.class),
-                @Binding(value = org.exoplatform.wiki.service.WikiService.class)
+                @Binding(value = org.exoplatform.wiki.service.WikiService.class),
+                @Binding(value = org.exoplatform.services.jcr.RepositoryService.class),
+                @Binding(value = org.exoplatform.services.jcr.ext.app.SessionProviderService.class),
+                @Binding(value = org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator.class)
         }
 )
 

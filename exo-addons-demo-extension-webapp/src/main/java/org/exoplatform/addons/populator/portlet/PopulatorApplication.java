@@ -42,6 +42,9 @@ public class PopulatorApplication
   @Inject
   ForumService forumService_;
 
+  @Inject
+  DocumentService documentService_;
+
   @View
   public Response.Content index(String category)
   {
@@ -77,6 +80,8 @@ public class PopulatorApplication
     calendarService_.createEvents();
 
     wikiService_.createUserWiki();
+
+    documentService_.uploadDocuments();
 
     forumService_.createCategoriesAndForum();
     forumService_.createPosts();
