@@ -22,8 +22,13 @@
      </portlet-info>
      <portlet-preferences>
        <preference>
-         <name>size</name>
-         <value>128</value>
+         <name>username</name>
+         <value>benjamin</value>
+         <read-only>false</read-only>
+       </preference>
+       <preference>
+         <name>fullname</name>
+         <value>Benjamin Paillereau</value>
          <read-only>false</read-only>
        </preference>
      </portlet-preferences>

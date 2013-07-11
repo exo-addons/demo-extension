@@ -27,11 +27,10 @@ public class CalendarService {
     organizationService_ = organizationService;
   }
 
-  public void setCalendarColors()
+  public void setCalendarColors(String username, String fullname)
   {
-    String username = "benjamin";
     Map map = new HashMap();
-    map.put("Benjamin Paillereau", Calendar.N_POWDER_BLUE);
+    map.put(fullname, Calendar.N_POWDER_BLUE);
     map.put("Public Discussions", Calendar.N_ORANGE);
     map.put("Bank Project", Calendar.N_MOSS_GREEN);
     map.put("Human Resources", Calendar.N_GRAY);
@@ -46,7 +45,7 @@ public class CalendarService {
         if (map.containsKey(calName))
         {
           calendar.setCalendarColor((String)map.get(calName));
-          if ("Benjamin Paillereau".equals(calName))
+          if (fullname.equals(calName))
             calendarService_.saveUserCalendar(username, calendar, true);
           else
             calendarService_.savePublicCalendar(calendar, false);
@@ -67,17 +66,16 @@ public class CalendarService {
 
   }
 
-  public void createEvents()
+  public void createEvents(String username, String fullname)
   {
     try {
-      String username = "benjamin";
       Map<String, String> map = getCalendarsMap(username);
 
       removeAllEvents(username);
 
-      saveEvent(username, true, map.get("Benjamin Paillereau"), "Spec Review", java.util.Calendar.MONDAY, 17, 0, 19, 0);
-      saveEvent(username, true, map.get("Benjamin Paillereau"), "Team Work", java.util.Calendar.TUESDAY, 14, 0, 18, 0);
-      saveEvent(username, true, map.get("Benjamin Paillereau"), "EOW Team Meeting", java.util.Calendar.FRIDAY, 13, 0, 15, 0);
+      saveEvent(username, true, map.get(fullname), "Spec Review", java.util.Calendar.MONDAY, 17, 0, 19, 0);
+      saveEvent(username, true, map.get(fullname), "Team Work", java.util.Calendar.TUESDAY, 14, 0, 18, 0);
+      saveEvent(username, true, map.get(fullname), "EOW Team Meeting", java.util.Calendar.FRIDAY, 13, 0, 15, 0);
       saveEvent(username, false, map.get("Marketing Analytics"), "Lead Gen Study", java.util.Calendar.TUESDAY, 9, 30, 12, 30);
       saveEvent(username, false, map.get("Marketing Analytics"), "Analytics Update", java.util.Calendar.WEDNESDAY, 17, 0, 19, 0);
       saveEvent(username, false, map.get("Public Discussions"), "Intranet Migration Process", java.util.Calendar.WEDNESDAY, 10, 0, 14, 0);

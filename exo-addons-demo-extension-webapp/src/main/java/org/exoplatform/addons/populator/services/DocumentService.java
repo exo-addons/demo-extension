@@ -36,13 +36,13 @@ public class DocumentService {
     nodeHierarchyCreator_= nodeHierarchyCreator;
   }
 
-  public void uploadDocuments()
+  public void uploadDocuments(String username)
   {
     storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null);
     storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null);
     storeFile("eXo_overview_feb2013_V2.pdf", "bank_project", false, null);
     storeFile("YourOpinion-eXoPlatform35.pdf", "bank_project", false, null);
-    storeFile("Boston Logan WiFi Home.pdf", "benjamin", true, null);
+    storeFile("Boston Logan WiFi Home.pdf", username, true, null);
   }
 
   protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid)

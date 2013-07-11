@@ -30,7 +30,7 @@
     <show-max-window>false</show-max-window>
     <portlet-application>
       <portlet>
-        <application-ref>populator</application-ref>
+        <application-ref>demo-extension</application-ref>
         <portlet-ref>PopulatorApplication</portlet-ref>
       </portlet>
       <access-permissions>Everyone</access-permissions>

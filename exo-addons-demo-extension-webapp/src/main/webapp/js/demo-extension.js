@@ -12,7 +12,7 @@ DemoExtension.prototype.headerCtrl = function ($scope, $http) {
   $scope.startPopulating = function() {
 
     $http.get(demoExtension.jzStart).success(function(data) {
-      console.log(data);
+      console.log("Status :: "+data.status);
     });
 
   }

@@ -28,30 +28,30 @@ public class SpaceService {
     identityManager_ = identityManager;
   }
 
-  public void createSpaces()
+  public void createSpaces(String username)
   {
     createSpace("Public Discussions", "public_discussions", "john");
-    createSpace("Bank Project", "bank_project", "benjamin");
-    createSpace("Marketing Analytics", "marketing_analytics", "benjamin");
-    createSpace("Human Resources", "human_resources", "benjamin");
+    createSpace("Bank Project", "bank_project", username);
+    createSpace("Marketing Analytics", "marketing_analytics", username);
+    createSpace("Human Resources", "human_resources", username);
     createSpace("Help Center", "help_center", "john");
   }
 
-  public void addSpacesAvatars()
+  public void addSpacesAvatars(String username)
   {
     createSpaceAvatar("Public Discussions", "john", "eXo-Space-Public-color.png");
-    createSpaceAvatar("Bank Project", "benjamin", "eXo-Space-Sales-color.png");
-    createSpaceAvatar("Marketing Analytics", "benjamin", "eXo-Space-Marketing-color.png");
-    createSpaceAvatar("Human Resources", "benjamin", "eXo-Space-RH-color.png");
+    createSpaceAvatar("Bank Project", username, "eXo-Space-Sales-color.png");
+    createSpaceAvatar("Marketing Analytics", username, "eXo-Space-Marketing-color.png");
+    createSpaceAvatar("Human Resources", username, "eXo-Space-RH-color.png");
     createSpaceAvatar("Help Center", "john", "eXo-Space-Intranet-color.png");
   }
 
-  public void joinSpaces()
+  public void joinSpaces(String username)
   {
     Space space = spaceService_.getSpaceByDisplayName("Public Discussions");
     if (space!=null)
     {
-      spaceService_.addMember(space, "benjamin");
+      spaceService_.addMember(space, username);
     }
 
     space = spaceService_.getSpaceByDisplayName("Bank Project");

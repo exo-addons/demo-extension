@@ -38,12 +38,13 @@ public class UserService {
     relationshipManager_ = relationshipManager;
   }
 
-  public void createUsers() {
+  public void createUsers(String username, String fullname) {
+    String[] fn = fullname.split(" ");
     createUser("john", "John", "Smith", "john@acme.com", "gtngtn", true);
     createUser("mary", "Mary", "Williams", "mary@acme.com", "gtngtn");
     createUser("james", "James", "Potter", "james@acme.com", "gtngtn");
     createUser("jack", "Jack", "Marker", "jack@acme.com", "gtngtn");
-    createUser("benjamin", "Benjamin", "Paillereau", "benjamin@acme.com", "gtngtn");
+    createUser(username, fn[0], fn[1], "demo@acme.com", "gtngtn");
 
   }
 
@@ -101,13 +102,13 @@ public class UserService {
     return ok;
   }
 
-  public void createRelations()
+  public void createRelations(String username)
   {
     Identity idJohn = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "john");
     Identity idMary = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "mary");
     Identity idJames = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "james");
     Identity idJack = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "jack");
-    Identity idBenjamin = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "benjamin");
+    Identity idBenjamin = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username);
 
     relationshipManager_.inviteToConnect(idBenjamin, idJohn);
     relationshipManager_.confirm(idJohn, idBenjamin);
@@ -122,13 +123,13 @@ public class UserService {
 
   }
 
-  public boolean attachAvatars() {
+  public boolean attachAvatars(String username) {
     boolean ok = true;
     this.saveUserAvatar("john", "eXo-Face-John.png");
     this.saveUserAvatar("jack", "eXo-Face-Jack.png");
     this.saveUserAvatar("james", "eXo-Face-James.png");
     this.saveUserAvatar("mary", "eXo-Face-Mary.png");
-    this.saveUserAvatar("benjamin", "eXo-Face-Benjamin.png");
+    this.saveUserAvatar(username, "eXo-Face-Benjamin.png");
 
     return ok;
   }
