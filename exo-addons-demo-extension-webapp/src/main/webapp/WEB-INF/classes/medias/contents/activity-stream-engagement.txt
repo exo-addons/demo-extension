@@ -1,0 +1,77 @@
+{{section}}
+{{column width="75%"}}
+|= Specification | Activity Stream Intro
+|= Target Application | PLF 4.0
+|= Owner | Nathan Selana
+|= Status | IN PROGRESS - DRAFT - **REVIEW** - VALIDATED
+{{/column}}
+
+{{column width="25%"}}
+{{panel title="Table of Contents"}}
+{{toc maxLevel="2"}}{{/toc}}
+{{/panel}}
+{{/column}}
+{{/section}}
+
+
+= Rationale =
+
+Since the activity stream is the main content of the homepage, we don't want users to start with it empty. When a new user arrives on home, instead of seeing an empty activity stream we display starting content  to engage him using it.
+
+(% style="text-align: center;" %)
+\\
+
+(% style="text-align: center;" %)
+[[[[image:https://jira.exoplatform.org/secure/attachment/76676/BD-1581_FirstStart_8.jpg||width="600px"]]>>https://jira.exoplatform.org/secure/attachment/76676/BD-1581_FirstStart_8.jpg]]
+
+= Composer Hint Block =
+
+When user has an empty activity stream we display a hint below the composer to tell him what it's for.
+
+|=ID|=Description
+| COMPOSER_HINT_01 | When the activity stream is empty, a dismissible hint block is displayed below the activity composer. As soon as the activity stream contains activities, the hint block does not appear anymore for this user.
+| COMPOSER_HINT_02 | The hint text is : //This is the main place to share documents, links, ideas and updates about what you are working on.//
+| COMPOSER_HINT_03 | a small cross allows to dismiss the hint block temporary, but this change is not persistent and the bubble will reappear on a page refresh as long as there is no activities in the stream.
+
+= Welcome Activity =
+
+A fake activity welcomes the user in his new intranet and gives him a very quick overview of what he can do with it.
+
+
+| WELCOME_ACTIVITY_01| A welcome activity appears as long as there are no activities in the stream. When activities are in the stream, it is not displayed anymore.
+| WELCOME_ACTIVITY_02| Author field of the fake activity  is used to display this label : //Welcome to your new Social Intranet!//
+| WELCOME_ACTIVITY_03| Avatar of the fake activity is  the generic user avatar
+| WELCOME_ACTIVITY_04| Date field displayed is always : //less than a minute ago//
+| WELCOME_ACTIVITY_05| Featured Content of the fake activity is :(((
+{{panel}}
+
+This is your activity stream.  It will help you to keep an eye on important things happening in your social intranet.
+
+**Connect and discuss with others**
+Build your network by connecting with colleagues in [[Connections>>/portal/intranet/connexions]]. They will be able to follow, comment or like all the ideas, moods, status updates, links or documents that you share above. Let the discussion start!
+
+**Discover the power of social collaboration**
+You can do a lot of useful things with [[Documents>>/portal/intranet/documents]],  [[Wiki>>/portal/intranet/wiki]], [[Forums>>/portal/intranet/forum]] and [[Calendars>>/portal/intranet/calendar]]  applications. Important things you do with them will be summarised automatically in the activity stream with just the right level of information to keep you and your network updated. 
+
+**Use spaces for team or project matters**
+Create or join collaboration  [[Spaces>>/portal/intranet/all-spaces]]for your teams, projects or communities. Spaces are ideal places for collaborating on specific topics.
+All activity happening in your spaces is also available in the activity stream.
+
+**Anywhere at anytime**
+Download mobile applications from the [[iOS App Store>>https://itunes.apple.com/fr/app/exo-platform-3.5/id410476273?mt=8]] and [[Google Play>>https://play.google.com/store/apps/details?id=org.exoplatform]]. With your mobile device, you can also check the activity stream.
+{{/panel}}
+
+Hyperlinks are placed in the text as follow : 
+
+* connections : /portal/intranet/connexions
+* wikis : /portal/intranet/wiki
+* forums : /portal/intranet/forum
+* calendars : /portal/intranet/calendar
+* documents : /portal/intranet/documents
+* spaces : /portal/intranet/all-spaces
+* iOS App Store : https://itunes.apple.com/fr/app/exo-platform-3.5/id410476273?mt=8
+* Google Play : https://play.google.com/store/apps/details?id=org.exoplatform
+)))
+| WELCOME_ACTIVITY_06| The welcome activity cannot be liked or commented, buttons are not available.
+
+= Comments =

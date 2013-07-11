@@ -1,9 +1,11 @@
 package org.exoplatform.addons.populator.services;
 
+import org.apache.commons.io.IOUtils;
 import org.exoplatform.social.core.image.ImageUtils;
 import org.exoplatform.social.core.model.AvatarAttachment;
 
 import java.io.InputStream;
+import java.io.StringWriter;
 
 public class Utils {
 
@@ -32,6 +34,15 @@ public class Utils {
     }
 
     return avatarAttachment;
+  }
+
+  public static String getWikiPage(String fileName) throws Exception
+  {
+    InputStream inputStream = Utils.class.getClassLoader().getResourceAsStream("/medias/contents/"+fileName);
+    StringWriter writer = new StringWriter();
+    IOUtils.copy(inputStream, writer);
+
+    return writer.toString();
   }
 
 }

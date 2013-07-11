@@ -25,21 +25,26 @@ public class WikiService {
 
   public void createUserWiki()
   {
+    createPage("Activity Stream Engagement", "activity-stream-engagement.txt");
+    createPage("How-To Guide", "how-to-guide.txt");
+    createPage("Leave Planning", "leave-planning.txt");
+    editPage("WikiHome", "wiki-home.txt");
+  }
+
+
+  private void createPage(String title, String filename)
+  {
+    createPage(title, filename, "WikiHome");
+  }
+
+  private void createPage(String title, String filename, String parent)
+  {
     try {
-      if (wikiService_.isExisting(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId("Intranet Usage", false)))
-        wikiService_.deletePage(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId("Intranet Usage", false));
+      if (wikiService_.isExisting(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId(title, false)))
+        wikiService_.deletePage(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId(title, false));
 
-      PageImpl page = (PageImpl) wikiService_.createPage(PortalConfig.PORTAL_TYPE, "intranet", "Intranet Usage", "WikiHome");
-      page.getContent().setText("= Welcome in this Demo Intranet =");
-      page.setSyntax(Syntax.XWIKI_2_0.toIdString());
-      page.checkin();
-      page.checkout();
-
-      if (wikiService_.isExisting(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId("Cloud Management Specification", false)))
-        wikiService_.deletePage(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId("Cloud Management Specification", false));
-
-      page = (PageImpl) wikiService_.createPage(PortalConfig.PORTAL_TYPE, "intranet", "Cloud Management Specification", "WikiHome");
-      page.getContent().setText("= Cloud Spec (v1) =");
+      PageImpl page = (PageImpl) wikiService_.createPage(PortalConfig.PORTAL_TYPE, "intranet", title, parent);
+      page.getContent().setText(Utils.getWikiPage(filename));
       page.setSyntax(Syntax.XWIKI_2_0.toIdString());
       page.checkin();
       page.checkout();
@@ -50,4 +55,19 @@ public class WikiService {
 
   }
 
+  private void editPage(String title, String filename)
+  {
+    try {
+
+      PageImpl page = (PageImpl) wikiService_.getPageById(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId(title, false));
+      page.getContent().setText(Utils.getWikiPage(filename));
+      page.setSyntax(Syntax.XWIKI_2_0.toIdString());
+      page.checkin();
+      page.checkout();
+
+    } catch (Exception e) {
+      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+    }
+
+  }
 }
