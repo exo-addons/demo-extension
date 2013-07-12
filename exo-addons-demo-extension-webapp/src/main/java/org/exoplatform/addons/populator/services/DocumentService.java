@@ -49,7 +49,6 @@ public class DocumentService {
   protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid, String username)
   {
     SessionProvider sessionProvider = startSessionAs(username);
-    InputStream inputStream = Utils.getDocument(filename);
 
     try
     {
@@ -76,6 +75,7 @@ public class DocumentService {
       {
         Node fileNode = docNode.addNode(filename, "nt:file");
         Node jcrContent = fileNode.addNode("jcr:content", "nt:resource");
+        InputStream inputStream = Utils.getDocument(filename);
         jcrContent.setProperty("jcr:data", inputStream);
         jcrContent.setProperty("jcr:lastModified", Calendar.getInstance());
         jcrContent.setProperty("jcr:encoding", "UTF-8");
@@ -105,27 +105,27 @@ public class DocumentService {
           jcrContent.setProperty("jcr:mimeType", "application/vnd.oasis.opendocument.spreadsheet");
         session.save();
       }
+
+      // We Re Upload the file, even after creation, so it will publish an activity in the Activity Stream
+      Node fileNode=null;
+      if (uuid!=null) {
+        fileNode = session.getNodeByUUID(uuid);
+      }
       else
       {
-        Node fileNode=null;
-        if (uuid!=null) {
-          fileNode = session.getNodeByUUID(uuid);
-        }
-        else
-        {
-          fileNode = docNode.getNode(filename);
-        }
-        if (fileNode.canAddMixin("mix:versionable")) fileNode.addMixin("mix:versionable");
-        if (!fileNode.isCheckedOut()) {
-          fileNode.checkout();
-        }
-        fileNode.save();
-        fileNode.checkin();
-        fileNode.checkout();
-        Node jcrContent = fileNode.getNode("jcr:content");
-        jcrContent.setProperty("jcr:data", inputStream);
-        session.save();
+        fileNode = docNode.getNode(filename);
       }
+      if (fileNode.canAddMixin("mix:versionable")) fileNode.addMixin("mix:versionable");
+      if (!fileNode.isCheckedOut()) {
+        fileNode.checkout();
+      }
+      fileNode.save();
+      fileNode.checkin();
+      fileNode.checkout();
+      Node jcrContent = fileNode.getNode("jcr:content");
+      InputStream inputStream = Utils.getDocument(filename);
+      jcrContent.setProperty("jcr:data", inputStream);
+      session.save();
 
     }
     catch (Exception e)
