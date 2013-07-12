@@ -6,16 +6,17 @@ import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
+import org.exoplatform.services.security.MembershipEntry;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jcr.Node;
-import javax.jcr.Repository;
 import javax.jcr.Session;
-import javax.jcr.SimpleCredentials;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 @Named("documentService")
@@ -40,23 +41,14 @@ public class DocumentService {
   {
     storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null, "mary");
     storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null, "mary");
-    storeFile("eXo_overview_feb2013_V2.pdf", "bank_project", false, null, null);
-    storeFile("YourOpinion-eXoPlatform35.pdf", "bank_project", false, null, null);
-    storeFile("Boston Logan WiFi Home.pdf", username, true, null, null);
+    storeFile("eXo_overview_feb2013_V2.pdf", "bank_project", false, null, "john");
+    storeFile("YourOpinion-eXoPlatform35.pdf", "bank_project", false, null, "john");
+    storeFile("Boston Logan WiFi Home.pdf", username, true, null, username);
   }
 
   protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid, String username)
   {
-    SessionProvider sessionProvider;
-    if (isPrivateContext || username!=null)
-    {
-      String target = (username!=null)?username:name;
-      sessionProvider = startSessionAs(target);
-    }
-    else
-    {
-      sessionProvider = getUserSessionProvider();
-    }
+    SessionProvider sessionProvider = startSessionAs(username);
     InputStream inputStream = Utils.getDocument(filename);
 
     try
@@ -140,6 +132,7 @@ public class DocumentService {
     {
       System.out.println("JCR::" + e.getMessage());
     }
+    endSession();
   }
 
   private static String getSpacePath(String space)
@@ -147,18 +140,24 @@ public class DocumentService {
     return "Groups/spaces/"+space;
   }
 
+/*
   public SessionProvider getUserSessionProvider() {
     SessionProvider sessionProvider = sessionProviderService_.getSessionProvider(null);
     return sessionProvider;
   }
-
-  public SessionProvider getSystemSessionProvider() {
-    SessionProvider sessionProvider = sessionProviderService_.getSystemSessionProvider(null);
-    return sessionProvider;
-  }
+*/
 
   protected SessionProvider startSessionAs(String user) {
     Identity identity = new Identity(user);
+
+    try {
+      Collection<MembershipEntry> membershipEntries = new ArrayList<MembershipEntry>();
+      membershipEntries.add(new MembershipEntry("/spaces/bank_project", "member"));
+      membershipEntries.add(new MembershipEntry("/spaces/human_resources", "member"));
+      identity.setMemberships(membershipEntries);
+    } catch (Exception e) {
+      log.info(e.getMessage());
+    }
     ConversationState state = new ConversationState(identity);
     ConversationState.setCurrent(state);
     sessionProviderService_.setSessionProvider(null, new SessionProvider(state));
