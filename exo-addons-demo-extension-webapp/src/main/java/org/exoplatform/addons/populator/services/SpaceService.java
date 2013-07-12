@@ -62,6 +62,12 @@ public class SpaceService {
       spaceService_.addMember(space, "john");
     }
 
+    space = spaceService_.getSpaceByDisplayName("Human Resources");
+    if (space!=null)
+    {
+      spaceService_.addMember(space, "mary");
+    }
+
 
   }
     private void createSpaceAvatar(String name, String editor, String avatarFile)

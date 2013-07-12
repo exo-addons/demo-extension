@@ -96,6 +96,7 @@ public class CalendarService {
     event.setCalendarId(calId);
     event.setSummary(summary);
     event.setEventType(CalendarEvent.TYPE_EVENT);
+    event.setRepeatType(CalendarEvent.RP_NOREPEAT);
     event.setPrivate(isUserEvent);
     java.util.Calendar calendar = java.util.Calendar.getInstance();
     calendar.setTimeInMillis(calendar.getTime().getTime());

@@ -38,19 +38,20 @@ public class DocumentService {
 
   public void uploadDocuments(String username)
   {
-    storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null);
-    storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null);
-    storeFile("eXo_overview_feb2013_V2.pdf", "bank_project", false, null);
-    storeFile("YourOpinion-eXoPlatform35.pdf", "bank_project", false, null);
-    storeFile("Boston Logan WiFi Home.pdf", username, true, null);
+    storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null, "mary");
+    storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null, "mary");
+    storeFile("eXo_overview_feb2013_V2.pdf", "bank_project", false, null, null);
+    storeFile("YourOpinion-eXoPlatform35.pdf", "bank_project", false, null, null);
+    storeFile("Boston Logan WiFi Home.pdf", username, true, null, null);
   }
 
-  protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid)
+  protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid, String username)
   {
     SessionProvider sessionProvider;
-    if (isPrivateContext)
+    if (isPrivateContext || username!=null)
     {
-      sessionProvider = startSessionAs(name);
+      String target = (username!=null)?username:name;
+      sessionProvider = startSessionAs(target);
     }
     else
     {
