@@ -38,7 +38,7 @@ public class Utils {
 
   public static String getWikiPage(String fileName) throws Exception
   {
-    InputStream inputStream = Utils.class.getClassLoader().getResourceAsStream("/medias/contents/"+fileName);
+    InputStream inputStream = getFile(fileName, "contents");
     StringWriter writer = new StringWriter();
     IOUtils.copy(inputStream, writer);
 
@@ -47,7 +47,17 @@ public class Utils {
 
   public static InputStream getDocument(String fileName)
   {
-    InputStream inputStream = Utils.class.getClassLoader().getResourceAsStream("/medias/documents/"+fileName);
+    return getFile(fileName, "documents");
+  }
+
+  public static InputStream getTemplate(String fileName)
+  {
+    return getFile(fileName, "templates");
+  }
+
+  public static InputStream getFile(String fileName, String folder)
+  {
+    InputStream inputStream = Utils.class.getClassLoader().getResourceAsStream("/medias/"+folder+"/"+fileName);
 
     return inputStream;
   }

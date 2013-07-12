@@ -1,0 +1,150 @@
+<%
+  import javax.jcr.Node;
+	import java.util.List;
+  import org.exoplatform.services.cms.taxonomy.TaxonomyService;
+	import org.exoplatform.services.cms.folksonomy.NewFolksonomyService;
+	import org.exoplatform.services.wcm.core.NodeLocation;
+	import org.exoplatform.services.wcm.skin.XSkinService;
+	import org.exoplatform.services.wcm.javascript.XJavascriptService;
+		
+	public boolean getPortletPreference(String name) {
+    String value = _ctx.getRequestContext().getRequest().getPreferences().getValue(name, null);
+    if(value != null) return Boolean.parseBoolean(value);
+    return false;
+  }
+  
+  	def currentNode = uicomponent.getNode() ; 
+    def html = currentNode.getNode("default.html/jcr:content").getProperty("jcr:data").getString();
+  	def css = currentNode.getNode("css/default.css/jcr:content").getProperty("jcr:data").getString();
+  	def cssOption = "CSSData=" + css;
+  	def js = currentNode.getNode("js/default.js/jcr:content").getProperty("jcr:data").getString();  
+  	// NOTE : You can use services if you're adding external css or js thru WebDAV. If not, direct access to the node is more efficient.
+  	//def css = uicomponent.getApplicationComponent(XSkinService.class).getActiveStylesheet(currentNode);
+  	//def js =  uicomponent.getApplicationComponent(XJavascriptService.class).getActiveJavaScript(currentNode);
+  
+	boolean isShowCategories = getPortletPreference("ShowCategories");
+	boolean isShowTags = getPortletPreference("ShowTags");
+%>
+
+<style type="text/css">
+	/* <![CDATA[ */			
+
+.UIPresentationContainer {
+	margin: 20px;
+}
+.UIPresentationContainer .Title {
+	padding: 12px 20px;
+	width: initial;
+	font-size: 18px;
+	font-weight: bold;
+	border: 1px solid #cfcfcf;
+	background: #f0f0f0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+.webContentContainer {
+	padding: 20px;	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 4px -1px rgba(35,44,48,0.18);
+	-moz-box-shadow: 0 2px 4px -1px rgba(35,44,48,0.18);
+	box-shadow: 0 2px 4px -1px rgba(35,44,48,0.18);
+	border: 1px solid #cfcfcf;
+	background: #fff;
+	margin: 0 0 20px 0;	
+}
+.DateAndMail {
+	padding: 5px 0;
+}
+.UIOptionBar {
+	display: none;
+}
+/* ]]> */
+</style>
+
+
+<%
+	if((css != null) && (css.length() > 0)) {
+		%>
+			<style type="text/css">
+				/* <![CDATA[ */			
+					<%=css%>
+				/* ]]> */
+				</style>
+		<%
+	}
+
+	if((js != null) && (js.length() > 0)) {
+		%>
+			<script type="text/javascript">
+			/* <![CDATA[ */	
+				<%=js%>
+			/* ]]> */		
+			</script>
+		<% 
+	}
+	
+	if (isShowCategories || isShowTags) {
+		%>
+			<div class="webContentContainer">
+				<div class="webContentInformation">
+					<% 
+						if(isShowCategories) {
+							TaxonomyService taxonomyService = uicomponent.getApplicationComponent(TaxonomyService.class);
+			      	List<Node> categoryNodeList = taxonomyService.getAllCategories(currentNode);
+			      	if (!categoryNodeList.isEmpty()) {
+			      		StringBuffer categories = new StringBuffer();
+				       	for (Node category: categoryNodeList) {
+				        	categories.append(category.getName()).append(", ");
+				       	}
+				    	 	categories.replace(categories.lastIndexOf(", "), categories.size(), "");
+								%>
+						  		<span class="categories"><strong><%=_ctx.appRes("Category.view.label")%>:</strong> <%= categories.toString() %></span>
+								<%		
+			      	}
+						}
+						if(isShowTags) {
+						  NewFolksonomyService folkService = uicomponent.getApplicationComponent(NewFolksonomyService.class);
+						  def nodeLocation = NodeLocation.getNodeLocationByNode(currentNode);
+							List<Node> tagList = folkService.getLinkedTagsOfDocument(currentNode, nodeLocation.getWorkspace());
+							if(!tagList.isEmpty()) {
+								StringBuffer tagBuff = new StringBuffer("[");
+								for(Node tag: tagList) {
+									tagBuff.append(tag.getName()).append(", ");
+								}
+								tagBuff.replace(tagBuff.lastIndexOf(", "), tagBuff.size(), "]");
+								%>
+									<span class="tags"><strong><%=_ctx.appRes("Tag.view.label")%>:</strong> <%= tagBuff.toString() %></span>
+								<%	
+							}	
+						}
+					%>
+				</div>
+				<%
+          print uicomponent.getInlineEditingField(currentNode, "default.html/jcr:content/jcr:data", html, "WYSIWYG", "Text", "Content", true, cssOption, "toolbar=CompleteWCM");
+        %>          
+		    <% if (uicomponent.isEnableVote()) 
+	           _ctx.include(uicomponent.getViewTemplate("mix:votable", "view1"));
+	         if (uicomponent.isEnableComment())
+	           _ctx.include(uicomponent.getViewTemplate("exo:comments", "view1")); 
+	      %>
+			</div>
+		<%
+  } else {
+	  %>
+    <%
+      print uicomponent.getInlineEditingField(currentNode, "default.html/jcr:content/jcr:data", html, "WYSIWYG", "Text", "Content", true, cssOption, "toolbar=CompleteWCM");
+    %>
+    <% if (uicomponent.isEnableVote()) 
+        _ctx.include(uicomponent.getViewTemplate("mix:votable", "view1"));
+       if (uicomponent.isEnableComment())
+        _ctx.include(uicomponent.getViewTemplate("exo:comments", "view1")); 
+    %>
+	  <%
+  }
+%>

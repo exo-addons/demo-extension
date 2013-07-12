@@ -46,14 +46,32 @@ public class DocumentService {
     storeFile("Boston Logan WiFi Home.pdf", username, true, null, username);
   }
 
+  public void uploadDocuments2(String username)
+  {
+    storeFile("PUR1207_02_Quotation_File.xls", "bank_project", false, null, "john");
+    storeFile("Fiche_solution_Exo_Platform.pdf", "bank_project", false, null, username);
+    storeFile("May MTD 2013 Funnel report Week 21.pptx", "marketing_analytics", false, null, "mary");
+    storeFile("PUR1207_02_RFP_Final.docx", "bank_project", false, null, "john");
+  }
+
+  public void updateTemplates()
+  {
+    storeFile("OneColumn.gtmpl", "john", true, null, "john", "/exo:ecm/views/templates/content-list-viewer/list", "dms-system", "templates");
+    storeFile("view1", "john", true, null, "john", "/exo:ecm/templates/exo:webContent/views", "dms-system", "templates");
+  }
+
   protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid, String username)
+  {
+    storeFile(filename, name, isPrivateContext, uuid, username, null, "collaboration", "documents");
+  }
+  protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid, String username, String path, String workspace, String type)
   {
     SessionProvider sessionProvider = startSessionAs(username);
 
     try
     {
       //get info
-      Session session = sessionProvider.getSession("collaboration", repositoryService_.getCurrentRepository());
+      Session session = sessionProvider.getSession(workspace, repositoryService_.getCurrentRepository());
 
       Node homeNode;
 
@@ -70,12 +88,17 @@ public class DocumentService {
 
       Node docNode = homeNode.getNode("Documents");
 
+      if (path!=null)
+      {
+        Node rootNode = session.getRootNode();
+        docNode = rootNode.getNode(path.substring(1));
+      }
 
       if (!docNode.hasNode(filename) && (uuid==null || "---".equals(uuid)))
       {
         Node fileNode = docNode.addNode(filename, "nt:file");
         Node jcrContent = fileNode.addNode("jcr:content", "nt:resource");
-        InputStream inputStream = Utils.getDocument(filename);
+        InputStream inputStream = Utils.getFile(filename, type);
         jcrContent.setProperty("jcr:data", inputStream);
         jcrContent.setProperty("jcr:lastModified", Calendar.getInstance());
         jcrContent.setProperty("jcr:encoding", "UTF-8");
@@ -123,7 +146,7 @@ public class DocumentService {
       fileNode.checkin();
       fileNode.checkout();
       Node jcrContent = fileNode.getNode("jcr:content");
-      InputStream inputStream = Utils.getDocument(filename);
+      InputStream inputStream = Utils.getFile(filename, type);
       jcrContent.setProperty("jcr:data", inputStream);
       session.save();
 
@@ -154,6 +177,8 @@ public class DocumentService {
       Collection<MembershipEntry> membershipEntries = new ArrayList<MembershipEntry>();
       membershipEntries.add(new MembershipEntry("/spaces/bank_project", "member"));
       membershipEntries.add(new MembershipEntry("/spaces/human_resources", "member"));
+      membershipEntries.add(new MembershipEntry("/spaces/marketing_analytics", "member"));
+      membershipEntries.add(new MembershipEntry("/platform/administrators", "member"));
       identity.setMemberships(membershipEntries);
     } catch (Exception e) {
       log.info(e.getMessage());

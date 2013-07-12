@@ -87,6 +87,10 @@ public class PopulatorService {
     userService_.createRelations(username);
     completion.put(USERS, 100);
 
+    setSate("Documents : Content Templates");
+    documentService_.updateTemplates();
+    completion.put(DOCUMENTS, 10);
+
     setSate("Spaces : Create Spaces, Avatars, Members");
     spaceService_.createSpaces(username);
     completion.put(SPACES, 50);
@@ -106,7 +110,7 @@ public class PopulatorService {
 
     setSate("Documents : Upload Personal Documents, Space Documents");
     documentService_.uploadDocuments(username);
-    completion.put(DOCUMENTS, 100);
+    completion.put(DOCUMENTS, 60);
 
     setSate("Forum : Create Categories, Discussions, Posts and Poll");
     forumService_.createCategoriesAndForum();
@@ -119,6 +123,9 @@ public class PopulatorService {
     setSate("Activities : Push new activities, Comments and Likes");
     activityService_.pushActivities(username);
     completion.put(ACTIVITIES, 100);
+
+    documentService_.uploadDocuments2(username);
+    completion.put(DOCUMENTS, 100);
 
     setSate("Populate Completed");
   }
