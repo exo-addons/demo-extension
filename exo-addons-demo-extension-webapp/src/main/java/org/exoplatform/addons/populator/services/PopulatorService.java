@@ -87,10 +87,6 @@ public class PopulatorService {
     userService_.createRelations(username);
     completion.put(USERS, 100);
 
-    setSate("Documents : Content Templates");
-    documentService_.updateTemplates();
-    completion.put(DOCUMENTS, 10);
-
     setSate("Spaces : Create Spaces, Avatars, Members");
     spaceService_.createSpaces(username);
     completion.put(SPACES, 50);
@@ -104,9 +100,14 @@ public class PopulatorService {
     completion.put(CALENDAR, 20);
     calendarService_.createEvents(username, fullname);
     completion.put(CALENDAR, 100);
+
     setSate("Wiki : Create Wikis");
     wikiService_.createUserWiki();
     completion.put(WIKI, 100);
+
+    setSate("Documents : Content Templates");
+    documentService_.updateTemplates();
+    completion.put(DOCUMENTS, 10);
 
     setSate("Documents : Upload Personal Documents, Space Documents");
     documentService_.uploadDocuments(username);
