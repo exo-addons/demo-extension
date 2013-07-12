@@ -40,6 +40,13 @@
         <page-reference>portal::intranet::demo</page-reference>
       </node>
     </node>
+    <node>
+      <uri>news</uri>
+      <name>news</name>
+      <label xml:lang="en">News</label>
+      <visibility>DISPLAYED</visibility>
+      <page-reference>portal::intranet::news</page-reference>
+    </node>
 
   </page-nodes>
 </node-navigation>
