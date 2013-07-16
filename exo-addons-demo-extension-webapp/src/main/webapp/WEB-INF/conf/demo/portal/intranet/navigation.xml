@@ -31,7 +31,7 @@
       <uri>home</uri>
       <name>home</name>
       <label>#{portal.intranet.home}</label>
-      <page-reference>portal::intranet::homepage</page-reference>
+      <page-reference>portal::intranet::homepage-demo</page-reference>
       <node>
         <uri>home/demo</uri>
         <name>demo</name>
