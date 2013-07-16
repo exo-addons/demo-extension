@@ -5,7 +5,7 @@
                 @Script(src = "js/demo-extension.js", id = "demo", depends = "jquery")
         },
         stylesheets = {
-                @Stylesheet(src = "/org/exoplatform/addons/populator/portlet/assets/populator.css", location = AssetLocation.APPLICATION, id = "populator")
+                @Stylesheet(src = "/org/exoplatform/addons/populator/portlet/populator/assets/populator.css", location = AssetLocation.APPLICATION, id = "populator")
         }
 
 )
@@ -27,7 +27,7 @@
 @Less(value = {"populator.less"}, minify = true)
 
 @Application(defaultController = PopulatorApplication.class)
-@Portlet(name="PopulatorPortlet") package org.exoplatform.addons.populator.portlet;
+@Portlet(name="PopulatorPortlet") package org.exoplatform.addons.populator.portlet.populator;
 
 import juzu.Application;
 import juzu.asset.AssetLocation;
@@ -38,4 +38,5 @@ import juzu.plugin.binding.Binding;
 import juzu.plugin.binding.Bindings;
 import juzu.plugin.less.Less;
 import juzu.plugin.portlet.Portlet;
+import org.exoplatform.addons.populator.portlet.populator.PopulatorApplication;
 

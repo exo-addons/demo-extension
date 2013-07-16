@@ -1,11 +1,11 @@
-package org.exoplatform.addons.rss;
+package org.exoplatform.addons.populator.portlet.rss;
 
 import juzu.Path;
 import juzu.Resource;
 import juzu.View;
 import juzu.template.Template;
-import org.exoplatform.addons.rss.model.Feed;
-import org.exoplatform.addons.rss.model.Item;
+import org.exoplatform.addons.populator.portlet.rss.model.Feed;
+import org.exoplatform.addons.populator.portlet.rss.model.Item;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,7 +23,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /** @author <a href="mailto:benjamin.paillereau@exoplatform.com">Benjamin Paillereau</a> */
-public class Controller
+public class RssApplication
 {
 
   /** . */

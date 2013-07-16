@@ -4,13 +4,14 @@
                 @Script(id = "jquery-utils", src = "js/jquery-juzu-utils-0.1.0.js")
         },
         stylesheets = {
-                @Stylesheet(src = "/org/exoplatform/addons/rss/assets/rss.css", location = AssetLocation.APPLICATION)
+                @Stylesheet(src = "/org/exoplatform/addons/populator/portlet/rss/assets/rss.css", location = AssetLocation.APPLICATION)
         }
 )
 @Less(value = "rss.less", minify = true)
 
-@Application
-@Portlet package org.exoplatform.addons.rss;
+
+@Application(defaultController = RssApplication.class)
+@Portlet(name="RssPortlet") package org.exoplatform.addons.populator.portlet.rss;
 
 import juzu.Application;
 import juzu.asset.AssetLocation;

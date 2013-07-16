@@ -1,4 +1,4 @@
-package org.exoplatform.addons.rss.model;
+package org.exoplatform.addons.populator.portlet.rss.model;
 
 import java.util.ArrayList;
 import java.util.List;

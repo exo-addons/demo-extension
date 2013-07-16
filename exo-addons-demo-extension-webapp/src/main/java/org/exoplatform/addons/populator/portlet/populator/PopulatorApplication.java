@@ -1,4 +1,4 @@
-package org.exoplatform.addons.populator.portlet;
+package org.exoplatform.addons.populator.portlet.populator;
 
 import juzu.*;
 import juzu.plugin.ajax.Ajax;
