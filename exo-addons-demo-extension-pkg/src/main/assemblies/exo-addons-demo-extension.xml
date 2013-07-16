@@ -35,11 +35,47 @@
       <outputFileNameMapping>demo-extension.war</outputFileNameMapping>
       <useProjectArtifact>false</useProjectArtifact>
     </dependencySet>
+    <dependencySet>
+      <outputDirectory>/demo/webapps</outputDirectory>
+      <includes>
+        <include>org.exoplatform.addons.chat:server:war</include>
+      </includes>
+      <scope>provided</scope>
+      <outputFileNameMapping>chatServer.war</outputFileNameMapping>
+      <useProjectArtifact>false</useProjectArtifact>
+    </dependencySet>
+    <dependencySet>
+      <outputDirectory>/demo/webapps</outputDirectory>
+      <includes>
+        <include>org.exoplatform.addons.chat:application:war</include>
+      </includes>
+      <scope>provided</scope>
+      <outputFileNameMapping>chat.war</outputFileNameMapping>
+      <useProjectArtifact>false</useProjectArtifact>
+    </dependencySet>
+    <dependencySet>
+      <outputDirectory>/demo/webapps</outputDirectory>
+      <includes>
+        <include>org.exoplatform.addons.chat:exo-addons-chat-extension:war</include>
+      </includes>
+      <scope>provided</scope>
+      <outputFileNameMapping>chat-extension.war</outputFileNameMapping>
+      <useProjectArtifact>false</useProjectArtifact>
+    </dependencySet>
     <!-- Libraries -->
     <dependencySet>
       <outputDirectory>/demo/lib</outputDirectory>
       <includes>
         <include>org.exoplatform.addons.demo:exo-addons-demo-extension-config:jar</include>
+      </includes>
+      <scope>provided</scope>
+      <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
+      <useProjectArtifact>false</useProjectArtifact>
+    </dependencySet>
+    <dependencySet>
+      <outputDirectory>/demo/lib</outputDirectory>
+      <includes>
+        <include>org.exoplatform.addons.chat:exo-addons-chat-extension-config:jar</include>
       </includes>
       <scope>provided</scope>
       <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>

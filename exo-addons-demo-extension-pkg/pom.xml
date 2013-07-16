@@ -9,6 +9,10 @@
   <artifactId>exo-addons-demo-extension-pkg</artifactId>
   <packaging>pom</packaging>
   <name>eXo Addons - Demo Set Extension Package</name>
+  <properties>
+  <!-- 3rd party libraries versions -->
+    <chat.addon.version>0.7.0-beta2-SNAPSHOT</chat.addon.version>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.exoplatform.addons.demo</groupId>
@@ -19,6 +23,34 @@
     <dependency>
       <groupId>org.exoplatform.addons.demo</groupId>
       <artifactId>exo-addons-demo-extension-config</artifactId>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.addons.chat</groupId>
+      <artifactId>server</artifactId>
+      <version>${chat.addon.version}</version>
+      <type>war</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.addons.chat</groupId>
+      <artifactId>application</artifactId>
+      <version>${chat.addon.version}</version>
+      <type>war</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.addons.chat</groupId>
+      <artifactId>exo-addons-chat-extension</artifactId>
+      <version>${chat.addon.version}</version>
+      <type>war</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.addons.chat</groupId>
+      <artifactId>exo-addons-chat-extension-config</artifactId>
+      <version>${chat.addon.version}</version>
       <type>jar</type>
       <scope>provided</scope>
     </dependency>
