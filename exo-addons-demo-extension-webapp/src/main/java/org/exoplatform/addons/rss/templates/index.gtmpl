@@ -1,4 +1,15 @@
-<div class="simpleRssPortlet" id="simpleRssPortlet${id}"></div>
+<div class="simpleRssPortlet" id="simpleRssPortlet${id}">
+  <div class="titleRss uiGrayLightBox">RSS Feed</div>
+  <div class="itemsRss uiBox">
+    <div class="item">
+      <a class="link" href="#" target="_new">
+        <div class="description">Loading the feed...</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>
 
 <script>
   $(document).ready(function(){

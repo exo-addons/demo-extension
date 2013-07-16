@@ -1,4 +1,4 @@
-  <div class="titleRss uiGrayLightBox">${feed.title}</div>
+<div class="titleRss uiGrayLightBox">${feed.title}</div>
   <div class="itemsRss uiBox">
     <% feed.items.each { item -> %>
 
