@@ -1,0 +1,28 @@
+<div class="simpleTodoPortlet">
+  <div class="todoPortletData uiBox">
+    <h6 class="title clearfix">
+      Market Trends
+    </h6>
+    <div class="uiContentBox">
+      <div class="stock">
+        <span class="id">EXO</span>
+        <span class="diff">+0.25%<br>+0.12</span>
+        <span class="value">47.14</span>
+      </div>
+      <div class="stock">
+        <span class="id">CDVY</span>
+        <span class="diff">+1.58%<br>+0.49</span>
+        <span class="value">38.89</span>
+      </div>
+      <div class="stock">
+        <span class="id">JYVE</span>
+        <span class="diff neg">-0.79%<br>-0.05</span>
+        <span class="value">17.13</span>
+      </div>
+      <hr/>
+      <ul>
+        <li><a class="link" href="http://www.salesforce.com">Salesforce Account</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

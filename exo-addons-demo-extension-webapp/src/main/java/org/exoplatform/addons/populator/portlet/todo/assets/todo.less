@@ -1,0 +1,63 @@
+.simpleTodoPortlet {
+//  padding: 1px;
+  .todoPortletData .title {
+    text-align: center;
+  }
+
+  .uiContentBox {
+    ul {
+      list-style-type: square;
+      padding-left: 10px;
+    }
+    ul li {
+      list-style: inherit;
+    }
+    hr {
+      clear: both;
+    }
+    .link {
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 95%;
+      color: #2f5e92;
+    }
+
+    .stock {
+      padding: 5px;
+      margin-bottom: 10px;
+      background-color: #F0F0F0;
+      height: 30px;
+      clear: both;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      -moz-border-radius: 4px;
+
+      .id {
+        float: left;
+        font-weight: bold;
+        color: #444;
+      }
+      .value {
+        float: right;
+        padding-right: 10px;
+      }
+      .diff {
+        float: right;
+        padding: 3px;
+        background-color: #339933;
+        color: white;
+        font-size: 11px;
+        line-height: 12px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+      }
+      .neg {
+        background-color: #993333;
+      }
+    }
+  }
+}
+
