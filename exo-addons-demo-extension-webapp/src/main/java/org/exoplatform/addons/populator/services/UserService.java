@@ -44,6 +44,7 @@ public class UserService {
     createUser("mary", "Mary", "Williams", "mary@acme.com", "gtngtn");
     createUser("james", "James", "Potter", "james@acme.com", "gtngtn");
     createUser("jack", "Jack", "Marker", "jack@acme.com", "gtngtn");
+    createUser("robert", "Robert", "Bruce", "robert@acme.com", "gtngtn");
     createUser(username, fn[0], fn[1], "demo@acme.com", "gtngtn");
 
   }
@@ -108,6 +109,7 @@ public class UserService {
     Identity idMary = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "mary");
     Identity idJames = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "james");
     Identity idJack = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "jack");
+    Identity idRobert = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "robert");
     Identity idBenjamin = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username);
 
     relationshipManager_.inviteToConnect(idBenjamin, idJohn);
@@ -122,6 +124,10 @@ public class UserService {
     relationshipManager_.confirm(idMary, idJames);
     relationshipManager_.inviteToConnect(idMary, idJohn);
     relationshipManager_.confirm(idJohn, idMary);
+    relationshipManager_.inviteToConnect(idMary, idRobert);
+    relationshipManager_.confirm(idRobert, idMary);
+    relationshipManager_.inviteToConnect(idJohn, idRobert);
+    relationshipManager_.confirm(idRobert, idJohn);
 
   }
 
@@ -131,6 +137,7 @@ public class UserService {
     this.saveUserAvatar("jack", "eXo-Face-Jack.png");
     this.saveUserAvatar("james", "eXo-Face-James.png");
     this.saveUserAvatar("mary", "eXo-Face-Mary.png");
+    this.saveUserAvatar("robert", "eXo-Face-Robert.png");
     this.saveUserAvatar(username, "eXo-Face-Benjamin.png");
 
     return ok;
