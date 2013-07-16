@@ -1,0 +1,18 @@
+<div class="simpleTodoPortlet">
+  <div class="todoPortletData uiBox">
+    <h6 class="title clearfix">
+      What's Your Mood Today?
+    </h6>
+    <div class="uiContentBox">
+      <div class="mood orange"><span class="face">:D</span></div>
+      <div class="mood green"><span class="face">:)</span></div>
+      <div class="mood blue"><span class="face">:|</span></div>
+      <div class="mood pink"><span class="face">:/</span></div>
+      <div class="mood purple"><span class="face">:(</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".uiComposer").remove();
+</script>

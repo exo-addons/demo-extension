@@ -41,6 +41,14 @@ public class TodoApplication
   @Path("robert.gtmpl")
   Template robertTemplate;
 
+  @Inject
+  @Path("james.gtmpl")
+  Template jamesTemplate;
+
+  @Inject
+  @Path("mary.gtmpl")
+  Template maryTemplate;
+
   @View
   public void index(RenderContext renderContext) throws IOException
   {
@@ -53,6 +61,14 @@ public class TodoApplication
     else if ("robert".equals(remoteUser))
     {
       robertTemplate.render();
+    }
+    else if ("james".equals(remoteUser))
+    {
+      jamesTemplate.render();
+    }
+    else if ("mary".equals(remoteUser))
+    {
+      maryTemplate.render();
     }
     else
     {
