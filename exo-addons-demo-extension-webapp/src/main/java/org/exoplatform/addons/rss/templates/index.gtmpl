@@ -1,0 +1,16 @@
+<div class="simpleRssPortlet" id="simpleRssPortlet${id}"></div>
+
+<script>
+  $(document).ready(function(){
+    var value = jzGetParam("simpleRSSData");
+    if (! value) {
+      console.log("get data feed");
+      $("#simpleRssPortlet${id}").load("@{getFeed()}", function(data) {
+        jzStoreParam("simpleRSSData", data);
+      });
+    } else {
+      $("#simpleRssPortlet${id}").html( value );
+    }
+
+  });
+</script>
