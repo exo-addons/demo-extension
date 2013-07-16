@@ -42,6 +42,7 @@ public class PopulatorApplication
     PortletPreferences portletPreferences = providerPreferences.get();
     populatorService_.setUsername(portletPreferences.getValue("username", "benjamin"));
     populatorService_.setFullname(portletPreferences.getValue("fullname", "Benjamin Paillereau"));
+    populatorService_.init();
 
 
     if (category==null) category = "Summary";
