@@ -111,7 +111,7 @@ public class ForumService {
         Topic topic = topics.get(0);
 
         String[] options = {"It's amazing", "I love it", "I like it", "No opinion"};
-        String[] votes = {"0.0", "0.0", "0.0", "0.0"};
+        String[] votes = {"5.0", "1.0", "3.0", "0.0"};
 //        String parentPath = "portal/"+ PollNodeTypes.POLLS;
         Poll poll = new Poll();
         poll.setParentPath(topic.getPath());
@@ -119,10 +119,14 @@ public class ForumService {
         poll.setQuestion("Do you like our new Intranet?");
         poll.setOption(options);
         poll.setVote(votes);
-        poll.setUserVote(new String[] {});
+//        poll.setUserVote(new String[]{});
         poll.setOwner("benjamin");
         poll.setIsMultiCheck(true);
         poll.setShowVote(true);
+        poll.setIsAgainVote(true);
+        poll.setIsClosed(false);
+        poll.setModifiedBy("benjamin");
+        poll.setTimeOut(0);
 
         pollService_.savePoll(poll, true, false);
 
