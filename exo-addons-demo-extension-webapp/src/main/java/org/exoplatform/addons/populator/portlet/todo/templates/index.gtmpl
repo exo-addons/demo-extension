@@ -1,10 +1,21 @@
 <div class="simpleTodoPortlet">
   <div class="todoPortletData uiBox">
     <h6 class="title clearfix">
-      Your Tasks
+      Project Sprint Summary
     </h6>
     <div class="uiContentBox">
-      <span> <center>Nothing Planned </center></span>
+      <div class="todo-chart">
+        <span>
+          <canvas id="todo-canvas" height="120" width="120"></canvas>
+        </span>
+        <span class="todo-labels">
+          <span class="calendarName blue" title="Todo">9</span>Todo<br/>
+          <span class="calendarName green" title="Done">8</span>Done<br/>
+          <span class="calendarName orange" title="Overdue">5</span>Overdue<br/>
+          <span class="calendarName yellow" title="In Progress">2</span>In Progress
+        </span>
+      </div>
+
     </div>
   </div>
 </div>
