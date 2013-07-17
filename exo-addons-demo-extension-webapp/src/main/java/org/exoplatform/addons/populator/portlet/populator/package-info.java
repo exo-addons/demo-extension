@@ -20,7 +20,10 @@
                 @Binding(value = org.exoplatform.wiki.service.WikiService.class),
                 @Binding(value = org.exoplatform.services.jcr.RepositoryService.class),
                 @Binding(value = org.exoplatform.services.jcr.ext.app.SessionProviderService.class),
-                @Binding(value = org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator.class)
+                @Binding(value = org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator.class),
+                @Binding(value = org.exoplatform.forum.service.ForumService.class),
+                @Binding(value = org.exoplatform.poll.service.PollService.class),
+                @Binding(value = org.exoplatform.forum.common.jcr.KSDataLocation.class)
         }
 )
 
@@ -38,5 +41,4 @@ import juzu.plugin.binding.Binding;
 import juzu.plugin.binding.Bindings;
 import juzu.plugin.less.Less;
 import juzu.plugin.portlet.Portlet;
-import org.exoplatform.addons.populator.portlet.populator.PopulatorApplication;
 
