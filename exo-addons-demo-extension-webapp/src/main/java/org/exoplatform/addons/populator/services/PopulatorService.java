@@ -113,13 +113,11 @@ public class PopulatorService {
     documentService_.uploadDocuments(username);
     completion.put(DOCUMENTS, 60);
 
-    setSate("Forum : Create Categories, Discussions, Posts and Poll");
+    setSate("Forum : Create Categories, Discussions, Posts");
     forumService_.createCategoriesAndForum();
     completion.put(FORUM, 20);
     forumService_.createPosts();
     completion.put(FORUM, 60);
-    forumService_.createPollAndVote();
-    completion.put(FORUM, 100);
 
     setSate("Activities : Push new activities, Comments and Likes");
     activityService_.pushActivities(username);
@@ -127,6 +125,10 @@ public class PopulatorService {
 
     documentService_.uploadDocuments2(username);
     completion.put(DOCUMENTS, 100);
+
+    setSate("Forum : Create Poll");
+    forumService_.createPollAndVote();
+    completion.put(FORUM, 100);
 
     setSate("Populate Completed");
   }

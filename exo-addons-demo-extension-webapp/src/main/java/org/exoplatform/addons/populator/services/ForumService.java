@@ -1,5 +1,6 @@
 package org.exoplatform.addons.populator.services;
 
+import org.exoplatform.forum.common.CommonUtils;
 import org.exoplatform.forum.common.jcr.KSDataLocation;
 import org.exoplatform.forum.common.jcr.PropertyReader;
 import org.exoplatform.forum.service.Category;
@@ -111,25 +112,29 @@ public class ForumService {
         Topic topic = topics.get(0);
 
         String[] options = {"It's amazing", "I love it", "I like it", "No opinion"};
-        String[] votes = {"5.0", "1.0", "3.0", "0.0"};
-//        String parentPath = "portal/"+ PollNodeTypes.POLLS;
+        String[] votes = {"50.0", "33.333336", "16.666668", "0.0"};
+        String[] userVotes = {"benjamin:2:0", "john:1:0", "mary:1:0"};
         Poll poll = new Poll();
-        poll.setParentPath(topic.getPath());
+        String pollPath = forum.getPath() + CommonUtils.SLASH + topic.getId();
+        String pollId = topic.getId().replace(Utils.TOPIC, Utils.POLL);
+        poll.setId(pollId);
+        poll.setParentPath(pollPath);
         poll.setInTopic(true);
         poll.setQuestion("Do you like our new Intranet?");
         poll.setOption(options);
-        poll.setVote(votes);
-//        poll.setUserVote(new String[]{});
         poll.setOwner("benjamin");
         poll.setIsMultiCheck(true);
         poll.setShowVote(true);
         poll.setIsAgainVote(true);
         poll.setIsClosed(false);
-        poll.setModifiedBy("benjamin");
         poll.setTimeOut(0);
 
         pollService_.savePoll(poll, true, false);
 
+        poll.setVote(votes);
+        poll.setUserVote(userVotes);
+        poll.setModifiedBy("mary");
+        pollService_.savePoll(poll, true, true);
       }
 
 
