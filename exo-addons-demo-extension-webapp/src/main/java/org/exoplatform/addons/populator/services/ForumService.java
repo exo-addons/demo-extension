@@ -43,13 +43,13 @@ public class ForumService {
     List<Category> categories = forumService_.getCategories();
     for (Category category:categories)
     {
-      log.info("CATEGORY::"+category.getCategoryName()+" : "+category.getId());
+//      log.info("CATEGORY::"+category.getCategoryName()+" : "+category.getId());
       try
       {
         List<Forum> forums = forumService_.getForums(category.getId(), "");
         for (Forum forum:forums)
         {
-          log.info("FORUM::"+forum.getForumName()+" : "+forum.getId());
+//          log.info("FORUM::"+forum.getForumName()+" : "+forum.getId());
         }
       } catch (Exception e) {
         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -57,7 +57,7 @@ public class ForumService {
     }
   }
 
-  public void createPosts()
+  public void createPosts(String username)
   {
     String forumName = "Public Discussions";
     try {
@@ -67,14 +67,13 @@ public class ForumService {
       List<Topic> topics = forumService_.getTopics(cat.getId(), forum.getId());
       if (topics.size()>0) return;
 
-      String owner = "benjamin";
       Topic topicNew = new Topic();
-      topicNew.setOwner(owner);
+      topicNew.setOwner(username);
       topicNew.setTopicName("General");
       topicNew.setCreatedDate(new Date());
-      topicNew.setModifiedBy(owner);
+      topicNew.setModifiedBy(username);
       topicNew.setModifiedDate(new Date());
-      topicNew.setLastPostBy(owner);
+      topicNew.setLastPostBy(username);
       topicNew.setLastPostDate(new Date());
       topicNew.setDescription("General Topic");
       topicNew.setPostCount(0);
@@ -122,7 +121,7 @@ public class ForumService {
         poll.setInTopic(true);
         poll.setQuestion("Do you like our new Intranet?");
         poll.setOption(options);
-        poll.setOwner("benjamin");
+        poll.setOwner("mary");
         poll.setIsMultiCheck(true);
         poll.setShowVote(true);
         poll.setIsAgainVote(true);

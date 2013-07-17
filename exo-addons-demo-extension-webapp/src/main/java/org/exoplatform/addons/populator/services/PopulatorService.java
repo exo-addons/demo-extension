@@ -116,7 +116,7 @@ public class PopulatorService {
     setSate("Forum : Create Categories, Discussions, Posts");
     forumService_.createCategoriesAndForum();
     completion.put(FORUM, 20);
-    forumService_.createPosts();
+    forumService_.createPosts(username);
     completion.put(FORUM, 60);
 
     setSate("Activities : Push new activities, Comments and Likes");
