@@ -158,3 +158,31 @@ calendars:
         day: wednesday
         start: 17:00
         end: 19:00
+
+wikis:
+  - title: Wiki Home
+    filename: wiki-home.txt
+  - title: Activity Stream Engagement
+    filename: activity-stream-engagement.txt
+    parent: Wiki Home
+    new: true
+  - title: How-To Guide
+    filename: how-to-guide.txt
+    parent: Wiki Home
+    new: true
+  - title: Leave Planning
+    filename: leave-planning.txt
+    parent: Wiki Home
+    new: true
+  - title: Meeting Notes
+    parent: Wiki Home
+    wikis:
+      - title: 0107 Company Meeting
+      - title: 0114 Company Meeting
+        wikis:
+          - title: Attachements
+  - title: General Knowledge
+    parent: Wiki Home
+    wikis:
+      - title: New in the Company
+      - title: Intranet Team Organization

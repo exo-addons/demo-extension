@@ -108,7 +108,7 @@ public class PopulatorService {
     completion.put(CALENDAR, 100);
 
     setSate("Wiki : Create Wikis");
-    wikiService_.createUserWiki();
+    wikiService_.createUserWiki(populatorBean.getWikis());
     completion.put(WIKI, 100);
 
     setSate("Documents : Content Templates");
@@ -147,6 +147,7 @@ public class PopulatorService {
     populatorDescription.putListPropertyType("relations", RelationBean.class);
     populatorDescription.putListPropertyType("spaces", SpaceBean.class);
     populatorDescription.putListPropertyType("calendars", CalendarBean.class);
+    populatorDescription.putListPropertyType("wikis", WikiBean.class);
     constructor.addTypeDescription(populatorDescription);
     Yaml yaml = new Yaml(constructor);
     String data = Utils.getData("default.yml");
