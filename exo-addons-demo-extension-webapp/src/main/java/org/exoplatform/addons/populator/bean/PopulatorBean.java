@@ -6,6 +6,7 @@ public class PopulatorBean {
   List<UserBean> users;
   List<RelationBean> relations;
   List<SpaceBean> spaces;
+  List<CalendarBean> calendars;
 
   public List<UserBean> getUsers() {
     return users;
@@ -29,5 +30,13 @@ public class PopulatorBean {
 
   public void setSpaces(List<SpaceBean> spaces) {
     this.spaces = spaces;
+  }
+
+  public List<CalendarBean> getCalendars() {
+    return calendars;
+  }
+
+  public void setCalendars(List<CalendarBean> calendars) {
+    this.calendars = calendars;
   }
 }

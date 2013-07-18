@@ -1,5 +1,8 @@
 package org.exoplatform.addons.populator.services;
 
+import org.exoplatform.addons.populator.bean.CalendarBean;
+import org.exoplatform.addons.populator.bean.EventBean;
+import org.exoplatform.addons.populator.bean.InternalCalendarBean;
 import org.exoplatform.calendar.service.*;
 import org.exoplatform.calendar.service.Calendar;
 import org.exoplatform.calendar.service.Utils;
@@ -27,62 +30,77 @@ public class CalendarService {
     organizationService_ = organizationService;
   }
 
-  public void setCalendarColors(String username, String fullname)
+  public void setCalendarColors(List<CalendarBean> calendarBeans)
   {
-    Map map = new HashMap();
-    map.put(fullname, Calendar.N_POWDER_BLUE);
-    map.put("Public Discussions", Calendar.N_ORANGE);
-    map.put("Bank Project", Calendar.N_MOSS_GREEN);
-    map.put("Human Resources", Calendar.N_GRAY);
-    map.put("Marketing Analytics", Calendar.N_PINK);
-    String filtered=null;
-    try {
-      String[] calendarIdList = getCalendarsIdList(username);
-      for (String calId:calendarIdList)
+    for (CalendarBean calendarBean:calendarBeans)
+    {
+      String username = calendarBean.getUser();
+      List<InternalCalendarBean> calendars = calendarBean.getCalendars();
+      Map<String,InternalCalendarBean> map = new HashMap();
+      for (InternalCalendarBean calendar:calendars)
       {
-        Calendar calendar = calendarService_.getCalendarById(calId);
-        String calName = calendar.getName();
-        if (map.containsKey(calName))
+        map.put(calendar.getName(), calendar);
+      }
+
+      String filtered=null;
+      try {
+        String[] calendarIdList = getCalendarsIdList(username);
+        for (String calId:calendarIdList)
         {
-          calendar.setCalendarColor((String)map.get(calName));
-          if (fullname.equals(calName))
-            calendarService_.saveUserCalendar(username, calendar, true);
+          Calendar calendar = calendarService_.getCalendarById(calId);
+          String calName = calendar.getName();
+          if (map.containsKey(calName))
+          {
+            InternalCalendarBean calTemp = map.get(calName);
+            calendar.setCalendarColor(calTemp.getColor());
+            if (calTemp.isUserCalendar())
+              calendarService_.saveUserCalendar(username, calendar, true);
+            else
+              calendarService_.savePublicCalendar(calendar, false);
+          }
           else
-            calendarService_.savePublicCalendar(calendar, false);
+          {
+            filtered = calendar.getId();
+          }
         }
-        else
-        {
-          filtered = calendar.getId();
+        if (filtered!=null) {
+          CalendarSetting setting = calendarService_.getCalendarSetting(username);
+          setting.setFilterPublicCalendars(new String[]{filtered});
+          calendarService_.saveCalendarSetting(username, setting);
         }
+      } catch (Exception e) {
+        e.printStackTrace();
       }
-      if (filtered!=null) {
-        CalendarSetting setting = calendarService_.getCalendarSetting(username);
-        setting.setFilterPublicCalendars(new String[]{filtered});
-        calendarService_.saveCalendarSetting(username, setting);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+
     }
+
+
 
   }
 
-  public void createEvents(String username, String fullname)
+  public void createEvents(List<CalendarBean> calendarBeans)
   {
+
     try {
-      Map<String, String> map = getCalendarsMap(username);
 
-      removeAllEvents(username);
+      for (CalendarBean calendarBean:calendarBeans)
+      {
+        String username = calendarBean.getUser();
+        Map<String, String> map = getCalendarsMap(username);
 
-      saveEvent(username, true, map.get(fullname), "Spec Review", java.util.Calendar.MONDAY, 17, 0, 19, 0);
-      saveEvent(username, true, map.get(fullname), "Team Work", java.util.Calendar.TUESDAY, 14, 0, 18, 0);
-      saveEvent(username, true, map.get(fullname), "EOW Team Meeting", java.util.Calendar.FRIDAY, 13, 0, 15, 0);
-      saveEvent(username, false, map.get("Marketing Analytics"), "Lead Gen Study", java.util.Calendar.TUESDAY, 9, 30, 12, 30);
-      saveEvent(username, false, map.get("Marketing Analytics"), "Analytics Update", java.util.Calendar.WEDNESDAY, 17, 0, 19, 0);
-      saveEvent(username, false, map.get("Public Discussions"), "Intranet Migration Process", java.util.Calendar.WEDNESDAY, 10, 0, 14, 0);
-      saveEvent(username, false, map.get("Public Discussions"), "Company Dinner", java.util.Calendar.THURSDAY, 17, 30, 20, 0);
-      saveEvent(username, false, map.get("Bank Project"), "Intranet Demo", java.util.Calendar.THURSDAY, 13, 0, 17, 0);
-      saveEvent(username, false, map.get("Bank Project"), "Customer Q&R", java.util.Calendar.FRIDAY, 16, 0, 17, 0);
-      saveEvent(username, false, map.get("Human Resources"), "Weekly HR Meeting", java.util.Calendar.FRIDAY, 10, 0, 11, 30);
+        if (calendarBean.getClearAll()) removeAllEvents(username);
+
+        List<InternalCalendarBean> calendars = calendarBean.getCalendars();
+        for (InternalCalendarBean calendar:calendars)
+        {
+          for (EventBean event:calendar.getEvents())
+          {
+            saveEvent(username, calendar.isUserCalendar(), map.get(calendar.getName()),
+                    event.getTitle(), event.getDayAsInt(),
+                    event.getStartHour(), event.getStartMinute(), event.getEndHour(), event.getEndMinute());
+          }
+        }
+      }
 
     } catch (Exception e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

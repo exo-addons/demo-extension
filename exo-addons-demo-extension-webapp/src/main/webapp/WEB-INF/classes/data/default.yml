@@ -88,3 +88,73 @@ spaces:
   prettyName: help_center
   creator: john
   avatar: eXo-Space-Intranet-color.png
+
+calendars:
+- user: john
+  calendars:
+  - name: John Smith
+    color: powder_blue
+    type: user
+    events:
+      - title: PL Meeting
+        day: monday
+        start: 10:00
+        end: 12:00
+- user: <USERNAME>
+  calendars:
+  - name: <FULLNAME>
+    color: powder_blue
+    type: user
+    events:
+      - title: Spec Review
+        day: monday
+        start: 17:00
+        end: 19:00
+      - title: Team Work
+        day: tuesday
+        start: 14:00
+        end: 18:00
+      - title: EOW Team Meeting
+        day: friday
+        start: 13:00
+        end: 15:00
+  - name: Public Discussions
+    color: orange
+    events:
+      - title: Intranet Migration Process
+        day: wednesday
+        start: 10:00
+        end: 14:00
+      - title: Company Dinner
+        day: thursday
+        start: 17:30
+        end: 20:00
+  - name: Bank Project
+    color: moss_green
+    events:
+      - title: Intranet Demo
+        day: thursday
+        start: 13:00
+        end: 17:00
+      - title: Customer Q&R
+        day: friday
+        start: 16:00
+        end: 17:00
+  - name: Human Resources
+    color: gray
+    events:
+      - title: Weekly HR Meeting
+        day: friday
+        start: 10:00
+        end: 11:30
+  - name: Marketing Analytics
+    color: pink
+    events:
+      - title: Lead Gen Study
+        day: tuesday
+        start: 9:30
+        end: 12:30
+      - title: Analytics Update
+        day: wednesday
+        start: 17:00
+        end: 19:00
