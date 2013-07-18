@@ -42,38 +42,44 @@
       <groupId>org.juzu</groupId>
       <artifactId>juzu-bom-core</artifactId>
       <version>${juzu.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.juzu</groupId>
       <artifactId>juzu-core</artifactId>
       <version>${juzu.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.juzu</groupId>
       <artifactId>juzu-core</artifactId>
       <version>${juzu.version}</version>
       <classifier>sources</classifier>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.juzu</groupId>
       <artifactId>juzu-plugins-less</artifactId>
       <version>${juzu.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.juzu</groupId>
       <artifactId>juzu-plugins-portlet</artifactId>
       <version>${juzu.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.juzu</groupId>
       <artifactId>juzu-plugins-upload</artifactId>
       <version>${juzu.version}</version>
+      <scope>provided</scope>
     </dependency>
-    <!--dependency>
+    <dependency>
       <groupId>org.yaml</groupId>
       <artifactId>snakeyaml</artifactId>
       <version>1.12</version>
-    </dependency-->
+    </dependency>
     <!-- EXO DEPENDENCIES -->
     <dependency>
       <groupId>org.exoplatform.commons</groupId>
@@ -138,9 +144,6 @@
     <plugins>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <configuration>
-          <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
-        </configuration>
       </plugin>
     </plugins>
   </build></project>

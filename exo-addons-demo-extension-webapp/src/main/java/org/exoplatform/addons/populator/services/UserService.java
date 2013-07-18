@@ -1,5 +1,7 @@
 package org.exoplatform.addons.populator.services;
 
+import org.exoplatform.addons.populator.bean.RelationBean;
+import org.exoplatform.addons.populator.bean.UserBean;
 import org.exoplatform.services.organization.*;
 import org.exoplatform.social.core.identity.model.Identity;
 import org.exoplatform.social.core.identity.model.Profile;
@@ -12,6 +14,7 @@ import org.exoplatform.social.core.model.AvatarAttachment;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -38,20 +41,34 @@ public class UserService {
     relationshipManager_ = relationshipManager;
   }
 
-  public void createUsers(String username, String fullname) {
-    String[] fn = fullname.split(" ");
-    createUser("john", "John", "Smith", "john@acme.com", "gtngtn", true);
-    createUser("mary", "Mary", "Williams", "mary@acme.com", "gtngtn");
-    createUser("james", "James", "Potter", "james@acme.com", "gtngtn");
-    createUser("jack", "Jack", "Marker", "jack@acme.com", "gtngtn");
-    createUser("robert", "Robert", "Bruce", "robert@acme.com", "gtngtn");
-    createUser(username, fn[0], fn[1], "demo@acme.com", "gtngtn");
-
+  public void createUsers(List<UserBean> users) {
+    for (UserBean user:users)
+    {
+      createUser(user.getUsername(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getIsAdmin());
+    }
   }
 
-  private boolean createUser(String username, String firstname, String lastname, String email, String password)
+  public boolean attachAvatars(List<UserBean> users) {
+    boolean ok = true;
+    for (UserBean user:users)
+    {
+      this.saveUserAvatar(user.getUsername(), user.getAvatar());
+    }
+    return ok;
+  }
+
+  public void createRelations(List<RelationBean> relations)
   {
-    return createUser(username, firstname, lastname, email, password, false);
+    for (RelationBean relation:relations)
+    {
+      Identity idInviting = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, relation.getInviting());
+      Identity idInvited = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, relation.getInvited());
+      relationshipManager_.inviteToConnect(idInviting, idInvited);
+      if (relation.getConfirm())
+      {
+        relationshipManager_.confirm(idInvited, idInviting);
+      }
+    }
   }
 
   private boolean createUser(String username, String firstname, String lastname, String email, String password, boolean isAdmin)
@@ -103,45 +120,6 @@ public class UserService {
     return ok;
   }
 
-  public void createRelations(String username)
-  {
-    Identity idJohn = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "john");
-    Identity idMary = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "mary");
-    Identity idJames = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "james");
-    Identity idJack = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "jack");
-    Identity idRobert = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "robert");
-    Identity idBenjamin = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username);
-
-    relationshipManager_.inviteToConnect(idBenjamin, idJohn);
-    relationshipManager_.confirm(idJohn, idBenjamin);
-    relationshipManager_.inviteToConnect(idBenjamin, idMary);
-    relationshipManager_.confirm(idMary, idBenjamin);
-    relationshipManager_.inviteToConnect(idJack, idBenjamin);
-
-    relationshipManager_.inviteToConnect(idJames, idJohn);
-    relationshipManager_.confirm(idJohn, idJames);
-    relationshipManager_.inviteToConnect(idJames, idMary);
-    relationshipManager_.confirm(idMary, idJames);
-    relationshipManager_.inviteToConnect(idMary, idJohn);
-    relationshipManager_.confirm(idJohn, idMary);
-    relationshipManager_.inviteToConnect(idMary, idRobert);
-    relationshipManager_.confirm(idRobert, idMary);
-    relationshipManager_.inviteToConnect(idJohn, idRobert);
-    relationshipManager_.confirm(idRobert, idJohn);
-
-  }
-
-  public boolean attachAvatars(String username) {
-    boolean ok = true;
-    this.saveUserAvatar("john", "eXo-Face-John.png");
-    this.saveUserAvatar("jack", "eXo-Face-Jack.png");
-    this.saveUserAvatar("james", "eXo-Face-James.png");
-    this.saveUserAvatar("mary", "eXo-Face-Mary.png");
-    this.saveUserAvatar("robert", "eXo-Face-Robert.png");
-    this.saveUserAvatar(username, "eXo-Face-Benjamin.png");
-
-    return ok;
-  }
 
   private void saveUserAvatar(String username, String fileName)
   {

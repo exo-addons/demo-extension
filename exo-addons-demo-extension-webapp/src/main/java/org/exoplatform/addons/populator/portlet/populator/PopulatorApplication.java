@@ -68,6 +68,7 @@ public class PopulatorApplication
     sb.append("{\"status\": \"OK\"}");
 
     populatorService_.start();
+//    populatorService_.getData();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");
   }

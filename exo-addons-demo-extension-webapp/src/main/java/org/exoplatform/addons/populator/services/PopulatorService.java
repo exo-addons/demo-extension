@@ -1,7 +1,15 @@
 package org.exoplatform.addons.populator.services;
 
+import org.exoplatform.addons.populator.bean.PopulatorBean;
+import org.exoplatform.addons.populator.bean.RelationBean;
+import org.exoplatform.addons.populator.bean.UserBean;
+import org.yaml.snakeyaml.TypeDescription;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
+
 import javax.inject.Inject;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -79,12 +87,14 @@ public class PopulatorService {
 
   public void start()
   {
+    PopulatorBean populatorBean = getData();
+
     setSate("Users : Create Users, Avatars, Relations");
-    userService_.createUsers(username, fullname);
+    userService_.createUsers(populatorBean.getUsers());
     completion.put(USERS, 33);
-    userService_.attachAvatars(username);
+    userService_.attachAvatars(populatorBean.getUsers());
     completion.put(USERS, 80);
-    userService_.createRelations(username);
+    userService_.createRelations(populatorBean.getRelations());
     completion.put(USERS, 100);
 
     setSate("Spaces : Create Spaces, Avatars, Members");
@@ -131,6 +141,25 @@ public class PopulatorService {
     completion.put(FORUM, 100);
 
     setSate("Populate Completed");
+  }
+
+  public PopulatorBean getData()
+  {
+    Constructor constructor = new Constructor(PopulatorBean.class);
+    TypeDescription populatorDescription = new TypeDescription(PopulatorBean.class);
+    populatorDescription.putListPropertyType("users", UserBean.class);
+    populatorDescription.putListPropertyType("relations", RelationBean.class);
+    constructor.addTypeDescription(populatorDescription);
+    Yaml yaml = new Yaml(constructor);
+    String data = Utils.getData("default.yml");
+    String[] fn = fullname.split(" ");
+
+    data = data.replaceAll("<USERNAME>", username)
+                .replaceAll("<FIRSTNAME>", fn[0])
+                .replaceAll("<LASTNAME>", fn[1])
+                .replaceAll("<FULLNAME>", fullname);
+    PopulatorBean populatorBean = (PopulatorBean)yaml.load(data);
+    return populatorBean;
   }
 
   private void setSate(String state)
