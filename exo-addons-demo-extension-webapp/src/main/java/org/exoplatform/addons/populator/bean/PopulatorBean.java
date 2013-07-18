@@ -5,6 +5,7 @@ import java.util.List;
 public class PopulatorBean {
   List<UserBean> users;
   List<RelationBean> relations;
+  List<SpaceBean> spaces;
 
   public List<UserBean> getUsers() {
     return users;
@@ -20,5 +21,13 @@ public class PopulatorBean {
 
   public void setRelations(List<RelationBean> relations) {
     this.relations = relations;
+  }
+
+  public List<SpaceBean> getSpaces() {
+    return spaces;
+  }
+
+  public void setSpaces(List<SpaceBean> spaces) {
+    this.spaces = spaces;
   }
 }

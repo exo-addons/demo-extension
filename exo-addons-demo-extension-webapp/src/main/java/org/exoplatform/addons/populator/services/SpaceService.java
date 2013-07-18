@@ -1,6 +1,7 @@
 package org.exoplatform.addons.populator.services;
 
 import org.apache.commons.lang.StringUtils;
+import org.exoplatform.addons.populator.bean.SpaceBean;
 import org.exoplatform.social.core.identity.model.Identity;
 import org.exoplatform.social.core.identity.provider.SpaceIdentityProvider;
 import org.exoplatform.social.core.manager.IdentityManager;
@@ -11,6 +12,7 @@ import org.exoplatform.social.core.space.model.Space;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Named("spaceService")
@@ -28,57 +30,35 @@ public class SpaceService {
     identityManager_ = identityManager;
   }
 
-  public void createSpaces(String username)
+  public void createSpaces(List<SpaceBean> spaces)
   {
-    createSpace("Public Discussions", "public_discussions", "john");
-    createSpace("Bank Project", "bank_project", username);
-    createSpace("Marketing Analytics", "marketing_analytics", username);
-    createSpace("Human Resources", "human_resources", username);
-    createSpace("Help Center", "help_center", "john");
+    for (SpaceBean space:spaces)
+    {
+      createSpace(space.getDisplayName(), space.getPrettyName(), space.getCreator());
+      if (space.getMembers()!=null)
+      {
+        for (String member:space.getMembers())
+        {
+          Space spacet = spaceService_.getSpaceByDisplayName("Public Discussions");
+          if (spacet!=null)
+          {
+            spaceService_.addMember(spacet, member);
+          }
+        }
+      }
+    }
   }
 
-  public void addSpacesAvatars(String username)
+  public void addSpacesAvatars(List<SpaceBean> spaces)
   {
-    createSpaceAvatar("Public Discussions", "john", "eXo-Space-Public-color.png");
-    createSpaceAvatar("Bank Project", username, "eXo-Space-Sales-color.png");
-    createSpaceAvatar("Marketing Analytics", username, "eXo-Space-Marketing-color.png");
-    createSpaceAvatar("Human Resources", username, "eXo-Space-RH-color.png");
-    createSpaceAvatar("Help Center", "john", "eXo-Space-Intranet-color.png");
+    for (SpaceBean space:spaces)
+    {
+      createSpaceAvatar(space.getDisplayName(), space.getCreator(), space.getAvatar());
+    }
   }
 
-  public void joinSpaces(String username)
-  {
-    Space space = spaceService_.getSpaceByDisplayName("Public Discussions");
-    if (space!=null)
-    {
-      spaceService_.addMember(space, username);
-      spaceService_.addMember(space, "mary");
-      spaceService_.addMember(space, "james");
-      spaceService_.addMember(space, "robert");
-    }
 
-    space = spaceService_.getSpaceByDisplayName("Bank Project");
-    if (space!=null)
-    {
-      spaceService_.addMember(space, "john");
-    }
-
-    space = spaceService_.getSpaceByDisplayName("Human Resources");
-    if (space!=null)
-    {
-      spaceService_.addMember(space, "mary");
-      spaceService_.addMember(space, "robert");
-    }
-
-    space = spaceService_.getSpaceByDisplayName("Marketing Analytics");
-    if (space!=null)
-    {
-      spaceService_.addMember(space, "robert");
-    }
-
-
-  }
-    private void createSpaceAvatar(String name, String editor, String avatarFile)
+  private void createSpaceAvatar(String name, String editor, String avatarFile)
   {
     Space space = spaceService_.getSpaceByDisplayName(name);
     if (space!=null)

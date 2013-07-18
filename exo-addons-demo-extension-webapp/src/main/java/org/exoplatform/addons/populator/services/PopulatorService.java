@@ -2,6 +2,7 @@ package org.exoplatform.addons.populator.services;
 
 import org.exoplatform.addons.populator.bean.PopulatorBean;
 import org.exoplatform.addons.populator.bean.RelationBean;
+import org.exoplatform.addons.populator.bean.SpaceBean;
 import org.exoplatform.addons.populator.bean.UserBean;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
@@ -98,11 +99,9 @@ public class PopulatorService {
     completion.put(USERS, 100);
 
     setSate("Spaces : Create Spaces, Avatars, Members");
-    spaceService_.createSpaces(username);
-    completion.put(SPACES, 50);
-    spaceService_.addSpacesAvatars(username);
-    completion.put(SPACES, 90);
-    spaceService_.joinSpaces(username);
+    spaceService_.createSpaces(populatorBean.getSpaces());
+    completion.put(SPACES, 60);
+    spaceService_.addSpacesAvatars(populatorBean.getSpaces());
     completion.put(SPACES, 100);
 
     setSate("Calendar : Create Calendars and set Colors");
@@ -149,6 +148,7 @@ public class PopulatorService {
     TypeDescription populatorDescription = new TypeDescription(PopulatorBean.class);
     populatorDescription.putListPropertyType("users", UserBean.class);
     populatorDescription.putListPropertyType("relations", RelationBean.class);
+    populatorDescription.putListPropertyType("spaces", SpaceBean.class);
     constructor.addTypeDescription(populatorDescription);
     Yaml yaml = new Yaml(constructor);
     String data = Utils.getData("default.yml");

@@ -52,3 +52,39 @@ relations:
   invited: robert
 - inviting: mary
   invited: robert
+
+spaces:
+- displayName: Public Discussions
+  prettyName: public_discussions
+  creator: john
+  avatar: eXo-Space-Public-color.png
+  members:
+    - <USERNAME>
+    - mary
+    - james
+    - robert
+- displayName: Bank Project
+  prettyName: bank_project
+  creator: <USERNAME>
+  avatar: eXo-Space-Sales-color.png
+  members:
+    - john
+    - james
+- displayName: Marketing Analytics
+  prettyName: marketing_analytics
+  creator: <USERNAME>
+  avatar: eXo-Space-Marketing-color.png
+  members:
+    - robert
+    - mary
+- displayName: Human Resources
+  prettyName: human_resources
+  creator: <USERNAME>
+  avatar: eXo-Space-RH-color.png
+  members:
+    - mary
+    - robert
+- displayName: Help Center
+  prettyName: help_center
+  creator: john
+  avatar: eXo-Space-Intranet-color.png
