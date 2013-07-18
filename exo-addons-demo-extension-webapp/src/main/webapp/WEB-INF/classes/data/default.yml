@@ -180,7 +180,7 @@ wikis:
       - title: 0107 Company Meeting
       - title: 0114 Company Meeting
         wikis:
-          - title: Attachements
+          - title: Attachments
   - title: General Knowledge
     parent: Wiki Home
     wikis:
