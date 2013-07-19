@@ -7,6 +7,21 @@ This Demo add-on will prepare eXo Platform 4 with Demo data :
 - Documents
 - Agenda
 - Forums
+- Activities
+
+It will also add new Applications, such as :
+- eXo Chat (https://github.com/exo-addons/chat-application)
+- A list of News using eXo WCM
+- An RSS Application
+- A Mockup Application to show Interactive Home
+
+<img src="https://raw.github.com/exo-addons/demo-extension/master/data/screenshots/demo-home.png" alt="eXo Demo Extension on Platform 4" width="800">
+
+Be Up and Running
+===============
+
+Jump to Wiki Install Page : [Build and Install](https://github.com/exo-addons/demo-extension/wiki/Build-and-Install)
+
 
 License
 ===============
