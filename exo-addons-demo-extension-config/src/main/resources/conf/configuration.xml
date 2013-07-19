@@ -53,7 +53,7 @@
           <!-- The name of the target dependency -->
           <field name="target">
             <!--<string>welcome-screens</string>-->
-            <string>platform-extension</string>
+            <string>welcome-screens</string>
           </field>
         </object>
       </object-param>     

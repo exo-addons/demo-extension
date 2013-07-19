@@ -30,4 +30,16 @@
   <packaging>jar</packaging>
   <name>eXo Addons - Demo Set Extension Configuration</name>
   <description>eXo Demo Set Extension Configuration</description>
+  <dependencies>
+    <dependency>
+      <groupId>org.exoplatform.platform</groupId>
+      <artifactId>platform-welcome-screens-component</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.commons</groupId>
+      <artifactId>commons-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 </project>
