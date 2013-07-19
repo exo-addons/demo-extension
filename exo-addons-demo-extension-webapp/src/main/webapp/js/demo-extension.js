@@ -2,39 +2,97 @@
  * Demo Extension class
  * @constructor
  */
-function DemoExtension() {
+var demoExtension = new DemoExtension();
+
+jQuery(document).ready(function(){
+
   var $demoApplication = $("#populator_div");
-  this.jzStart = $demoApplication.jzURL("PopulatorApplication.start");
-  this.jzElements = $demoApplication.jzURL("PopulatorApplication.elements");
+
+  demoExtension.initOptions({
+    "urlStart": $demoApplication.jzURL("PopulatorApplication.start"),
+    "urlElements": $demoApplication.jzURL("PopulatorApplication.elements")
+  });
+
+  $(".btn-start").on("click", function(){
+    if ($(this).hasClass("disabled")) return;
+    demoExtension.startPopulating();
+  });
+
+});
+
+
+function DemoExtension() {
+  this.urlStart = "";
+  this.urlElements = "";
+  this.notifEventInt = "";
 }
 
-DemoExtension.prototype.headerCtrl = function ($scope, $http) {
-}
+DemoExtension.prototype.initOptions = function(options) {
+  this.urlStart = options.urlStart;
+  this.urlElements = options.urlElements;
 
-DemoExtension.prototype.populateCtrl = function ($scope, $http, $timeout) {
-  $scope.startPopulating = function() {
-    $(".btn-start").addClass("disabled");
+  this.notifEventInt = window.clearInterval(this.notifEventInt);
+  this.notifEventInt = setInterval(jQuery.proxy(this.refreshElements, this), 1000);
+  this.refreshElements();
 
-    $http.get(demoExtension.jzStart).success(function(data) {
-      console.log("Status :: "+data.status);
+};
+
+
+DemoExtension.prototype.startPopulating = function() {
+  $(".btn-start").addClass("disabled");
+
+  jQuery.ajax({
+    url: this.urlStart,
+    dataType: "json",
+    context: this,
+    success: function(data){
+      var status = data.status;
       $(".btn-start").removeClass("disabled");
-      $timeout.cancel(popto);
-      $scope.onElementsTimeout();
-    });
+    },
+    error: function () {
+      //setTimeout(jQuery.proxy(this.startPopulating, this), 3000);
+      console.log("error in server call");
+      $(".btn-start").removeClass("disabled");
+    }
+  });
+};
+
+DemoExtension.prototype.refreshElements = function() {
+
+  jQuery.ajax({
+    url: this.urlElements,
+    dataType: "json",
+    context: this,
+    success: function(data){
+      console.log("Refresh Elements");
+      this.updateElementsContainer(data);
+    },
+    error: function () {
+      //setTimeout(jQuery.proxy(this.startPopulating, this), 3000);
+      console.log("error in server call");
+      $(".btn-start").removeClass("disabled");
+    }
+  });
+};
+
+DemoExtension.prototype.updateElementsContainer = function(elements) {
+  var html = "";
+  for (ie=0 ; ie<elements.length ; ie++) {
+    var element = elements[ie];
+
+    html += '<div class="row">';
+    html += '  <div class="span3">';
+    html += '    <label>'+element.name+'</label>';
+    html += '  </div>';
+    html += '  <div class="span9">';
+    html += '    <div class="progress">';
+    html += '      <div class="bar" style="width: '+element.percentage+';"></div>';
+    html += '    </div>';
+    html += '  </div>';
+    html += '</div>';
+
+    $(".elements-container").html(html);
 
   }
+};
 
-  $scope.onElementsTimeout = function(){
-
-    $http.get(demoExtension.jzElements).success(function(data) {
-      $scope.elements = data;
-    });
-
-    popto = $timeout($scope.onElementsTimeout,500);
-  }
-  var popto = $timeout($scope.onElementsTimeout,100);
-
-  $scope.stop = function(){
-    $timeout.cancel(popto);
-  }
-}

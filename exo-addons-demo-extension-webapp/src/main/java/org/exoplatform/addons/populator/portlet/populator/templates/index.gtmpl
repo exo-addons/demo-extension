@@ -1,18 +1,6 @@
 #{decorate path=nav.gtmpl/}
 
-<div class="container">
-
-  <div class="row" ng-repeat="element in elements">
-    <div class="span3">
-      <label>{{element.name}}</label>
-    </div>
-    <div class="span9">
-      <div class="progress">
-        <div class="bar" style="width: {{element.percentage}};"></div>
-      </div>
-    </div>
-  </div>
-
+<div class="container elements-container">
 </div>
 
 

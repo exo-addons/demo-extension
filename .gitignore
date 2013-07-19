@@ -39,3 +39,5 @@ release.properties
 
 # Misc
 *.swp
+
+build.sh

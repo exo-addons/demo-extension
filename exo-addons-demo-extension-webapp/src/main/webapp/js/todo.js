@@ -23,6 +23,9 @@ $(document).ready(function(){
   var options = {
     animation : false
   }
-  var myPie = new Chart(document.getElementById("todo-canvas").getContext("2d")).Pie(pieData, options);
+  var todoCanvas = document.getElementById("todo-canvas");
+  if (todoCanvas !== null) {
+    var myPie = new Chart(todoCanvas.getContext("2d")).Pie(pieData, options);
+  }
 
 });
