@@ -15,6 +15,8 @@ It will also add new Applications, such as :
 - An RSS Application
 - A Mockup Application to show Interactive Home
 
+You can discuss or find help on [eXo Demo Extension Community](http://community.exoplatform.com/portal/g/:spaces:demo_extension/demo_extension)
+
 <img src="https://raw.github.com/exo-addons/demo-extension/master/data/screenshots/demo-home.png" alt="eXo Demo Extension on Platform 4" width="800">
 
 Be Up and Running
