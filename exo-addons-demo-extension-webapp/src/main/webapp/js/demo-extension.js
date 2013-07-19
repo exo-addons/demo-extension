@@ -64,7 +64,7 @@ DemoExtension.prototype.refreshElements = function() {
     dataType: "json",
     context: this,
     success: function(data){
-      console.log("Refresh Elements");
+//      console.log("Refresh Elements");
       this.updateElementsContainer(data);
     },
     error: function () {

@@ -1,8 +1,7 @@
 @Assets(
         location = AssetLocation.SERVER,
         scripts = {
-                @Script(src = "js/angular-1.0.7.min.js", id = "jquery"),
-                @Script(src = "js/demo-extension.js", id = "demo", depends = "jquery")
+                @Script(src = "js/demo-extension.js", id = "jquery")
         },
         stylesheets = {
                 @Stylesheet(src = "/org/exoplatform/addons/populator/portlet/populator/assets/populator.css", location = AssetLocation.APPLICATION, id = "populator")
