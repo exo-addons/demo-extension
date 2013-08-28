@@ -61,13 +61,14 @@ public class PopulatorApplication
 
   @Ajax
   @Resource
-  public Response.Content start()
+  public Response.Content start(String filter)
   {
-    populatorService_.init();
+    if ("1".equals(filter))
+      populatorService_.init();
     StringBuilder sb = new StringBuilder() ;
     sb.append("{\"status\": \"OK\"}");
 
-    populatorService_.start();
+    populatorService_.start(Integer.parseInt(filter));
 //    populatorService_.getData();
 
     return Response.ok(sb.toString()).withMimeType("application/json; charset=UTF-8").withHeader("Cache-Control", "no-cache");

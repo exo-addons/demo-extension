@@ -11,8 +11,10 @@ import org.exoplatform.services.security.MembershipEntry;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.jcr.Node;
-import javax.jcr.Session;
+import javax.jcr.*;
+import javax.jcr.query.Query;
+import javax.jcr.query.QueryManager;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,6 +54,28 @@ public class DocumentService {
     storeFile("Fiche_solution_Exo_Platform.pdf", "bank_project", false, null, username);
     storeFile("May MTD 2013 Funnel report Week 21.pptx", "marketing_analytics", false, null, "mary");
     storeFile("PUR1207_02_RFP_Final.docx", "bank_project", false, null, "john");
+  }
+
+  public void uploadNews()
+  {
+    try {
+      Session session = sessionProviderService_.getSystemSessionProvider(null).getSession("collaboration", repositoryService_.getCurrentRepository());
+      if (!session.getRootNode().hasNode("sites/intranet/web contents/news"))
+      {
+        InputStream inputStream = Utils.getFile("news-sysview.xml", "contents");
+
+        session.importXML("/sites/intranet/web contents",
+                inputStream,
+                ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW);
+
+        session.save();
+
+      }
+    } catch (IOException e) {
+      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+    } catch (RepositoryException e) {
+      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+    }
   }
 
   public void updateTemplates()

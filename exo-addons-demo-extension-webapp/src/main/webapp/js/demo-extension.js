@@ -41,21 +41,58 @@ DemoExtension.prototype.initOptions = function(options) {
 DemoExtension.prototype.startPopulating = function() {
   $(".btn-start").addClass("disabled");
 
+  demoExtension.populate(1, function() {
+    demoExtension.populate(2, function () {
+      demoExtension.populate(3, function () {
+        demoExtension.populate(4, function() {
+          demoExtension.populate(5, function() {
+            demoExtension.populate(6, function () {
+              demoExtension.populate(7, function () {
+                demoExtension.populate(8, function () {
+                  demoExtension.populate(9, function () {
+                    demoExtension.populate(9, function() {
+                      demoExtension.populate(10, function() {
+                        $(".btn-start").removeClass("disabled");
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+};
+
+DemoExtension.prototype.populate = function(filter, callback) {
+
   jQuery.ajax({
     url: this.urlStart,
     dataType: "json",
+    data: {
+      "filter": filter
+    },
     context: this,
     success: function(data){
       var status = data.status;
-      $(".btn-start").removeClass("disabled");
+      if (typeof callback === "function") {
+        callback();
+      }
+//      $(".btn-start").removeClass("disabled");
     },
     error: function () {
       //setTimeout(jQuery.proxy(this.startPopulating, this), 3000);
       console.log("error in server call");
-      $(".btn-start").removeClass("disabled");
+//      $(".btn-start").removeClass("disabled");
     }
   });
+
+
 };
+
 
 DemoExtension.prototype.refreshElements = function() {
 

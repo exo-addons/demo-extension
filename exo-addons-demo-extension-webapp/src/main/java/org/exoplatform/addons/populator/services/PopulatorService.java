@@ -83,60 +83,88 @@ public class PopulatorService {
     return sb.toString();
   }
 
-  public void start()
+  public void start(int filter)
   {
     PopulatorBean populatorBean = getData();
 
-    setSate("Users : Create Users, Avatars, Relations");
-    userService_.createUsers(populatorBean.getUsers());
-    completion.put(USERS, 33);
-    userService_.attachAvatars(populatorBean.getUsers());
-    completion.put(USERS, 80);
-    userService_.createRelations(populatorBean.getRelations());
-    completion.put(USERS, 100);
+    switch (filter)
+    {
+      case 1:
+        setSate("Users : Create Users, Avatars, Relations");
+        userService_.createUsers(populatorBean.getUsers());
+        completion.put(USERS, 33);
+        userService_.attachAvatars(populatorBean.getUsers());
+        completion.put(USERS, 80);
+        userService_.createRelations(populatorBean.getRelations());
+        completion.put(USERS, 100);
+        break;
 
-    setSate("Spaces : Create Spaces, Avatars, Members");
-    spaceService_.createSpaces(populatorBean.getSpaces());
-    completion.put(SPACES, 60);
-    spaceService_.addSpacesAvatars(populatorBean.getSpaces());
-    completion.put(SPACES, 100);
+      case 2:
+        setSate("Spaces : Create Spaces, Avatars, Members");
+        spaceService_.createSpaces(populatorBean.getSpaces());
+        completion.put(SPACES, 60);
+        spaceService_.addSpacesAvatars(populatorBean.getSpaces());
+        completion.put(SPACES, 100);
+        break;
 
-    setSate("Calendar : Create Calendars and set Colors");
-    calendarService_.setCalendarColors(populatorBean.getCalendars());
-    completion.put(CALENDAR, 20);
-    calendarService_.createEvents(populatorBean.getCalendars());
-    completion.put(CALENDAR, 100);
+      case 3:
+        setSate("Calendar : Create Calendars and set Colors");
+        calendarService_.setCalendarColors(populatorBean.getCalendars());
+        completion.put(CALENDAR, 20);
+        calendarService_.createEvents(populatorBean.getCalendars());
+        completion.put(CALENDAR, 100);
+        break;
 
-    setSate("Wiki : Create Wikis");
-    wikiService_.createUserWiki(populatorBean.getWikis());
-    completion.put(WIKI, 100);
+      case 4:
+        setSate("Wiki : Create Wikis");
+        wikiService_.createUserWiki(populatorBean.getWikis());
+        completion.put(WIKI, 100);
+        break;
 
-    setSate("Documents : Content Templates");
-    documentService_.updateTemplates();
-    completion.put(DOCUMENTS, 10);
+      case 5:
+        setSate("Documents : Content Templates");
+        documentService_.updateTemplates();
+        completion.put(DOCUMENTS, 10);
+        break;
 
-    setSate("Documents : Upload Personal Documents, Space Documents");
-    documentService_.uploadDocuments(username);
-    completion.put(DOCUMENTS, 60);
+      case 6:
+        setSate("Documents : Upload Personal Documents, Space Documents");
+        documentService_.uploadDocuments(username);
+        completion.put(DOCUMENTS, 60);
+        break;
 
-    setSate("Forum : Create Categories, Discussions, Posts");
-    forumService_.createCategoriesAndForum();
-    completion.put(FORUM, 20);
-    forumService_.createPosts(username);
-    completion.put(FORUM, 60);
+      case 7:
+        setSate("Forum : Create Categories, Discussions, Posts");
+        forumService_.createCategoriesAndForum();
+        completion.put(FORUM, 20);
+        forumService_.createPosts(username);
+        completion.put(FORUM, 60);
+        break;
 
-    setSate("Activities : Push new activities, Comments and Likes");
-    activityService_.pushActivities(username);
-    completion.put(ACTIVITIES, 100);
+      case 8:
+        setSate("Activities : Push new activities, Comments and Likes");
+        activityService_.pushActivities(username);
+        completion.put(ACTIVITIES, 100);
+        break;
 
-    documentService_.uploadDocuments2(username);
-    completion.put(DOCUMENTS, 100);
+      case 9:
+        setSate("Documents : Upload More Documents");
+        documentService_.uploadDocuments2(username);
+        completion.put(DOCUMENTS, 90);
+        setSate("Documents : Upload News");
+        documentService_.uploadNews();
+        completion.put(DOCUMENTS, 100);
+        break;
 
-    setSate("Forum : Create Poll");
-    forumService_.createPollAndVote();
-    completion.put(FORUM, 100);
+      case 10:
+        setSate("Forum : Create Poll");
+        forumService_.createPollAndVote();
+        completion.put(FORUM, 100);
+        setSate("Populate Completed");
+        break;
 
-    setSate("Populate Completed");
+    }
+
   }
 
   public PopulatorBean getData()
