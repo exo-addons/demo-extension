@@ -53,8 +53,16 @@ public class ActivityService {
     activity.setBody(body);
     activity.setTitle(body);
     activity = activityManager_.saveActivity(identity, activity);
-    activityManager_.saveLike(activity, identity);
-    activityManager_.saveLike(activity, identJohn);
+    try {
+      activityManager_.saveLike(activity, identity);
+    } catch (Exception e) {
+      log.info("Error when liking an activity with "+from);
+    }
+    try {
+      activityManager_.saveLike(activity, identJohn);
+    } catch (Exception e) {
+      log.info("Error when liking an activity with "+identJohn);
+    }
 
     ExoSocialActivity comment = new ExoSocialActivityImpl();
     comment.setTitle("Nice coffee");
