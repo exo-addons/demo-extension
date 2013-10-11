@@ -28,11 +28,11 @@
     <module>exo-addons-demo-extension-webapp</module>
     <module>exo-addons-demo-extension-pkg</module>
   </modules>
-  <!--scm>
-    <connection>scm:git:git://github.com/exo-addons/chat-application.git</connection>
-    <developerConnection>scm:git:git@github.com:exo-addons/chat-application.git</developerConnection>
-    <url>https://github.com/exo-addons/chat-application</url>
-  </scm-->
+  <scm>
+    <connection>scm:git:git://github.com/exo-addons/demo-extension.git</connection>
+    <developerConnection>scm:git:git@github.com:exo-addons/demo-extension.git</developerConnection>
+    <url>https://github.com/exo-addons/demo-extension</url>
+  </scm>
   <properties>
     <!-- 3rd party libraries versions -->
     <commons-lang3.version>3.1</commons-lang3.version>
