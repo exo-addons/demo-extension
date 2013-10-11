@@ -81,6 +81,7 @@ public class DocumentService {
   public void updateTemplates()
   {
     storeFile("OneColumn.gtmpl", "john", true, null, "john", "/exo:ecm/views/templates/content-list-viewer/list", "dms-system", "templates");
+//    storeFile("OneColumnLinks.gtmpl", "john", true, null, "john", "/exo:ecm/views/templates/content-list-viewer/list", "dms-system", "templates");
     storeFile("view1", "john", true, null, "john", "/exo:ecm/templates/exo:webContent/views", "dms-system", "templates");
   }
 
