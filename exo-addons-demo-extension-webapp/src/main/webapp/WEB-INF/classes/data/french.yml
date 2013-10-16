@@ -55,7 +55,7 @@ relations:
 
 spaces:
 - displayName: Discussions Publiques
-  prettyName: discussions_publiques
+  prettyName: public_discussions
   creator: john
   avatar: eXo-Space-Public-color.png
   members:
@@ -64,28 +64,28 @@ spaces:
     - james
     - robert
 - displayName: Projet ACA Banque
-  prettyName: projet_aca_banque
+  prettyName: bank_project
   creator: <USERNAME>
   avatar: eXo-Space-Sales-color.png
   members:
     - john
     - james
 - displayName: Equipe Marketing
-  prettyName: equipe_marketing
+  prettyName: marketing_analytics
   creator: <USERNAME>
   avatar: eXo-Space-Marketing-color.png
   members:
     - robert
     - mary
 - displayName: Ressources Humaines
-  prettyName: ressources_humaines
+  prettyName: human_resources
   creator: <USERNAME>
   avatar: eXo-Space-RH-color.png
   members:
     - mary
     - robert
 - displayName: Centre d'entraide
-  prettyName: centre_d_entraide
+  prettyName: help_center
   creator: john
   avatar: eXo-Space-Intranet-color.png
 
@@ -186,3 +186,29 @@ wikis:
     wikis:
       - title: Vous êtes nouveaux
       - title: Organisation Interne
+
+activities:
+  - from: <USERNAME>
+    body: Je suis avec @mary à Paris
+    likes:
+      - john
+      - james
+    comments:
+      - from: mary
+        body: Le café à la Durée est très bon :-)
+  - from: john
+    body: N'oubliez pas le Webinaire Publique la semaine prochaine
+    likes:
+      - <USERNAME>
+      - john
+      - mary
+      - robert
+    comments:
+      - from: <USERNAME>
+        body: salle de réunion principale?
+      - from: john
+        body: oui mais on le partagera aussi en ligne
+      - from: mary
+        body: au fait @john , rappelle-moi d'envoyer les invitations par mail
+      - from: john
+        body: bien-sur @mary

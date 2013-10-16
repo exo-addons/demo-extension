@@ -143,7 +143,7 @@ public class PopulatorService {
 
       case 8:
         setSate("Activities : Push new activities, Comments and Likes");
-        activityService_.pushActivities(username);
+        activityService_.pushActivities(populatorBean.getActivities());
         completion.put(ACTIVITIES, 100);
         break;
 
@@ -185,6 +185,7 @@ public class PopulatorService {
     populatorDescription.putListPropertyType("spaces", SpaceBean.class);
     populatorDescription.putListPropertyType("calendars", CalendarBean.class);
     populatorDescription.putListPropertyType("wikis", WikiBean.class);
+    populatorDescription.putListPropertyType("activities", ActivityBean.class);
     constructor.addTypeDescription(populatorDescription);
     Yaml yaml = new Yaml(constructor);
     String data = getDataAsString();

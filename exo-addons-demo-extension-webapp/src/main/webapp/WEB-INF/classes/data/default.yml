@@ -186,3 +186,30 @@ wikis:
     wikis:
       - title: New in the Company
       - title: Intranet Team Organization
+
+activities:
+  - from: <USERNAME>
+    body: I'm with @mary at Paris
+    likes:
+      - john
+      - james
+    comments:
+      - from: mary
+        body: Nice coffee at Paris
+  - from: john
+    body: Don't forget our Public Webinar next week
+    likes:
+      - <USERNAME>
+      - john
+      - mary
+      - robert
+    comments:
+      - from: <USERNAME>
+        body: in the main room?
+      - from: john
+        body: yes and it will be also shared online
+      - from: mary
+        body: btw @john , remind me to send a formal invitation
+      - from: john
+        body: of course @mary
+

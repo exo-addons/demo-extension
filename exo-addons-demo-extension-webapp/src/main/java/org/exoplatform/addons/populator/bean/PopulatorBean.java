@@ -8,6 +8,7 @@ public class PopulatorBean {
   List<SpaceBean> spaces;
   List<CalendarBean> calendars;
   List<WikiBean> wikis;
+  List<ActivityBean> activities;
 
   public List<UserBean> getUsers() {
     return users;
@@ -47,5 +48,13 @@ public class PopulatorBean {
 
   public void setWikis(List<WikiBean> wikis) {
     this.wikis = wikis;
+  }
+
+  public List<ActivityBean> getActivities() {
+    return activities;
+  }
+
+  public void setActivities(List<ActivityBean> activities) {
+    this.activities = activities;
   }
 }

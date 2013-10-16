@@ -1,5 +1,6 @@
 package org.exoplatform.addons.populator.services;
 
+import org.exoplatform.addons.populator.bean.ActivityBean;
 import org.exoplatform.social.common.RealtimeListAccess;
 import org.exoplatform.social.core.activity.model.ExoSocialActivity;
 import org.exoplatform.social.core.activity.model.ExoSocialActivityImpl;
@@ -34,51 +35,44 @@ public class ActivityService {
     identityManager_ = identityManager;
   }
 
-  public void pushActivities(String username)
+  public void pushActivities(List<ActivityBean> activities)
   {
-    pushActivity("user", username, "I'm with @mary at Paris");
-  }
-
-  private void pushActivity(String type, String from, String body)
-  {
-    String provider = OrganizationIdentityProvider.NAME;
-    if ("space".equals(type))
+    for (ActivityBean activity:activities)
     {
-      provider = SpaceIdentityProvider.NAME;
+      pushActivity(activity);
     }
-    Identity identity = identityManager_.getOrCreateIdentity(provider, from, false);
-    Identity identJohn = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "john", false);
-    Identity identMary = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, "mary", false);
-    ExoSocialActivity activity = new ExoSocialActivityImpl();
-    activity.setBody(body);
-    activity.setTitle(body);
-    activity = activityManager_.saveActivity(identity, activity);
-    try {
-      activityManager_.saveLike(activity, identity);
-    } catch (Exception e) {
-      log.info("Error when liking an activity with "+from);
-    }
-    try {
-      activityManager_.saveLike(activity, identJohn);
-    } catch (Exception e) {
-      log.info("Error when liking an activity with "+identJohn);
-    }
-
-    ExoSocialActivity comment = new ExoSocialActivityImpl();
-    comment.setTitle("Nice coffee");
-    comment.setUserId(identMary.getId());
-    activityManager_.saveComment(activity, comment);
 
     likeRandomActivities("mary");
     likeRandomActivities("james");
   }
 
-  private void sleep(long ms)
+  private void pushActivity(ActivityBean activityBean)
   {
-    try {
-      Thread.sleep(ms);
-    } catch (InterruptedException e) {
+    String from = activityBean.getFrom();
+//    String provider = SpaceIdentityProvider.NAME;
+    Identity identity = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, from, false);
+    ExoSocialActivity activity = new ExoSocialActivityImpl();
+    activity.setBody(activityBean.getBody());
+    activity.setTitle(activityBean.getBody());
+    activity = activityManager_.saveActivity(identity, activity);
+    for (String like:activityBean.getLikes())
+    {
+      Identity identityLike = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, like, false);
+      try {
+        activityManager_.saveLike(activity, identityLike);
+      } catch (Exception e) {
+        log.info("Error when liking an activity with "+like);
+      }
     }
+    for (ActivityBean commentBean:activityBean.getComments())
+    {
+      Identity identityComment = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, commentBean.getFrom(), false);
+      ExoSocialActivity comment = new ExoSocialActivityImpl();
+      comment.setTitle(commentBean.getBody());
+      comment.setUserId(identityComment.getId());
+      activityManager_.saveComment(activity, comment);
+    }
+
   }
 
   private void likeRandomActivities (String username)
