@@ -1,0 +1,40 @@
+#{decorate path=nav.gtmpl/}
+
+<div class="container custom-container">
+  <div class="row">
+    <!-- USERNAME -->
+    <div class="span3">
+      <label>Username</label>
+    </div>
+    <div class="span9">
+      <label><input type="text" id="custom-username" value="<%=username%>" /></label>
+    </div>
+
+    <!-- FULLNAME -->
+    <div class="span3">
+      <label>Fullname</label>
+    </div>
+    <div class="span9">
+      <label><input type="text" id="custom-fullname" value="<%=fullname%>" /></label>
+    </div>
+
+    <!-- DATA -->
+    <div class="span3">
+      <label>Custom Data</label>
+    </div>
+    <div class="span9">
+      <label><textarea id="custom-data"><%=data%></textarea></label>
+    </div>
+
+    <!-- SAVE -->
+    <div class="span3">
+    </div>
+    <div class="span9">
+      <a type="button" class="btn btn-save-data" title="Save">
+        <i class="icon-pencil"></i> Save Custom Data</a>
+    </div>
+
+  </div>
+
+</div>
+

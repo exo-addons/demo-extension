@@ -38,7 +38,7 @@ public class PopulatorService {
 
   String currentState_;
 
-  String username, fullname;
+  String username="", fullname="", data="";
 
   Map<String, Integer> completion = new HashMap<String, Integer>();
 
@@ -167,6 +167,15 @@ public class PopulatorService {
 
   }
 
+  public String getDataAsString()
+  {
+    if ("".equals(data))
+    {
+      data = Utils.getData("default.yml");
+    }
+    return data;
+  }
+
   public PopulatorBean getData()
   {
     Constructor constructor = new Constructor(PopulatorBean.class);
@@ -178,7 +187,7 @@ public class PopulatorService {
     populatorDescription.putListPropertyType("wikis", WikiBean.class);
     constructor.addTypeDescription(populatorDescription);
     Yaml yaml = new Yaml(constructor);
-    String data = Utils.getData("default.yml");
+    String data = getDataAsString();
     String[] fn = fullname.split(" ");
 
     data = data.replaceAll("<USERNAME>", username)
@@ -209,5 +218,9 @@ public class PopulatorService {
 
   public void setFullname(String fullname) {
     this.fullname = fullname;
+  }
+
+  public void setData(String data) {
+    this.data = data;
   }
 }

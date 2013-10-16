@@ -10,12 +10,21 @@ jQuery(document).ready(function(){
 
   demoExtension.initOptions({
     "urlStart": $demoApplication.jzURL("PopulatorApplication.start"),
-    "urlElements": $demoApplication.jzURL("PopulatorApplication.elements")
+    "urlElements": $demoApplication.jzURL("PopulatorApplication.elements"),
+    "urlSave": $demoApplication.jzURL("PopulatorApplication.save")
   });
 
   $(".btn-start").on("click", function(){
     if ($(this).hasClass("disabled")) return;
     demoExtension.startPopulating();
+  });
+
+  $(".btn-save-data").on("click", function(){
+    if ($(this).hasClass("disabled")) return;
+    var username = $("#custom-username").val();
+    var fullname = $("#custom-fullname").val();
+    var data = $("#custom-data").val();
+    demoExtension.saveCustomData(username, fullname, data);
   });
 
 });
@@ -24,12 +33,14 @@ jQuery(document).ready(function(){
 function DemoExtension() {
   this.urlStart = "";
   this.urlElements = "";
+  this.urlSave = "";
   this.notifEventInt = "";
 }
 
 DemoExtension.prototype.initOptions = function(options) {
   this.urlStart = options.urlStart;
   this.urlElements = options.urlElements;
+  this.urlSave = options.urlSave;
 
   this.notifEventInt = window.clearInterval(this.notifEventInt);
   this.notifEventInt = setInterval(jQuery.proxy(this.refreshElements, this), 1000);
@@ -81,12 +92,34 @@ DemoExtension.prototype.populate = function(filter, callback) {
       if (typeof callback === "function") {
         callback();
       }
-//      $(".btn-start").removeClass("disabled");
     },
     error: function () {
-      //setTimeout(jQuery.proxy(this.startPopulating, this), 3000);
       console.log("error in server call");
-//      $(".btn-start").removeClass("disabled");
+    }
+  });
+
+
+};
+
+DemoExtension.prototype.saveCustomData = function(username, fullname, data, callback) {
+
+  jQuery.ajax({
+    url: this.urlSave,
+    dataType: "json",
+    data: {
+      "username": username,
+      "fullname": fullname,
+      "data": data
+    },
+    context: this,
+    success: function(data){
+      var status = data.status;
+      if (typeof callback === "function") {
+        callback();
+      }
+    },
+    error: function () {
+      console.log("error in server call");
     }
   });
 
