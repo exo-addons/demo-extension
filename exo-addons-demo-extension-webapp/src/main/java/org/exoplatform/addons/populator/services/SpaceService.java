@@ -39,7 +39,7 @@ public class SpaceService {
       {
         for (String member:space.getMembers())
         {
-          Space spacet = spaceService_.getSpaceByDisplayName("Public Discussions");
+          Space spacet = spaceService_.getSpaceByDisplayName(space.getDisplayName());
           if (spacet!=null)
           {
             spaceService_.addMember(spacet, member);
