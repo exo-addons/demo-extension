@@ -54,7 +54,7 @@
      <portlet-preferences>
        <preference>
          <name>url</name>
-         <value>http://blog.exoplatform.org/feed/</value>
+         <value>http://blog.exoplatform.com/en/feed</value>
          <read-only>false</read-only>
        </preference>
        <preference>
