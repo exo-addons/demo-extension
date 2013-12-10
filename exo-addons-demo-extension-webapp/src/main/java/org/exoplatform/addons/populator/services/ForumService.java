@@ -3,13 +3,9 @@ package org.exoplatform.addons.populator.services;
 import org.exoplatform.forum.common.CommonUtils;
 import org.exoplatform.forum.common.jcr.KSDataLocation;
 import org.exoplatform.forum.common.jcr.PropertyReader;
-import org.exoplatform.forum.service.Category;
-import org.exoplatform.forum.service.Forum;
-import org.exoplatform.forum.service.Topic;
+import org.exoplatform.forum.service.*;
 import org.exoplatform.forum.service.Utils;
-import org.exoplatform.forum.service.MessageBuilder;
 import org.exoplatform.poll.service.Poll;
-import org.exoplatform.poll.service.PollNodeTypes;
 import org.exoplatform.poll.service.PollService;
 
 import javax.enterprise.context.ApplicationScoped;
