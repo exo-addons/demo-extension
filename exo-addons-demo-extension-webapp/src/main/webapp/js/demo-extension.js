@@ -4,30 +4,33 @@
  */
 var demoExtension = new DemoExtension();
 
-jQuery(document).ready(function(){
+(function($) {
 
-  var $demoApplication = $("#populator_div");
+  $(document).ready(function(){
 
-  demoExtension.initOptions({
-    "urlStart": $demoApplication.jzURL("PopulatorApplication.start"),
-    "urlElements": $demoApplication.jzURL("PopulatorApplication.elements"),
-    "urlSave": $demoApplication.jzURL("PopulatorApplication.save")
+    var $demoApplication = $("#populator_div");
+
+    demoExtension.initOptions({
+      "urlStart": $demoApplication.jzURL("PopulatorApplication.start"),
+      "urlElements": $demoApplication.jzURL("PopulatorApplication.elements"),
+      "urlSave": $demoApplication.jzURL("PopulatorApplication.save")
+    });
+
+    $(".btn-start").on("click", function(){
+      if ($(this).hasClass("disabled")) return;
+      demoExtension.startPopulating();
+    });
+
+    $(".btn-save-data").on("click", function(){
+      if ($(this).hasClass("disabled")) return;
+      var username = $("#custom-username").val();
+      var fullname = $("#custom-fullname").val();
+      var data = $("#custom-data").val();
+      demoExtension.saveCustomData(username, fullname, data);
+    });
+
   });
-
-  $(".btn-start").on("click", function(){
-    if ($(this).hasClass("disabled")) return;
-    demoExtension.startPopulating();
-  });
-
-  $(".btn-save-data").on("click", function(){
-    if ($(this).hasClass("disabled")) return;
-    var username = $("#custom-username").val();
-    var fullname = $("#custom-fullname").val();
-    var data = $("#custom-data").val();
-    demoExtension.saveCustomData(username, fullname, data);
-  });
-
-});
+})(jqchat);
 
 
 function DemoExtension() {
@@ -43,14 +46,14 @@ DemoExtension.prototype.initOptions = function(options) {
   this.urlSave = options.urlSave;
 
   this.notifEventInt = window.clearInterval(this.notifEventInt);
-  this.notifEventInt = setInterval(jQuery.proxy(this.refreshElements, this), 1000);
+  this.notifEventInt = setInterval(jqchat.proxy(this.refreshElements, this), 1000);
   this.refreshElements();
 
 };
 
 
 DemoExtension.prototype.startPopulating = function() {
-  $(".btn-start").addClass("disabled");
+  jqchat(".btn-start").addClass("disabled");
 
   demoExtension.populate(1, function() {
     demoExtension.populate(2, function () {
@@ -63,7 +66,7 @@ DemoExtension.prototype.startPopulating = function() {
                   demoExtension.populate(9, function () {
                     demoExtension.populate(9, function() {
                       demoExtension.populate(10, function() {
-                        $(".btn-start").removeClass("disabled");
+                        jqchat(".btn-start").removeClass("disabled");
                       });
                     });
                   });
@@ -80,7 +83,7 @@ DemoExtension.prototype.startPopulating = function() {
 
 DemoExtension.prototype.populate = function(filter, callback) {
 
-  jQuery.ajax({
+  jqchat.ajax({
     url: this.urlStart,
     dataType: "json",
     data: {
@@ -103,7 +106,7 @@ DemoExtension.prototype.populate = function(filter, callback) {
 
 DemoExtension.prototype.saveCustomData = function(username, fullname, data, callback) {
 
-  jQuery.ajax({
+  jqchat.ajax({
     url: this.urlSave,
     dataType: "json",
     data: {
@@ -129,7 +132,7 @@ DemoExtension.prototype.saveCustomData = function(username, fullname, data, call
 
 DemoExtension.prototype.refreshElements = function() {
 
-  jQuery.ajax({
+  jqchat.ajax({
     url: this.urlElements,
     dataType: "json",
     context: this,
@@ -138,9 +141,9 @@ DemoExtension.prototype.refreshElements = function() {
       this.updateElementsContainer(data);
     },
     error: function () {
-      //setTimeout(jQuery.proxy(this.startPopulating, this), 3000);
+      //setTimeout(jqchat.proxy(this.startPopulating, this), 3000);
       console.log("error in server call");
-      $(".btn-start").removeClass("disabled");
+      jqchat(".btn-start").removeClass("disabled");
     }
   });
 };
@@ -161,7 +164,7 @@ DemoExtension.prototype.updateElementsContainer = function(elements) {
     html += '  </div>';
     html += '</div>';
 
-    $(".elements-container").html(html);
+    jqchat(".elements-container").html(html);
 
   }
 };

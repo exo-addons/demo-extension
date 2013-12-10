@@ -12,6 +12,7 @@
 </div>
 
 <script>
+(function($) {
   $(document).ready(function(){
     var value = jzGetParam("simpleRSSData");
     if (! value) {
@@ -24,4 +25,5 @@
     }
 
   });
+})(jqchat);
 </script>
