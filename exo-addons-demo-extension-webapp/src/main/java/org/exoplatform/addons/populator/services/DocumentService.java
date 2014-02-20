@@ -4,6 +4,7 @@ import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
+import org.exoplatform.services.listener.ListenerService;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
 import org.exoplatform.services.security.MembershipEntry;
@@ -12,8 +13,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jcr.*;
-import javax.jcr.query.Query;
-import javax.jcr.query.QueryManager;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -30,13 +29,16 @@ public class DocumentService {
   RepositoryService repositoryService_;
   SessionProviderService sessionProviderService_;
   NodeHierarchyCreator nodeHierarchyCreator_;
+  public static String FILE_CREATED_ACTIVITY         = "ActivityNotify.event.FileCreated";
+  ListenerService listenerService_;
 
   @Inject
-  public DocumentService(RepositoryService repositoryService, SessionProviderService sessionProviderService, NodeHierarchyCreator nodeHierarchyCreator)
+  public DocumentService(RepositoryService repositoryService, SessionProviderService sessionProviderService, NodeHierarchyCreator nodeHierarchyCreator, ListenerService listenerService)
   {
     repositoryService_ = repositoryService;
     sessionProviderService_ = sessionProviderService;
     nodeHierarchyCreator_= nodeHierarchyCreator;
+    listenerService_ = listenerService;
   }
 
   public void uploadDocuments(String username)
@@ -152,28 +154,32 @@ public class DocumentService {
         else if (filename.endsWith(".ods"))
           jcrContent.setProperty("jcr:mimeType", "application/vnd.oasis.opendocument.spreadsheet");
         session.save();
+        listenerService_.broadcast(FILE_CREATED_ACTIVITY, null, fileNode);
+
+      } else if ("templates".equals(type)) {
+
+        // Re Upload the file, so it will publish an activity in the Activity Stream
+        Node fileNode=null;
+        if (uuid!=null) {
+          fileNode = session.getNodeByUUID(uuid);
+        }
+        else
+        {
+          fileNode = docNode.getNode(filename);
+        }
+        if (fileNode.canAddMixin("mix:versionable")) fileNode.addMixin("mix:versionable");
+        if (!fileNode.isCheckedOut()) {
+          fileNode.checkout();
+        }
+        fileNode.save();
+        fileNode.checkin();
+        fileNode.checkout();
+        Node jcrContent = fileNode.getNode("jcr:content");
+        InputStream inputStream = Utils.getFile(filename, type);
+        jcrContent.setProperty("jcr:data", inputStream);
+        session.save();
       }
 
-      // We Re Upload the file, even after creation, so it will publish an activity in the Activity Stream
-      Node fileNode=null;
-      if (uuid!=null) {
-        fileNode = session.getNodeByUUID(uuid);
-      }
-      else
-      {
-        fileNode = docNode.getNode(filename);
-      }
-      if (fileNode.canAddMixin("mix:versionable")) fileNode.addMixin("mix:versionable");
-      if (!fileNode.isCheckedOut()) {
-        fileNode.checkout();
-      }
-      fileNode.save();
-      fileNode.checkin();
-      fileNode.checkout();
-      Node jcrContent = fileNode.getNode("jcr:content");
-      InputStream inputStream = Utils.getFile(filename, type);
-      jcrContent.setProperty("jcr:data", inputStream);
-      session.save();
 
     }
     catch (Exception e)

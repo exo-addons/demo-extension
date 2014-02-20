@@ -22,7 +22,8 @@
                 @Binding(value = org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator.class),
                 @Binding(value = org.exoplatform.forum.service.ForumService.class),
                 @Binding(value = org.exoplatform.poll.service.PollService.class),
-                @Binding(value = org.exoplatform.forum.common.jcr.KSDataLocation.class)
+                @Binding(value = org.exoplatform.forum.common.jcr.KSDataLocation.class),
+                @Binding(value = org.exoplatform.services.listener.ListenerService.class)
         }
 )
 

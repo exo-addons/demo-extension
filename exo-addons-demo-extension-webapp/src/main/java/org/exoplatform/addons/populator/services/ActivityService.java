@@ -35,7 +35,7 @@ public class ActivityService {
     identityManager_ = identityManager;
   }
 
-  public void pushActivities(List<ActivityBean> activities)
+  public void pushActivities(List<ActivityBean> activities) throws Exception
   {
     for (ActivityBean activity:activities)
     {
@@ -46,7 +46,7 @@ public class ActivityService {
     likeRandomActivities("james");
   }
 
-  private void pushActivity(ActivityBean activityBean)
+  private void pushActivity(ActivityBean activityBean) throws Exception
   {
     String from = activityBean.getFrom();
 //    String provider = SpaceIdentityProvider.NAME;
@@ -54,7 +54,10 @@ public class ActivityService {
     ExoSocialActivity activity = new ExoSocialActivityImpl();
     activity.setBody(activityBean.getBody());
     activity.setTitle(activityBean.getBody());
+    activity.setUserId(identity.getId());
     activity = activityManager_.saveActivity(identity, activity);
+/*
+    Thread.sleep(500);
     for (String like:activityBean.getLikes())
     {
       Identity identityLike = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, like, false);
@@ -64,8 +67,10 @@ public class ActivityService {
         log.info("Error when liking an activity with "+like);
       }
     }
+*/
     for (ActivityBean commentBean:activityBean.getComments())
     {
+      Thread.sleep(1000);
       Identity identityComment = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, commentBean.getFrom(), false);
       ExoSocialActivity comment = new ExoSocialActivityImpl();
       comment.setTitle(commentBean.getBody());
@@ -80,7 +85,7 @@ public class ActivityService {
     Identity identity = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username, false);
     RealtimeListAccess rtla = activityManager_.getActivitiesWithListAccess(identity);
     ExoSocialActivity[] la = (ExoSocialActivity[])rtla.load(0, rtla.getSize());
-    for (int iam = 0; iam<rtla.getSize() ; iam++)
+    for (int iam = 0; iam<la.length ; iam++)
     {
       ExoSocialActivity activityMary = la[iam];
       boolean like = random.nextBoolean();
@@ -91,7 +96,7 @@ public class ActivityService {
     }
     rtla = activityManager_.getActivitiesOfUserSpacesWithListAccess(identity);
     la = (ExoSocialActivity[])rtla.load(0, rtla.getSize());
-    for (int iam = 0; iam<rtla.getSize() ; iam++)
+    for (int iam = 0; iam<la.length ; iam++)
     {
       ExoSocialActivity activityMary = la[iam];
       boolean like = random.nextBoolean();

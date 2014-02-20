@@ -142,9 +142,14 @@ public class PopulatorService {
         break;
 
       case 8:
-        setSate("Activities : Push new activities, Comments and Likes");
-        activityService_.pushActivities(populatorBean.getActivities());
-        completion.put(ACTIVITIES, 100);
+        try {
+          setSate("Activities : Push new activities, Comments and Likes");
+          activityService_.pushActivities(populatorBean.getActivities());
+          completion.put(ACTIVITIES, 100);
+        } catch (Exception ex) {
+          log.info(ex.getMessage());
+        }
+        
         break;
 
       case 9:
