@@ -33,7 +33,7 @@
     <set-method>registerChangePlugin</set-method>
     <!-- The full qualified name of the PortalContainerDefinitionChangePlugin -->
     <type>org.exoplatform.container.definition.PortalContainerDefinitionChangePlugin</type>
-    <priority>200</priority>
+    <priority>300</priority>
     <init-params>
       <value-param>
         <name>apply.default</name>
@@ -53,7 +53,7 @@
           <!-- The name of the target dependency -->
           <field name="target">
             <!--<string>welcome-screens</string>-->
-            <string>welcome-screens</string>
+            <string>chat-extension</string>
           </field>
         </object>
       </object-param>     
