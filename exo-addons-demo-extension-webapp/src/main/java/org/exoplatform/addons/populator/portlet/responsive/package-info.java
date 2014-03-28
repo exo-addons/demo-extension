@@ -1,7 +1,8 @@
 @Assets(
         location = AssetLocation.SERVER,
         scripts = {
-                @Script(src = "js/responsive.js", id = "responsive")
+                @Script(src = "js/jquery-1.8.3.min.js", id = "jquery"),
+                @Script(src = "js/responsive.js", id = "responsive", depends = "jquery")
         },
         stylesheets = {
                 @Stylesheet(src = "/org/exoplatform/addons/populator/portlet/responsive/assets/responsive.css", location = AssetLocation.APPLICATION)

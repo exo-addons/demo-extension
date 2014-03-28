@@ -1,10 +1,52 @@
 @media (max-width: 400px) {
   @width:                       50px;
 
-  .LeftNavigationTDContainer {
+  .LeftNavigationTDContainer, .UIHelpPlatformToolbarPortletTDContainer, .AdminToolBarPortletTDContainer, .UISetupPlatformToolBarPortletIDTDContainer {
     display: none;
   }
 
+  .UserInfoPortletTDContainer .uiUserToolBarPortlet a.dropdown-toggle {
+    font-size: 0;
+    position: relative;
+    top: 4px;
+  }
 
+  .responsiveMenu {
+    display: inline-block;
+    color: white;
+    font-size: 28px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .UITableColumn {
+    .OfficeMiddleTDContainer {
+      width: 380px;
+      padding: 10px!important;
+    }
+
+    .OfficeRightTDContainer {
+      width: 230px!important;
+      padding-top: 10px;
+    }
+
+  }
+
+  .activityStream {
+    .fileShare {
+      .text {
+        display: inline;
+      }
+    }
+  }
+
+}
+
+@media (min-width: 401px) {
+
+  .responsiveMenu {
+    display: none;
+  }
 
 }

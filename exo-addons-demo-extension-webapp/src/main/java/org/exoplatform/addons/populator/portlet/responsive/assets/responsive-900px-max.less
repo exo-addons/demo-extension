@@ -1,0 +1,93 @@
+@media (max-width: 900px) {
+  @width:                       70px;
+
+  .LeftNavigationTDContainer {
+    width: @width;
+
+    .uiBreadcumbsNavigationPortlet {
+      
+      .userAvt > img {
+        width: 44px;
+        height: 44px;
+      }
+      
+      .breadcumbEntry {
+        .name {
+          display: none;
+        }
+
+        .changeAvatar {
+          position: relative;
+          top: -17px;
+          left: -8px;
+        }
+        .uiActionWithLabel {
+          top: 101px;
+          position: absolute;
+          left: 17px;
+        }
+      }
+      
+    } 
+    
+
+    .uiCompanyNavigationPortlet {
+      h5.title {
+        display: none;
+      }
+
+    }
+
+    .uiCompanyNavigations {
+
+      li.navItemSelected, li.navItem {
+        height: 20px;
+      }
+
+      li.navItemSelected > a, li.navItem > a {
+        font-size: 0;
+        position: relative;
+        top: -12px;
+        left: 2px;
+      }
+
+      .navItemSelected:after {
+        margin-top: -36px;
+      }
+    }
+
+    .uiSpaceNavigationPortlet {
+      h5.title {
+        display: none;
+      }
+
+      li.spaceItem {
+        height: 20px;
+      }
+
+      li.spaceItem > a {
+        font-size: 0;
+      }
+
+      .searchInput input {
+        width: 62px;
+        margin-left: 4px;
+      }
+
+      .joinSpace {
+        font-size: 0;
+      }
+
+      .joinSpace > a {
+        font-size: 0;
+        position: relative;
+        top: -6px;
+      }
+    }
+
+    .uiUserNavigationPortlet .userNavigation>li>a, .uiUserNavigationPortlet .userNavigation>li>a:hover, .uiUserNavigationPortlet .userNavigation>.active>a, .uiUserNavigationPortlet .userNavigation>.active>a:hover {
+      margin: 10px 0px 10px 20px;
+    }
+  }
+
+}
