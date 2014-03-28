@@ -108,4 +108,14 @@
      </portlet-info>
    </portlet>
 
+  <filter>
+    <filter-name>ResponseFilter</filter-name>
+    <filter-class>org.exoplatform.addons.populator.portlet.responsive.ResponseFilter</filter-class>
+    <lifecycle>RENDER_PHASE</lifecycle>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>ResponseFilter</filter-name>
+    <portlet-name>ResponsiveApplication</portlet-name>
+  </filter-mapping>
 </portlet-app>
