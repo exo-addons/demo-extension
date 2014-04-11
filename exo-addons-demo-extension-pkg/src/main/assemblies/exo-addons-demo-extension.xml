@@ -71,6 +71,15 @@
       <outputFileNameMapping>chat-extension.war</outputFileNameMapping>
       <useProjectArtifact>false</useProjectArtifact>
     </dependencySet>
+    <dependencySet>
+      <outputDirectory>/demo/webapps</outputDirectory>
+      <includes>
+        <include>org.exoplatform.addons.portlets:exo-addons-demo-portlets-webapp:war</include>
+      </includes>
+      <scope>provided</scope>
+      <outputFileNameMapping>portlet-pack.war</outputFileNameMapping>
+      <useProjectArtifact>false</useProjectArtifact>
+    </dependencySet>
     <!-- Libraries -->
     <dependencySet>
       <outputDirectory>/demo/lib</outputDirectory>

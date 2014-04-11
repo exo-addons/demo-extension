@@ -11,7 +11,8 @@
   <name>eXo Addons - Demo Set Extension Package</name>
   <properties>
   <!-- 3rd party libraries versions -->
-    <chat.addon.version>0.9.0-SNAPSHOT</chat.addon.version>
+    <chat.addon.version>0.9.0</chat.addon.version>
+    <portlet.pack.version>0.1.0</portlet.pack.version>
   </properties>
   <dependencies>
     <dependency>
@@ -52,6 +53,13 @@
       <artifactId>exo-addons-chat-extension-config</artifactId>
       <version>${chat.addon.version}</version>
       <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.addons.portlets</groupId>
+      <artifactId>exo-addons-demo-portlets-webapp</artifactId>
+      <version>${portlet.pack.version}</version>
+      <type>war</type>
       <scope>provided</scope>
     </dependency>
   </dependencies>

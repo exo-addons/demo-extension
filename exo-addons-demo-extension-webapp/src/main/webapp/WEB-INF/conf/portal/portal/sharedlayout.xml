@@ -26,7 +26,7 @@
             <container id="UIResponsivePortlet" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
               <portlet-application>
                 <portlet>
-                  <application-ref>demo-extension</application-ref>
+                  <application-ref>portlet-pack</application-ref>
                   <portlet-ref>ResponsiveApplication</portlet-ref>
                 </portlet>
                 <title>ResponsiveApplication</title>
