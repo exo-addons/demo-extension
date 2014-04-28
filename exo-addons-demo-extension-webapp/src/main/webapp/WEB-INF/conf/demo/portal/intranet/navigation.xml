@@ -47,6 +47,14 @@
       <visibility>DISPLAYED</visibility>
       <page-reference>portal::intranet::news</page-reference>
     </node>
+    <node>
+      <uri>home</uri>
+      <name>home</name>
+      <label>#{portal.intranet.home}</label>
+      <visibility>DISPLAYED</visibility>
+      <page-reference>portal::intranet::homepage-demo2</page-reference>
+    </node>
+
 
   </page-nodes>
 </node-navigation>
