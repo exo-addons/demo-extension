@@ -45,17 +45,17 @@ public class DocumentService {
   {
     storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null, "mary");
     storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null, "mary");
-    storeFile("eXo_overview_feb2013_V2.pdf", "bank_project", false, null, "john");
-    storeFile("YourOpinion-eXoPlatform35.pdf", "bank_project", false, null, "john");
+    storeFile("eXo_overview_feb2013_V2.pdf", "social_intranet", false, null, "john");
+    storeFile("YourOpinion-eXoPlatform35.pdf", "social_intranet", false, null, "john");
     storeFile("Boston Logan WiFi Home.pdf", username, true, null, username);
   }
 
   public void uploadDocuments2(String username)
   {
-    storeFile("PUR1207_02_Quotation_File.xls", "bank_project", false, null, "john");
-    storeFile("Fiche_solution_Exo_Platform.pdf", "bank_project", false, null, username);
+    storeFile("PUR1207_02_Quotation_File.xls", "social_intranet", false, null, "john");
+    storeFile("Fiche_solution_Exo_Platform.pdf", "social_intranet", false, null, username);
     storeFile("May MTD 2013 Funnel report Week 21.pptx", "marketing_analytics", false, null, "mary");
-    storeFile("PUR1207_02_RFP_Final.docx", "bank_project", false, null, "john");
+    storeFile("PUR1207_02_RFP_Final.docx", "social_intranet", false, null, "john");
   }
 
   public void uploadNews()
@@ -206,7 +206,7 @@ public class DocumentService {
 
     try {
       Collection<MembershipEntry> membershipEntries = new ArrayList<MembershipEntry>();
-      membershipEntries.add(new MembershipEntry("/spaces/bank_project", "member"));
+      membershipEntries.add(new MembershipEntry("/spaces/social_intranet", "member"));
       membershipEntries.add(new MembershipEntry("/spaces/human_resources", "member"));
       membershipEntries.add(new MembershipEntry("/spaces/marketing_analytics", "member"));
       membershipEntries.add(new MembershipEntry("/platform/administrators", "member"));

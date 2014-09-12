@@ -10,6 +10,7 @@ import org.exoplatform.social.core.image.ImageUtils;
 import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.manager.RelationshipManager;
 import org.exoplatform.social.core.model.AvatarAttachment;
+import org.exoplatform.webui.exception.MessageException;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -44,7 +45,7 @@ public class UserService {
   public void createUsers(List<UserBean> users) {
     for (UserBean user:users)
     {
-      createUser(user.getUsername(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getIsAdmin());
+      createUser(user.getUsername(), user.getPosition(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getIsAdmin());
     }
   }
 
@@ -71,7 +72,7 @@ public class UserService {
     }
   }
 
-  private boolean createUser(String username, String firstname, String lastname, String email, String password, boolean isAdmin)
+  private boolean createUser(String username, String position, String firstname, String lastname, String email, String password, boolean isAdmin)
   {
     Boolean ok = true;
 
@@ -115,6 +116,19 @@ public class UserService {
       }
 
 
+    }
+
+    if (!"".equals(position)) {
+      Identity identity = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username, true);
+      if (identity!=null) {
+        Profile profile = identity.getProfile();
+        profile.setProperty(Profile.POSITION, position);
+        try {
+          identityManager_.updateProfile(profile);
+        } catch (MessageException e) {
+          e.printStackTrace();
+        }
+      }
     }
 
     return ok;

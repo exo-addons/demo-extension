@@ -1,7 +1,7 @@
 package org.exoplatform.addons.populator.bean;
 
 public class UserBean {
-  String username, firstname, lastname, email, password="gtngtn";
+  String username, position="", firstname, lastname, email, password="gtngtn";
   String avatar;
   Boolean isAdmin=false;
 
@@ -60,4 +60,14 @@ public class UserBean {
   public void setAvatar(String avatar) {
     this.avatar = avatar;
   }
+
+  public String getPosition() {
+    return position;
+  }
+
+  public void setPosition(String position) {
+    this.position = position;
+  }
+
+
 }

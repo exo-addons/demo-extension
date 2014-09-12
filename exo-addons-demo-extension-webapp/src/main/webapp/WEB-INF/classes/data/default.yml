@@ -1,31 +1,37 @@
 users:
 - username: john
+  position: Administrator
   firstname: John
   lastname: Smith
   email: john@acme.com
   isAdmin: true
   avatar: eXo-Face-John.png
 - username: james
+  position: Web designer
   firstname: James
   lastname: Potter
   email: james@acme.com
   avatar: eXo-Face-James.png
 - username: mary
+  position: HR Manager
   firstname: Mary
   lastname: Williams
   email: mary@acme.com
   avatar: eXo-Face-Mary.png
 - username: jack
+  position: Developer
   firstname: Jack
   lastname: Marker
   email: jack@acme.com
   avatar: eXo-Face-Jack.png
 - username: robert
+  position: CEO
   firstname: Robert
   lastname: Bruce
   email: robert@acme.com
   avatar: eXo-Face-Robert.png
 - username: <USERNAME>
+  position: Project Manager
   firstname: <FIRSTNAME>
   lastname: <LASTNAME>
   email: <USERNAME>@acme.com
@@ -63,10 +69,10 @@ spaces:
     - mary
     - james
     - robert
-- displayName: Bank Project
-  prettyName: bank_project
+- displayName: Social Intranet Project
+  prettyName: social_intranet
   creator: <USERNAME>
-  avatar: eXo-Space-Sales-color.png
+  avatar: eXo-Space-Social-color.png
   members:
     - john
     - james
@@ -129,14 +135,14 @@ calendars:
         day: thursday
         start: 17:30
         end: 20:00
-  - name: Bank Project
+  - name: Social Intranet Project
     color: moss_green
     events:
       - title: Intranet Demo
         day: thursday
         start: 13:00
         end: 17:00
-      - title: Customer Q&R
+      - title: VP Board Q&R
         day: friday
         start: 16:00
         end: 17:00
