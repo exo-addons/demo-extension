@@ -28,6 +28,12 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+          <groupId>org.exoplatform.addons.demo</groupId>
+          <artifactId>exo-addons-demo-extension-component</artifactId>
+          <type>jar</type>
+          <scope>provided</scope>
+      </dependency>
+    <dependency>
       <groupId>org.exoplatform.addons.chat</groupId>
       <artifactId>server</artifactId>
       <version>${chat.addon.version}</version>

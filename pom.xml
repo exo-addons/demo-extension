@@ -25,6 +25,7 @@
   </developers>
   <modules>
     <module>exo-addons-demo-extension-config</module>
+	<module>exo-addons-demo-extension-component</module>
     <module>exo-addons-demo-extension-webapp</module>
     <module>exo-addons-demo-extension-pkg</module>
   </modules>
@@ -85,6 +86,12 @@
         <version>${project.version}</version>
         <type>jar</type>
       </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.demo</groupId>
+            <artifactId>exo-addons-demo-extension-component</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
       <dependency>
         <groupId>org.exoplatform.addons.demo</groupId>
         <artifactId>exo-addons-demo-extension-pkg</artifactId>
