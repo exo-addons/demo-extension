@@ -13,17 +13,25 @@
 		import org.exoplatform.services.wcm.core.NodeLocation;		
 %>
 <style>
+/*
 .CLV {
 	margin: 20px 20px 0 20px;
 }
+*/
 
 .Contents {
+/*
 	padding: 20px;
 	margin: 20px 0;
+*/
+}
+
+.Column1 .Content {
+  padding: 10px 10px 0 10px;
 }
 
 .Column1 .Content .Title {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -49,26 +57,7 @@
 			def rssLink = uicomponent.getRssLink();
 			def isShowRssLink = uicomponent.isShowRssLink();
 			def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) && header != null && header.trim().length() != 0;
-			%>
-			<div class="uiGrayLightBox TopBoxHeader ClearFix">
-				<%
-				if (isShowHeader) {
-					%>
-						<div class="TitleBarL">
-							<div class="TitleBarR">
-								<div class="TitleBarM">
-                  <%if (isShowRssLink) {
-                    %><a class="RssIcon" onclick="javascript:window.open('$rssLink');" style="cursor:pointer" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.rssFeed") %>">&nbsp;</a><%
-                  }%>
-								  $header
-								</div>
-							</div>
-						</div>
-					<% }
-					%>
-					
-				</div>
-				<%
+
 			if (uicomponent.getUIPageIterator().getAvailable() == 0) {
 				%>
 					<div style="height: 20px; text-align: center; font-size: 13px; background: white; padding: 10px; margin: 5px;">
@@ -80,6 +69,20 @@
 			  def i =0;
 			  %>
 			  	<div class="Contents uiBox">
+
+            <%
+              if (isShowHeader) {
+            %>
+            <h6 class="title clearfix">
+                  <%if (isShowRssLink) {
+                  %><a class="RssIcon" onclick="javascript:window.open('$rssLink');" style="cursor:pointer" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.rssFeed") %>">&nbsp;</a><%
+                  }%>
+              <center>$header</center>
+            </h6>
+            <% }
+            %>
+
+
 			  		<%
 							for (viewNode in currentPageData) {
 								if(!Utils.isViewable(viewNode)) continue;
@@ -102,6 +105,9 @@
 									itemName = itemTitle;
 
 								def itemSummary = uicomponent.getSummary(viewNode);
+                if (itemSummary != null && itemSummary.length()>120) {
+                   itemSummary = itemSummary.trim().substring(0, 120)+ "...";
+                }
 								def itemSummaryField = uicomponent.getSummaryField(viewNode);
 								def isShowSummary = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_SUMMARY) && itemSummary != null;
 								

@@ -85,6 +85,7 @@ public class DocumentService {
     storeFile("OneColumn.gtmpl", "john", true, null, "john", "/exo:ecm/views/templates/content-list-viewer/list", "dms-system", "templates");
 //    storeFile("OneColumnLinks.gtmpl", "john", true, null, "john", "/exo:ecm/views/templates/content-list-viewer/list", "dms-system", "templates");
     storeFile("view1", "john", true, null, "john", "/exo:ecm/templates/exo:webContent/views", "dms-system", "templates");
+    storeFile("logo.png", "root", true, null, "__system", "/Application Data/logos", "collaboration", "images");
   }
 
   protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid, String username)
@@ -93,7 +94,12 @@ public class DocumentService {
   }
   protected void storeFile(String filename, String name, boolean isPrivateContext, String uuid, String username, String path, String workspace, String type)
   {
-    SessionProvider sessionProvider = startSessionAs(username);
+    SessionProvider sessionProvider = null;
+    if (!"root".equals(name)) {
+      sessionProvider = startSessionAs(username);
+    } else {
+      sessionProvider = SessionProvider.createSystemProvider();
+    }
 
     try
     {
@@ -154,7 +160,9 @@ public class DocumentService {
         else if (filename.endsWith(".ods"))
           jcrContent.setProperty("jcr:mimeType", "application/vnd.oasis.opendocument.spreadsheet");
         session.save();
-        listenerService_.broadcast(FILE_CREATED_ACTIVITY, null, fileNode);
+        if (!"root".equals(name)) {
+          listenerService_.broadcast(FILE_CREATED_ACTIVITY, null, fileNode);
+        }
 
       } else if ("templates".equals(type)) {
 

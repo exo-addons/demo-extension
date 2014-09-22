@@ -153,6 +153,90 @@
 
         <portlet-application>
           <portlet>
+            <application-ref>presentation</application-ref>
+            <portlet-ref>ContentListViewerPortlet</portlet-ref>
+            <preferences>
+              <preference>
+                <name>folderPath</name>
+                <value>repository:collaboration:/sites/intranet/web contents/news</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>orderBy</name>
+                <value>exo:dateCreated</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>orderType</name>
+                <value>ASC</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>header</name>
+                <value>Company News</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>formViewTemplatePath</name>
+                <value>/exo:ecm/views/templates/content-list-viewer/list/OneColumn.gtmpl</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>paginatorTemplatePath</name>
+                <value>/exo:ecm/views/templates/content-list-viewer/paginators/EmptyPaginator.gtmpl</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>basePath</name>
+                <value>detail</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>itemsPerPage</name>
+                <value>5</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>showTitle</name>
+                <value>true</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>showDateCreated</name>
+                <value>true</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>showHeader</name>
+                <value>true</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>showLink</name>
+                <value>true</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>showReadmore</name>
+                <value>false</value>
+                <read-only>false</read-only>
+              </preference>
+              <preference>
+                <name>showRssLink</name>
+                <value>true</value>
+                <read-only>false</read-only>
+              </preference>
+            </preferences>
+          </portlet>
+          <title>News</title>
+          <access-permissions>Everyone</access-permissions>
+          <show-info-bar>false</show-info-bar>
+          <show-application-state>false</show-application-state>
+          <show-application-mode>false</show-application-mode>
+        </portlet-application>
+
+        <portlet-application>
+          <portlet>
             <application-ref>homepage-portlets</application-ref>
             <portlet-ref>Invitations</portlet-ref>
           </portlet>
