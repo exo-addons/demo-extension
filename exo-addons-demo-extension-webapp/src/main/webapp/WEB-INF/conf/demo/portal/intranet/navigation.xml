@@ -41,12 +41,13 @@
       </node>
     </node>
     <node>
-      <uri>news</uri>
-      <name>news</name>
-      <label xml:lang="en">News</label>
+      <uri>acme_time_tracker</uri>
+      <name>acme_time_tracker</name>
+      <label xml:lang="en">Acme Time Tracker</label>
       <visibility>DISPLAYED</visibility>
-      <page-reference>portal::intranet::news</page-reference>
+      <page-reference>portal::intranet::acme_time_tracker</page-reference>
     </node>
+<!--
     <node>
       <uri>home</uri>
       <name>home</name>
@@ -54,6 +55,7 @@
       <visibility>DISPLAYED</visibility>
       <page-reference>portal::intranet::homepage-demo2</page-reference>
     </node>
+-->
 
 
   </page-nodes>

@@ -76,6 +76,13 @@ spaces:
   members:
     - john
     - james
+- displayName: Sales
+  prettyName: sales
+  creator: <USERNAME>
+  avatar: eXo-Space-Sales-color.png
+  members:
+    - john
+    - robert
 - displayName: Marketing Analytics
   prettyName: marketing_analytics
   creator: <USERNAME>
@@ -135,8 +142,23 @@ calendars:
         day: thursday
         start: 17:30
         end: 20:00
-  - name: Social Intranet Project
+  - name: Sales
     color: moss_green
+    events:
+      - title: Pipe Review
+        day: monday
+        start: 10:00
+        end: 11:30
+      - title: Product Team Demo
+        day: wednesday
+        start: 15:00
+        end: 16:00
+      - title: Sales Webinar
+        day: thursday
+        start: 11:00
+        end: 12:00
+  - name: Social Intranet Project
+    color: light_purple
     events:
       - title: Intranet Demo
         day: thursday

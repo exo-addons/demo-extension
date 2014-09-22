@@ -594,8 +594,8 @@
     </portlet-application>
   </page>
   <page>
-    <name>news</name>
-    <title>news</title>
+    <name>acme_time_tracker</name>
+    <title>acme_time_tracker</title>
     <access-permissions>*:/platform/users</access-permissions>
     <edit-permission>*:/platform/administrators</edit-permission>
     <show-max-window>false</show-max-window>
