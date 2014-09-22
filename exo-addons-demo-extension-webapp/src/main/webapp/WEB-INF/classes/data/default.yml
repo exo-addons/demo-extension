@@ -90,8 +90,8 @@ spaces:
   members:
     - mary
     - robert
-- displayName: Help Center
-  prettyName: help_center
+- displayName: Ask a Colleague
+  prettyName: ask_a_colleague
   creator: john
   avatar: eXo-Space-Intranet-color.png
 
