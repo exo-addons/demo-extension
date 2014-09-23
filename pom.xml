@@ -40,7 +40,6 @@
     <exoplatform.version>4.0.0</exoplatform.version>
     <javax.enterprise.cdi.version>1.0-SP4</javax.enterprise.cdi.version>
     <juzu.version>0.6.2</juzu.version>
-    <blog.version>1.1.0-SNAPSHOT</blog.version>
     <!-- **************************************** -->
     <!-- Jenkins Settings -->
     <!-- **************************************** -->
@@ -61,18 +60,6 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.addons.blog</groupId>
-        <artifactId>blog-extension-webapp</artifactId>
-        <version>${blog.version}</version>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.addons.blog</groupId>
-        <artifactId>blog-extension-config</artifactId>
-        <version>${blog.version}</version>
-        <type>jar</type>
       </dependency>
       <dependency>
         <groupId>org.exoplatform.addons.demo</groupId>
