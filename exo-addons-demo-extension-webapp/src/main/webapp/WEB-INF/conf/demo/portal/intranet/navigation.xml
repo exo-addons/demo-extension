@@ -41,11 +41,11 @@
       </node>
     </node>
     <node>
-      <uri>acme_time_tracker</uri>
-      <name>acme_time_tracker</name>
-      <label xml:lang="en">Acme Time Tracker</label>
+      <uri>acme_expenses_report</uri>
+      <name>acme_expenses_report</name>
+      <label xml:lang="en">Acme Expenses Report</label>
       <visibility>DISPLAYED</visibility>
-      <page-reference>portal::intranet::acme_time_tracker</page-reference>
+      <page-reference>portal::intranet::acme_expenses_report</page-reference>
     </node>
 <!--
     <node>
