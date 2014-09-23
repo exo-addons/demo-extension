@@ -9,7 +9,7 @@
   </parent>
   <groupId>org.exoplatform.addons.demo</groupId>
   <artifactId>demo-extension</artifactId>
-  <version>0.1.0-Beta02</version>
+  <version>0.1.0-CR01-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Demo Set for ExoPlatform 4</name>
   <description>Demo Set for ExoPlatform 4</description>
@@ -33,7 +33,7 @@
     <connection>scm:git:git://github.com/exo-addons/demo-extension.git</connection>
     <developerConnection>scm:git:git@github.com:exo-addons/demo-extension.git</developerConnection>
     <url>https://github.com/exo-addons/demo-extension</url>
-    <tag>0.1.0-Beta02</tag>
+    <tag>HEAD</tag>
   </scm>
   <properties>
     <!-- 3rd party libraries versions -->
