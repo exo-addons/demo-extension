@@ -14,7 +14,9 @@ import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.social.core.space.SpaceException;
 import org.exoplatform.social.core.space.SpaceUtils;
+import org.exoplatform.social.core.space.model.Space;
 import org.exoplatform.social.core.space.spi.SpaceService;
 
 import java.util.List;
@@ -97,6 +99,29 @@ public class SpaceCustomizationService {
         }
     }
 
+    public void createSpaceApplication (Space targetSpace,String targetSpaceName, String targetAppName) {
+
+        //Fake to add MyCRM application to
+        if (targetSpaceName.equalsIgnoreCase(targetSpace.getPrettyName())) {
+
+            if (!SpaceUtils.isInstalledApp(targetSpace,targetAppName)) {
+
+                try {
+
+                    spaceService.installApplication(targetSpace.getId(), targetAppName);
+
+                    spaceService.activateApplication(targetSpace.getId(), targetAppName);
+
+                } catch (SpaceException E) {
+                    LOG.error("####### Error to install My CRM Application",E);
+                }
+
+            }
+
+        }
+
+    }
+
     private void editSpaceURLPreference(List<ModelObject> children, String prefValue) throws Exception {
         if (children == null || children.size() == 0) {
             if (LOG.isDebugEnabled()) {
@@ -145,5 +170,6 @@ public class SpaceCustomizationService {
         }
         return this.spaceService;
     }
+
 
 }

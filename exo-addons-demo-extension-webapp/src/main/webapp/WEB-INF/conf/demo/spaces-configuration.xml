@@ -31,4 +31,48 @@
         </component-plugin>
     </external-component-plugins>
 
+    <external-component-plugins>
+        <target-component>org.exoplatform.application.registry.ApplicationRegistryService</target-component>
+        <component-plugin>
+            <name>MyCRM application registration</name>
+            <set-method>initListener</set-method>
+            <type>org.exoplatform.application.registry.ApplicationCategoriesPlugins</type>
+            <init-params>
+                <object-param>
+                    <name>external</name>
+                    <description>description</description>
+                    <object type="org.exoplatform.application.registry.ApplicationCategory">
+                        <field name="name"><string>External</string></field>
+                        <field name="displayName"><string>External</string></field>
+                        <field name="description"><string>External Applications</string></field>
+                        <field name="accessPermissions">
+                            <collection type="java.util.ArrayList" item-type="java.lang.String">
+                                <value><string>*:/platform/users</string></value>
+                            </collection>
+                        </field>
+                        <field name="applications">
+                            <collection type="java.util.ArrayList">
+                                <value>
+                                    <object type="org.exoplatform.application.registry.Application">
+                                        <field name="applicationName"><string>MyCrmApplication</string></field>
+                                        <field name="categoryName"><string>external</string></field>
+                                        <field name="displayName"><string>My CRM</string></field>
+                                        <field name="description"><string>My CRM</string></field>
+                                        <field name="type"><string>portlet</string></field>
+                                        <field name="contentId"><string>portlet-pack/MyCrmApplication</string></field>
+                                        <field name="accessPermissions">
+                                            <collection type="java.util.ArrayList" item-type="java.lang.String">
+                                                <value><string>*:/platform/users</string></value>
+                                            </collection>
+                                        </field>
+                                    </object>
+                                </value>
+                            </collection>
+                        </field>
+                    </object>
+                </object-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
+
 </configuration>
