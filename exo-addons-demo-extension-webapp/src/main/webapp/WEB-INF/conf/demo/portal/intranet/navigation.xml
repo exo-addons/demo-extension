@@ -47,6 +47,13 @@
       <visibility>DISPLAYED</visibility>
       <page-reference>portal::intranet::acme_expenses_report</page-reference>
     </node>
+    <node>
+      <uri>news</uri>
+      <name>news</name>
+      <label xml:lang="en">News</label>
+      <visibility>DISPLAYED</visibility>
+      <page-reference>portal::intranet::news</page-reference>
+    </node>
 <!--
     <node>
       <uri>home</uri>

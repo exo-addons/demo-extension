@@ -178,7 +178,7 @@
               </preference>
               <preference>
                 <name>formViewTemplatePath</name>
-                <value>/exo:ecm/views/templates/content-list-viewer/list/OneColumn.gtmpl</value>
+                <value>/exo:ecm/views/templates/content-list-viewer/list/OneColumnHome.gtmpl</value>
                 <read-only>false</read-only>
               </preference>
               <preference>
@@ -594,8 +594,8 @@
     </portlet-application>
   </page>
   <page>
-    <name>acme_expenses_report</name>
-    <title>acme_expenses_report</title>
+    <name>news</name>
+    <title>news</title>
     <access-permissions>*:/platform/users</access-permissions>
     <edit-permission>*:/platform/administrators</edit-permission>
     <show-max-window>false</show-max-window>
@@ -694,6 +694,27 @@
           <access-permissions>Everyone</access-permissions>
           <show-info-bar>false</show-info-bar>
         </portlet-application>
+      </container>
+    </container>
+
+  </page>
+  <page>
+    <name>acme_expenses_report</name>
+    <title>acme_expenses_report</title>
+    <access-permissions>*:/platform/users</access-permissions>
+    <edit-permission>*:/platform/administrators</edit-permission>
+    <show-max-window>false</show-max-window>
+
+    <container id="PopMain" template="system:/groovy/portal/webui/container/UITableColumnContainer.gtmpl">
+    <access-permissions>Everyone</access-permissions>
+      <container id="PopLeft" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+      <access-permissions>Everyone</access-permissions>
+
+      </container>
+
+      <container id="PopRight" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+      <access-permissions>Everyone</access-permissions>
+
       </container>
     </container>
 
