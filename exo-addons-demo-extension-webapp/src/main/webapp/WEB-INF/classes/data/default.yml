@@ -81,7 +81,7 @@ spaces:
   creator: <USERNAME>
   avatar: eXo-Space-Sales-color.png
   members:
-    - john
+    - james
     - robert
 - displayName: Marketing Analytics
   prettyName: marketing_analytics
@@ -92,15 +92,19 @@ spaces:
     - mary
 - displayName: Human Resources
   prettyName: human_resources
-  creator: <USERNAME>
+  creator: mary
   avatar: eXo-Space-RH-color.png
   members:
-    - mary
     - robert
 - displayName: Ask a Colleague
   prettyName: ask_a_colleague
   creator: john
   avatar: eXo-Space-Intranet-color.png
+  members:
+    - robert
+    - mary
+    - james
+    - <USERNAME>
 
 calendars:
 - user: john
