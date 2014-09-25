@@ -56,8 +56,8 @@
                                     <object type="org.exoplatform.application.registry.Application">
                                         <field name="applicationName"><string>MyCrmApplication</string></field>
                                         <field name="categoryName"><string>external</string></field>
-                                        <field name="displayName"><string>My CRM</string></field>
-                                        <field name="description"><string>My CRM</string></field>
+                                        <field name="displayName"><string>Acme CRM</string></field>
+                                        <field name="description"><string>Acme CRM</string></field>
                                         <field name="type"><string>portlet</string></field>
                                         <field name="contentId"><string>portlet-pack/MyCrmApplication</string></field>
                                         <field name="accessPermissions">
