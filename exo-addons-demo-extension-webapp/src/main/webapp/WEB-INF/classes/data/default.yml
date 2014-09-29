@@ -96,6 +96,7 @@ spaces:
   avatar: eXo-Space-RH-color.png
   members:
     - robert
+    - <USERNAME>
 - displayName: Ask a Colleague
   prettyName: ask_a_colleague
   creator: john
