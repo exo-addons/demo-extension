@@ -4,6 +4,8 @@ import java.util.List;
 
 public class WikiBean {
   String title;
+  String type = "portal";
+  String owner = "intranet";
   String filename = null;
   String parent = "Wiki Home";
   Boolean isNew = false;
@@ -47,5 +49,21 @@ public class WikiBean {
 
   public void setWikis(List<WikiBean> wikis) {
     this.wikis = wikis;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public String getOwner() {
+    return owner;
+  }
+
+  public void setOwner(String owner) {
+    this.owner = owner;
   }
 }

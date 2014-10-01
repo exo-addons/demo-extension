@@ -40,24 +40,34 @@ public class WikiService {
     String title= wikiBean.getTitle();
     String filename = wikiBean.getFilename();
     String parent = parentTitle;
+    String type = wikiBean.getType();
+    if ("group".equals(type)) {
+      type = PortalConfig.GROUP_TYPE;
+    } else if ("portal".equals(type)) {
+      type = PortalConfig.PORTAL_TYPE;
+    } else {
+      type = PortalConfig.USER_TYPE;
+    }
+    String owner = wikiBean.getOwner();
+
     try
     {
       if (forceNew && !title.equals("Wiki Home"))
       {
-        if (wikiService_.isExisting(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId(title, false)))
+        if (wikiService_.isExisting(type, owner, TitleResolver.getId(title, false)))
         {
-          wikiService_.deletePage(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId(title, false));
+          wikiService_.deletePage(type, owner, TitleResolver.getId(title, false));
         }
       }
 
       PageImpl page;
-      if (wikiService_.isExisting(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId(title, false)))
+      if (wikiService_.isExisting(type, owner, TitleResolver.getId(title, false)))
       {
-        page = (PageImpl) wikiService_.getPageById(PortalConfig.PORTAL_TYPE, "intranet", TitleResolver.getId(title, false));
+        page = (PageImpl) wikiService_.getPageById(type, owner, TitleResolver.getId(title, false));
       }
       else
       {
-        page = (PageImpl) wikiService_.createPage(PortalConfig.PORTAL_TYPE, "intranet", title, TitleResolver.getId(parent, false));
+        page = (PageImpl) wikiService_.createPage(type, owner, title, TitleResolver.getId(parent, false));
       }
 
       String content = "= "+title+" =";

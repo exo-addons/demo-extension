@@ -194,6 +194,8 @@ calendars:
 
 wikis:
   - title: Wiki Home
+    type: portal
+    owner: intranet
     filename: wiki-home.txt
   - title: Activity Stream Engagement
     filename: activity-stream-engagement.txt
@@ -219,6 +221,18 @@ wikis:
     wikis:
       - title: New in the Company
       - title: Intranet Team Organization
+  - title: Sofware Vendors
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Employee Onboarding
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Web Design Proposals
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
 
 activities:
   - from: <USERNAME>
