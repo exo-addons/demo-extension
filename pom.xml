@@ -9,7 +9,7 @@
   </parent>
   <groupId>org.exoplatform.addons.demo</groupId>
   <artifactId>demo-extension</artifactId>
-  <version>0.1.0-CR02-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Demo Set for ExoPlatform 4</name>
   <description>Demo Set for ExoPlatform 4</description>
