@@ -12,7 +12,7 @@
   <properties>
   <!-- 3rd party libraries versions -->
     <chat.addon.version>0.9.1</chat.addon.version>
-    <portlet.pack.version>1.0.0-SNAPSHOT</portlet.pack.version>
+    <portlet.pack.version>0.4.0-SNAPSHOT</portlet.pack.version>
   </properties>
   <dependencies>
     <dependency>
