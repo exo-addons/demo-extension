@@ -24,7 +24,7 @@
   <parent>
     <artifactId>demo-extension</artifactId>
     <groupId>org.exoplatform.addons.demo</groupId>
-    <version>0.1.0-CR01-SNAPSHOT</version>
+    <version>0.1.0-CR01</version>
   </parent>
   <artifactId>exo-addons-demo-extension-component</artifactId>
   <packaging>jar</packaging>
