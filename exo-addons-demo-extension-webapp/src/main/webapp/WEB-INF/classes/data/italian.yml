@@ -1,0 +1,262 @@
+users:
+- username: john
+  position: Administrator
+  firstname: John
+  lastname: Smith
+  email: john@acme.com
+  isAdmin: true
+  avatar: eXo-Face-John.png
+- username: fabio
+  position: Account Manager
+  firstname: Fabio
+  lastname: Marcello
+  email: fabio@acme.com
+  avatar: eXo-Face-fabio.png
+- username: laura
+  position: HR Manager
+  firstname: Laura
+  lastname: De Filippi
+  email: laura@acme.com
+  avatar: eXo-Face-laura.png
+- username: stefano
+  position: Developer
+  firstname: Stefano
+  lastname: Mion
+  email: stefano@acme.com
+  avatar: eXo-Face-stefano.png
+- username: roberto
+  position: CEO
+  firstname: roberto
+  lastname: Conti
+  email: roberto@acme.com
+  avatar: eXo-Face-robert.png
+- username: <USERNAME>
+  position: Project Manager
+  firstname: <FIRSTNAME>
+  lastname: <LASTNAME>
+  email: <USERNAME>@acme.com
+  avatar: eXo-Face-Benjamin.png
+
+relations:
+- inviting: <USERNAME>
+  invited: john
+- inviting: <USERNAME>
+  invited: laura
+- inviting: <USERNAME>
+  invited: roberto
+  confirm: false
+- inviting: stefano
+  invited: <USERNAME>
+  confirm: false
+- inviting: fabio
+  invited: john
+- inviting: fabio
+  invited: laura
+- inviting: john
+  invited: laura
+- inviting: john
+  invited: roberto
+- inviting: laura
+  invited: roberto
+
+spaces:
+- displayName: Discussioni Pubbliche
+  prettyName: public_discussions
+  creator: john
+  avatar: eXo-Space-Public-color.png
+  members:
+    - <USERNAME>
+    - mary
+    - james
+    - robert
+- displayName: Social Intranet Project
+  prettyName: social_intranet
+  creator: <USERNAME>
+  avatar: eXo-Space-Social-color.png
+  members:
+    - john
+    - james
+- displayName: Sales
+  prettyName: sales
+  creator: <USERNAME>
+  avatar: eXo-Space-Sales-color.png
+  members:
+    - james
+    - robert
+- displayName: Analitica Marketing
+  prettyName: marketing_analytics
+  creator: <USERNAME>
+  avatar: eXo-Space-Marketing-color.png
+  members:
+    - robert
+    - mary
+- displayName: Risorse Umane
+  prettyName: human_resources
+  creator: mary
+  avatar: eXo-Space-RH-color.png
+  members:
+    - robert
+    - <USERNAME>
+- displayName: Ask a Colleague
+  prettyName: ask_a_colleague
+  creator: john
+  avatar: eXo-Space-Intranet-color.png
+  members:
+    - robert
+    - mary
+    - james
+    - <USERNAME>
+
+calendars:
+- user: john
+  calendars:
+  - name: John Smith
+    color: powder_blue
+    type: user
+    events:
+      - title: Riunione PL
+        day: monday
+        start: 10:00
+        end: 12:00
+- user: <USERNAME>
+  calendars:
+  - name: <FULLNAME>
+    color: powder_blue
+    type: user
+    events:
+      - title: Recensione Spec
+        day: monday
+        start: 17:00
+        end: 19:00
+      - title: Lavoro di gruppo
+        day: tuesday
+        start: 14:00
+        end: 18:00
+      - title: Riunione EOW Team
+        day: friday
+        start: 13:00
+        end: 15:00
+  - name: Public Discussions
+    color: orange
+    events:
+      - title: Processo Di Migrazione Dell’Intranet
+        day: wednesday
+        start: 10:00
+        end: 14:00
+      - title: Cena
+        day: thursday
+        start: 17:30
+        end: 20:00
+  - name: Sales
+    color: moss_green
+    events:
+      - title: Pipe Review
+        day: monday
+        start: 10:00
+        end: 11:30
+      - title: Product Team Demo
+        day: wednesday
+        start: 15:00
+        end: 16:00
+      - title: Sales Webinar
+        day: thursday
+        start: 11:00
+        end: 12:00
+  - name: Social Intranet Project
+    color: light_purple
+    events:
+      - title: Demo Dell’Intranet
+        day: thursday
+        start: 13:00
+        end: 17:00
+      - title: VP Board Q&R
+        day: friday
+        start: 16:00
+        end: 17:00
+  - name: Human Resources
+    color: gray
+    events:
+      - title: Riunione R.U Settimanale
+        day: friday
+        start: 10:00
+        end: 11:30
+  - name: Marketing Analytics
+    color: pink
+    events:
+      - title: Studio Generazione Di Prospetti
+        day: tuesday
+        start: 9:30
+        end: 12:30
+      - title: Update Del Analitica
+        day: wednesday
+        start: 17:00
+        end: 19:00
+
+wikis:
+  - title: Wiki Home
+    type: portal
+    owner: intranet
+    filename: wiki-home.txt
+  - title: Impegno Su Il Flusso di Attività
+    filename: activity-stream-engagement.txt
+    parent: Wiki Home
+    new: true
+  - title: Come Assistere
+    filename: how-to-guide.txt
+    parent: Wiki Home
+    new: true
+  - title: Ferie Pianificazione
+    filename: leave-planning.txt
+    parent: Wiki Home
+    new: true
+  - title: Appunti delle riunioni
+    parent: Wiki Home
+    wikis:
+      - title: 0107 Riunione Azienda
+      - title: 0114 Riunione Azienda
+        wikis:
+          - title: Attachments
+  - title: Conoscenza Generale
+    parent: Wiki Home
+    wikis:
+      - title: Nuovo Arrivato in Azienda
+      - title: Organizzazione Intranet Team
+  - title: Sofware Vendors
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Employee Onboarding
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Web Design Proposals
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+
+activities:
+  - from: <USERNAME>
+    body: Sono con @laura a Parigi
+    likes:
+      - john
+      - james
+    comments:
+      - from: mary
+        body: Un buon caffè a Roma
+  - from: john
+    body: Non dimenticare il nostro Webinar publico la prossima settimana.
+    likes:
+      - <USERNAME>
+      - john
+      - mary
+      - robert
+    comments:
+      - from: <USERNAME>
+        body: Nella sala principale?
+      - from: john
+        body: Sì e sarà anche condivisa On-Line
+      - from: mary
+        body: a proposito @john , mi ricorderai di inviare un invito formale
+      - from: john
+        body: certo @mary
+

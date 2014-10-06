@@ -108,7 +108,7 @@ public class ForumService {
 
         String[] options = {"It's amazing", "I love it", "I like it", "No opinion"};
         String[] votes = {"50.0", "33.333336", "16.666668", "0.0"};
-        String[] userVotes = {"benjamin:2:0", "john:1:0", "mary:1:0"};
+        String[] userVotes = {org.exoplatform.addons.populator.services.Utils.JAMES+":2:0", org.exoplatform.addons.populator.services.Utils.JOHN+":1:0", org.exoplatform.addons.populator.services.Utils.MARY+":1:0"};
         Poll poll = new Poll();
         String pollPath = forum.getPath() + CommonUtils.SLASH + topic.getId();
         String pollId = topic.getId().replace(Utils.TOPIC, Utils.POLL);
@@ -117,7 +117,7 @@ public class ForumService {
         poll.setInTopic(true);
         poll.setQuestion("Do you like our new Intranet?");
         poll.setOption(options);
-        poll.setOwner("mary");
+        poll.setOwner(org.exoplatform.addons.populator.services.Utils.MARY);
         poll.setIsMultiCheck(true);
         poll.setShowVote(true);
         poll.setIsAgainVote(true);
@@ -128,7 +128,7 @@ public class ForumService {
 
         poll.setVote(votes);
         poll.setUserVote(userVotes);
-        poll.setModifiedBy("mary");
+        poll.setModifiedBy(org.exoplatform.addons.populator.services.Utils.MARY);
         pollService_.savePoll(poll, true, true);
       }
 

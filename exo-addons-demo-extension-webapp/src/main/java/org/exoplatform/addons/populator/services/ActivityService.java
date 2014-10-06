@@ -42,8 +42,8 @@ public class ActivityService {
       pushActivity(activity);
     }
 
-    likeRandomActivities("mary");
-    likeRandomActivities("james");
+    likeRandomActivities(Utils.MARY);
+    likeRandomActivities(Utils.JAMES);
   }
 
   private void pushActivity(ActivityBean activityBean) throws Exception
