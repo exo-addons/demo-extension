@@ -11,25 +11,25 @@ users:
   firstname: Fabio
   lastname: Marcello
   email: fabio@acme.com
-  avatar: eXo-Face-fabio.png
+  avatar: eXo-Face-James.png
 - username: laura
   position: HR Manager
   firstname: Laura
   lastname: De Filippi
   email: laura@acme.com
-  avatar: eXo-Face-laura.png
+  avatar: eXo-Face-Mary.png
 - username: stefano
   position: Developer
   firstname: Stefano
   lastname: Mion
   email: stefano@acme.com
-  avatar: eXo-Face-stefano.png
+  avatar: eXo-Face-Jack.png
 - username: roberto
   position: CEO
-  firstname: roberto
+  firstname: Roberto
   lastname: Conti
   email: roberto@acme.com
-  avatar: eXo-Face-robert.png
+  avatar: eXo-Face-Robert.png
 - username: <USERNAME>
   position: Project Manager
   firstname: <FIRSTNAME>
