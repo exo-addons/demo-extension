@@ -9,6 +9,7 @@ public class PopulatorBean {
   List<CalendarBean> calendars;
   List<WikiBean> wikis;
   List<ActivityBean> activities;
+  List<Default> defaults;
 
   public List<UserBean> getUsers() {
     return users;
@@ -56,5 +57,22 @@ public class PopulatorBean {
 
   public void setActivities(List<ActivityBean> activities) {
     this.activities = activities;
+  }
+
+  public List<Default> getDefaults() {
+    return defaults;
+  }
+
+  public void setDefaults(List<Default> defaults) {
+    this.defaults = defaults;
+  }
+
+  public Default getDefaultData()
+  {
+    if (defaults!=null && !defaults.isEmpty())
+    {
+      return defaults.get(0);
+    }
+    return new Default();
   }
 }

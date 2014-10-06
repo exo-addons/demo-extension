@@ -31,6 +31,11 @@
          <value>Benjamin Paillereau</value>
          <read-only>false</read-only>
        </preference>
+       <preference>
+         <name>language</name>
+         <value>default</value>
+         <read-only>false</read-only>
+       </preference>
      </portlet-preferences>
    </portlet>
 

@@ -39,6 +39,7 @@ public class PopulatorApplication
     {
       populatorService_.setUsername(portletPreferences.getValue("username", "benjamin"));
       populatorService_.setFullname(portletPreferences.getValue("fullname", "Benjamin Paillereau"));
+      populatorService_.setLanguage(portletPreferences.getValue("language", "default"));
     }
     populatorService_.init();
     String data = populatorService_.getDataAsString();
@@ -77,11 +78,11 @@ public class PopulatorApplication
 
   @Ajax
   @Resource
-  public Response.Content save(String username, String fullname, String data)
+  public Response.Content save(String username, String fullname, String language)
   {
     populatorService_.setUsername(username);
     populatorService_.setFullname(fullname);
-    populatorService_.setData(data);
+    populatorService_.setLanguage(language);
 
     StringBuilder sb = new StringBuilder() ;
     sb.append("{\"status\": \"OK\"}");

@@ -10,10 +10,10 @@ import java.io.StringWriter;
 
 public class Utils {
 
-  public static final String JOHN = "john";
-  public static final String JAMES = "james";     //it: fabio
-  public static final String MARY = "mary";      //it: laura
-  public static final String ROBERT = "robert";  //it: roberto
+  public static String JOHN = "john";
+  public static String JAMES = "james";
+  public static String MARY = "mary";
+  public static String ROBERT = "robert";
 
 
   public static AvatarAttachment getAvatarAttachment(String fileName) throws Exception

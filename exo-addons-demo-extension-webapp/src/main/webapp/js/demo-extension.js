@@ -25,8 +25,8 @@ var demoExtension = new DemoExtension();
       if ($(this).hasClass("disabled")) return;
       var username = $("#custom-username").val();
       var fullname = $("#custom-fullname").val();
-      var data = $("#custom-data").val();
-      demoExtension.saveCustomData(username, fullname, data);
+      var language = $("#custom-language").val();
+      demoExtension.saveCustomData(username, fullname, language);
     });
 
   });
@@ -104,7 +104,7 @@ DemoExtension.prototype.populate = function(filter, callback) {
 
 };
 
-DemoExtension.prototype.saveCustomData = function(username, fullname, data, callback) {
+DemoExtension.prototype.saveCustomData = function(username, fullname, language, callback) {
 
   jqchat.ajax({
     url: this.urlSave,
@@ -112,7 +112,7 @@ DemoExtension.prototype.saveCustomData = function(username, fullname, data, call
     data: {
       "username": username,
       "fullname": fullname,
-      "data": data
+      "language": language
     },
     context: this,
     success: function(data){
