@@ -66,45 +66,45 @@ spaces:
   avatar: eXo-Space-Public-color.png
   members:
     - <USERNAME>
-    - mary
-    - james
-    - robert
+    - laura
+    - fabio
+    - roberto
 - displayName: Social Intranet Project
   prettyName: social_intranet
   creator: <USERNAME>
   avatar: eXo-Space-Social-color.png
   members:
     - john
-    - james
+    - fabio
 - displayName: Sales
   prettyName: sales
   creator: <USERNAME>
   avatar: eXo-Space-Sales-color.png
   members:
-    - james
-    - robert
+    - fabio
+    - roberto
 - displayName: Analitica Marketing
   prettyName: marketing_analytics
   creator: <USERNAME>
   avatar: eXo-Space-Marketing-color.png
   members:
-    - robert
-    - mary
+    - roberto
+    - laura
 - displayName: Risorse Umane
   prettyName: human_resources
-  creator: mary
+  creator: laura
   avatar: eXo-Space-RH-color.png
   members:
-    - robert
+    - roberto
     - <USERNAME>
 - displayName: Ask a Colleague
   prettyName: ask_a_colleague
   creator: john
   avatar: eXo-Space-Intranet-color.png
   members:
-    - robert
-    - mary
-    - james
+    - roberto
+    - laura
+    - fabio
     - <USERNAME>
 
 calendars:
@@ -136,7 +136,7 @@ calendars:
         day: friday
         start: 13:00
         end: 15:00
-  - name: Public Discussions
+  - name: Discussioni Pubbliche
     color: orange
     events:
       - title: Processo Di Migrazione Dell’Intranet
@@ -173,14 +173,14 @@ calendars:
         day: friday
         start: 16:00
         end: 17:00
-  - name: Human Resources
+  - name: Risorse Umane
     color: gray
     events:
       - title: Riunione R.U Settimanale
         day: friday
         start: 10:00
         end: 11:30
-  - name: Marketing Analytics
+  - name: Analitica Marketing
     color: pink
     events:
       - title: Studio Generazione Di Prospetti
@@ -239,24 +239,24 @@ activities:
     body: Sono con @laura a Parigi
     likes:
       - john
-      - james
+      - fabio
     comments:
-      - from: mary
+      - from: laura
         body: Un buon caffè a Roma
   - from: john
     body: Non dimenticare il nostro Webinar publico la prossima settimana.
     likes:
       - <USERNAME>
       - john
-      - mary
-      - robert
+      - laura
+      - roberto
     comments:
       - from: <USERNAME>
         body: Nella sala principale?
       - from: john
         body: Sì e sarà anche condivisa On-Line
-      - from: mary
+      - from: laura
         body: a proposito @john , mi ricorderai di inviare un invito formale
       - from: john
-        body: certo @mary
+        body: certo @laura
 
