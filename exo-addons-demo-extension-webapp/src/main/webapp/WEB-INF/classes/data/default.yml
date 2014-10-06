@@ -1,3 +1,7 @@
+defaults:
+- mary: mary
+  james: james
+  robert: robert
 users:
 - username: john
   position: Administrator

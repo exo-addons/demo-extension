@@ -18,13 +18,25 @@
       <label><input type="text" id="custom-fullname" value="<%=fullname%>" /></label>
     </div>
 
-    <!-- DATA -->
+    <!-- LANGUAGE -->
     <div class="span3">
+      <label>Language</label>
+    </div>
+    <div class="span9">
+      <label><select id="custom-language" >
+        <option value="default" selected>Default</option>
+        <option value="french">French</option>
+        <option value="italian">Italian</option>
+      </select></label>
+    </div>
+
+    <!-- DATA -->
+    <!--div class="span3">
       <label>Custom Data</label>
     </div>
     <div class="span9">
       <label><textarea id="custom-data"><%=data%></textarea></label>
-    </div>
+    </div-->
 
     <!-- SAVE -->
     <div class="span3">

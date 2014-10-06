@@ -1,3 +1,7 @@
+defaults:
+- mary: laura
+  james: fabio
+  robert: roberto
 users:
 - username: john
   position: Administrator
@@ -7,7 +11,7 @@ users:
   isAdmin: true
   avatar: eXo-Face-John.png
 - username: fabio
-  position: Account Manager
+  position: Sales Manager
   firstname: Fabio
   lastname: Marcello
   email: fabio@acme.com
@@ -19,13 +23,13 @@ users:
   email: laura@acme.com
   avatar: eXo-Face-Mary.png
 - username: stefano
-  position: Developer
+  position: Sviluppatore
   firstname: Stefano
   lastname: Mion
   email: stefano@acme.com
   avatar: eXo-Face-Jack.png
 - username: roberto
-  position: CEO
+  position: AD
   firstname: Roberto
   lastname: Conti
   email: roberto@acme.com
@@ -69,7 +73,7 @@ spaces:
     - laura
     - fabio
     - roberto
-- displayName: Social Intranet Project
+- displayName: Progetto Social Intranet
   prettyName: social_intranet
   creator: <USERNAME>
   avatar: eXo-Space-Social-color.png
@@ -83,7 +87,7 @@ spaces:
   members:
     - fabio
     - roberto
-- displayName: Analitica Marketing
+- displayName: Marketing
   prettyName: marketing_analytics
   creator: <USERNAME>
   avatar: eXo-Space-Marketing-color.png
@@ -97,7 +101,7 @@ spaces:
   members:
     - roberto
     - <USERNAME>
-- displayName: Ask a Colleague
+- displayName: Chiedi ad un collega
   prettyName: ask_a_colleague
   creator: john
   avatar: eXo-Space-Intranet-color.png
@@ -114,7 +118,7 @@ calendars:
     color: powder_blue
     type: user
     events:
-      - title: Riunione PL
+      - title: Riunione di Progetto
         day: monday
         start: 10:00
         end: 12:00
@@ -124,7 +128,7 @@ calendars:
     color: powder_blue
     type: user
     events:
-      - title: Recensione Spec
+      - title: Recensione Specifiche
         day: monday
         start: 17:00
         end: 19:00
@@ -132,7 +136,7 @@ calendars:
         day: tuesday
         start: 14:00
         end: 18:00
-      - title: Riunione EOW Team
+      - title: Riunione di Sal
         day: friday
         start: 13:00
         end: 15:00
@@ -154,22 +158,22 @@ calendars:
         day: monday
         start: 10:00
         end: 11:30
-      - title: Product Team Demo
+      - title: Demo del Prodotto
         day: wednesday
         start: 15:00
         end: 16:00
-      - title: Sales Webinar
+      - title: Formazione on line
         day: thursday
         start: 11:00
         end: 12:00
-  - name: Social Intranet Project
+  - name: Progetto Social Intranet
     color: light_purple
     events:
       - title: Demo Dell’Intranet
         day: thursday
         start: 13:00
         end: 17:00
-      - title: VP Board Q&R
+      - title: Board Meeting
         day: friday
         start: 16:00
         end: 17:00
@@ -180,14 +184,14 @@ calendars:
         day: friday
         start: 10:00
         end: 11:30
-  - name: Analitica Marketing
+  - name: Marketing
     color: pink
     events:
-      - title: Studio Generazione Di Prospetti
+      - title: Studio di Lead Gen
         day: tuesday
         start: 9:30
         end: 12:30
-      - title: Update Del Analitica
+      - title: Update delle statistiche
         day: wednesday
         start: 17:00
         end: 19:00
@@ -197,19 +201,19 @@ wikis:
     type: portal
     owner: intranet
     filename: wiki-home.txt
-  - title: Impegno Su Il Flusso di Attività
+  - title: Impegno Sulle Attività
     filename: activity-stream-engagement.txt
     parent: Wiki Home
     new: true
-  - title: Come Assistere
+  - title: Assistenza
     filename: how-to-guide.txt
     parent: Wiki Home
     new: true
-  - title: Ferie Pianificazione
+  - title: Piano ferie
     filename: leave-planning.txt
     parent: Wiki Home
     new: true
-  - title: Appunti delle riunioni
+  - title: Appunti
     parent: Wiki Home
     wikis:
       - title: 0107 Riunione Azienda
@@ -220,23 +224,23 @@ wikis:
     parent: Wiki Home
     wikis:
       - title: Nuovo Arrivato in Azienda
-      - title: Organizzazione Intranet Team
+      - title: Organizzazione Team Intranet
   - title: Sofware Vendors
     type: group
     owner: spaces/social_intranet
     parent: Wiki Home
-  - title: Employee Onboarding
+  - title: Engagement risorse
     type: group
     owner: spaces/social_intranet
     parent: Wiki Home
-  - title: Web Design Proposals
+  - title: Proposte grafiche
     type: group
     owner: spaces/social_intranet
     parent: Wiki Home
 
 activities:
   - from: <USERNAME>
-    body: Sono con @laura a Parigi
+    body: Sono con @laura a Roma
     likes:
       - john
       - fabio
@@ -244,7 +248,7 @@ activities:
       - from: laura
         body: Un buon caffè a Roma
   - from: john
-    body: Non dimenticare il nostro Webinar publico la prossima settimana.
+    body: Non dimenticare il nostro evento di formazione on line per la prossima settimana.
     likes:
       - <USERNAME>
       - john
@@ -252,11 +256,11 @@ activities:
       - roberto
     comments:
       - from: <USERNAME>
-        body: Nella sala principale?
+        body: Nella sala riunione principale?
       - from: john
         body: Sì e sarà anche condivisa On-Line
       - from: laura
-        body: a proposito @john , mi ricorderai di inviare un invito formale
+        body: a proposito @john , ricordami di inviare un invito formale
       - from: john
         body: certo @laura
 

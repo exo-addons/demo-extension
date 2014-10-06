@@ -38,7 +38,7 @@ public class PopulatorService {
 
   String currentState_;
 
-  String username="", fullname="", data="";
+  String username="", fullname="", language="default";
 
   Map<String, Integer> completion = new HashMap<String, Integer>();
 
@@ -86,6 +86,9 @@ public class PopulatorService {
   public void start(int filter)
   {
     PopulatorBean populatorBean = getData();
+    Utils.JAMES = populatorBean.getDefaultData().getJames();
+    Utils.MARY = populatorBean.getDefaultData().getMary();
+    Utils.ROBERT = populatorBean.getDefaultData().getRobert();
 
     switch (filter)
     {
@@ -174,11 +177,7 @@ public class PopulatorService {
 
   public String getDataAsString()
   {
-    if ("".equals(data))
-    {
-      data = Utils.getData("default.yml");
-    }
-    return data;
+    return Utils.getData(language+".yml");
   }
 
   public PopulatorBean getData()
@@ -191,6 +190,7 @@ public class PopulatorService {
     populatorDescription.putListPropertyType("calendars", CalendarBean.class);
     populatorDescription.putListPropertyType("wikis", WikiBean.class);
     populatorDescription.putListPropertyType("activities", ActivityBean.class);
+    populatorDescription.putListPropertyType("defaults", Default.class);
     constructor.addTypeDescription(populatorDescription);
     Yaml yaml = new Yaml(constructor);
     String data = getDataAsString();
@@ -226,7 +226,7 @@ public class PopulatorService {
     this.fullname = fullname;
   }
 
-  public void setData(String data) {
-    this.data = data;
+  public void setLanguage(String language) {
+    this.language = language;
   }
 }
