@@ -4,6 +4,7 @@ import juzu.Path;
 import juzu.View;
 import juzu.request.RenderContext;
 import juzu.template.Template;
+import org.exoplatform.addons.populator.services.Utils;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -39,19 +40,19 @@ public class TodoApplication
   {
     String remoteUser = renderContext.getSecurityContext().getRemoteUser();
 
-    if ("john".equals(remoteUser))
+    if (Utils.JOHN.equals(remoteUser))
     {
       johnTemplate.render();
     }
-    else if ("robert".equals(remoteUser))
+    else if (Utils.ROBERT.equals(remoteUser))
     {
       robertTemplate.render();
     }
-    else if ("james".equals(remoteUser))
+    else if (Utils.JAMES.equals(remoteUser))
     {
       jamesTemplate.render();
     }
-    else if ("mary".equals(remoteUser))
+    else if (Utils.MARY.equals(remoteUser))
     {
       maryTemplate.render();
     }

@@ -43,19 +43,19 @@ public class DocumentService {
 
   public void uploadDocuments(String username)
   {
-    storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null, "mary");
-    storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null, "mary");
-    storeFile("eXo_overview_feb2013_V2.pdf", "social_intranet", false, null, "john");
-    storeFile("YourOpinion-eXoPlatform35.pdf", "social_intranet", false, null, "john");
+    storeFile("dici_elyseo_dynamique_en.pdf", "human_resources", false, null, Utils.MARY);
+    storeFile("Health Guide PEI PERCU Elyseo.pdf", "human_resources", false, null, Utils.MARY);
+    storeFile("eXo_overview_feb2013_V2.pdf", "social_intranet", false, null, Utils.JOHN);
+    storeFile("YourOpinion-eXoPlatform35.pdf", "social_intranet", false, null, Utils.JOHN);
     storeFile("Boston Logan WiFi Home.pdf", username, true, null, username);
   }
 
   public void uploadDocuments2(String username)
   {
-    storeFile("PUR1207_02_Quotation_File.xls", "social_intranet", false, null, "john");
+    storeFile("PUR1207_02_Quotation_File.xls", "social_intranet", false, null, Utils.JOHN);
     storeFile("Fiche_solution_Exo_Platform.pdf", "social_intranet", false, null, username);
-    storeFile("May MTD 2013 Funnel report Week 21.pptx", "marketing_analytics", false, null, "mary");
-    storeFile("PUR1207_02_RFP_Final.docx", "social_intranet", false, null, "john");
+    storeFile("May MTD 2013 Funnel report Week 21.pptx", "marketing_analytics", false, null, Utils.MARY);
+    storeFile("PUR1207_02_RFP_Final.docx", "social_intranet", false, null, Utils.JOHN);
   }
 
   public void uploadNews()
@@ -82,8 +82,8 @@ public class DocumentService {
 
   public void updateTemplates()
   {
-    storeFile("OneColumn.gtmpl", "john", true, null, "john", "/exo:ecm/views/templates/content-list-viewer/list", "dms-system", "templates");
-    storeFile("view1", "john", true, null, "john", "/exo:ecm/templates/exo:webContent/views", "dms-system", "templates");
+    storeFile("OneColumn.gtmpl", "john", true, null, Utils.JOHN, "/exo:ecm/views/templates/content-list-viewer/list", "dms-system", "templates");
+    storeFile("view1", "john", true, null, Utils.JOHN, "/exo:ecm/templates/exo:webContent/views", "dms-system", "templates");
     storeFile("logo.png", "root", true, null, "__system", "/Application Data/logos", "collaboration", "images");
   }
 
