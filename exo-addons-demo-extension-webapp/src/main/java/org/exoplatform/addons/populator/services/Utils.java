@@ -14,6 +14,7 @@ public class Utils {
   public static String JAMES = "james";
   public static String MARY = "mary";
   public static String ROBERT = "robert";
+  public static String USER = "benjamin";
 
 
   public static AvatarAttachment getAvatarAttachment(String fileName) throws Exception

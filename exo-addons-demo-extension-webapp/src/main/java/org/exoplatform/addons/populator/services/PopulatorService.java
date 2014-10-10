@@ -89,6 +89,7 @@ public class PopulatorService {
     Utils.JAMES = populatorBean.getDefaultData().getJames();
     Utils.MARY = populatorBean.getDefaultData().getMary();
     Utils.ROBERT = populatorBean.getDefaultData().getRobert();
+    Utils.USER = populatorBean.getDefaultData().getUser();
 
     switch (filter)
     {

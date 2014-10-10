@@ -1,7 +1,7 @@
 package org.exoplatform.addons.populator.bean;
 
 public class Default  {
-  String mary="mary", james="james", robert="robert";
+  String mary="mary", james="james", robert="robert", user="benjamin";
 
   public String getMary() {
     return mary;
@@ -27,4 +27,11 @@ public class Default  {
     this.robert = robert;
   }
 
+  public String getUser() {
+    return user;
+  }
+
+  public void setUser(String user) {
+    this.user = user;
+  }
 }

@@ -2,6 +2,7 @@ defaults:
 - mary: laura
   james: fabio
   robert: roberto
+  user: <USERNAME>
 users:
 - username: john
   position: Administrator
