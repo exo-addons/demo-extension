@@ -35,6 +35,16 @@ public class CustomizeSpaceHomePageListener extends SpaceListenerPlugin {
     public void spaceCreated(org.exoplatform.social.core.space.spi.SpaceLifeCycleEvent spaceLifeCycleEvent){
 
         spaceIds.put(spaceLifeCycleEvent.getSpace().getGroupId(), true);
+        String spaceGroupId = spaceLifeCycleEvent.getSpace().getGroupId();
+        Boolean spaceCreated = spaceIds.get(spaceGroupId);
+        if (spaceCreated == null || !spaceCreated) {
+            return;
+        }
+
+        spaceIds.put(spaceGroupId, false);
+        String spacePrettyName = spaceLifeCycleEvent.getSpace().getPrettyName();
+        // Create the space HomePage
+        spaceCustomizationService.createSpaceHomePage(spacePrettyName, spaceGroupId);
 
     }
 
@@ -49,16 +59,7 @@ public class CustomizeSpaceHomePageListener extends SpaceListenerPlugin {
 
     @Override
     public void applicationAdded(org.exoplatform.social.core.space.spi.SpaceLifeCycleEvent spaceLifeCycleEvent){
-        String spaceGroupId = spaceLifeCycleEvent.getSpace().getGroupId();
-        Boolean spaceCreated = spaceIds.get(spaceGroupId);
-        if (spaceCreated == null || !spaceCreated) {
-            return;
-        }
 
-        spaceIds.put(spaceGroupId, false);
-        String spacePrettyName = spaceLifeCycleEvent.getSpace().getPrettyName();
-        // Create the space HomePage
-        spaceCustomizationService.createSpaceHomePage(spacePrettyName, spaceGroupId);
 
     }
 
