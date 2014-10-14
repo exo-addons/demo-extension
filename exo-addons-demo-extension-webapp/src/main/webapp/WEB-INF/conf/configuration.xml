@@ -9,5 +9,6 @@
   <import>war:/conf/demo/organization-configuration.xml</import>
     <import>war:/conf/demo/spaces-configuration.xml</import>
     <import>war:/conf/demo/ecms/application-templates-configuration.xml</import>
+    <import>war:/conf/demo/portlet/dynamic-container-configuration.xml</import>
 
 </configuration>

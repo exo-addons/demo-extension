@@ -28,24 +28,18 @@
   <page-nodes>
 
     <node>
-      <uri>home</uri>
-      <name>home</name>
-      <label>#{portal.intranet.home}</label>
-      <page-reference>portal::intranet::homepage-demo</page-reference>
-      <node>
-        <uri>home/demo</uri>
-        <name>demo</name>
-        <label xml:lang="en">Demo</label>
-        <visibility>HIDDEN</visibility>
-        <page-reference>portal::intranet::demo</page-reference>
-      </node>
-    </node>
-    <node>
       <uri>acme_expenses_report</uri>
       <name>acme_expenses_report</name>
       <label xml:lang="en">Acme Expenses Report</label>
       <visibility>DISPLAYED</visibility>
       <page-reference>portal::intranet::acme_expenses_report</page-reference>
+      <node>
+        <uri>acme_expenses_report/demo</uri>
+        <name>demo</name>
+        <label xml:lang="en">Demo</label>
+        <visibility>HIDDEN</visibility>
+        <page-reference>portal::intranet::demo</page-reference>
+      </node>
     </node>
     <node>
       <uri>news</uri>

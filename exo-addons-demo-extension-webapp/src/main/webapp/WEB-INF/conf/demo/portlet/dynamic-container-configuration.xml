@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    Copyright (C) 2009 eXo Platform SAS.
+
+    This is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as
+    published by the Free Software Foundation; either version 2.1 of
+    the License, or (at your option) any later version.
+
+    This software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this software; if not, write to the Free
+    Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301 USA, or see the FSF site: http://www.fsf.org.
+
+-->
+
+<configuration
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+        xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+
+  <!--  RESPONSIVE APPLICATION  -->
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.commons.addons.AddOnService</target-component>
+    <component-plugin>
+      <name>addPlugin</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.commons.addons.AddOnPluginImpl</type>
+      <description>add application Config</description>
+      <init-params>
+        <value-param>
+          <name>priority</name>
+          <value>1</value>
+        </value-param>
+        <value-param>
+          <name>containerName</name>
+          <value>left-topNavigation-container</value>
+        </value-param>
+        <object-param>
+          <name>ResponsiveApplication</name>
+          <description>ResponsiveApplication</description>
+          <object type="org.exoplatform.commons.addons.PortletModel">
+            <field name="contentId">
+              <string>portlet-pack/ResponsiveApplication</string>
+            </field>
+            <field name="permissions">
+              <collection type="java.util.ArrayList">
+                <value>
+                  <string>*:/platform/users</string>
+                </value>
+              </collection>
+            </field>
+            <field name="showInfoBar">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationState">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationMode">
+              <boolean>false</boolean>
+            </field>
+          </object>
+        </object-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+
+
+
+  <!--  CHAT NOTIFICATION  -->
+
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.commons.addons.AddOnService</target-component>
+    <component-plugin>
+      <name>addPlugin</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.commons.addons.AddOnPluginImpl</type>
+      <description>add application Config</description>
+      <init-params>
+        <value-param>
+          <name>priority</name>
+          <value>1</value>
+        </value-param>
+        <value-param>
+          <name>containerName</name>
+          <value>middle-topNavigation-container</value>
+        </value-param>
+        <object-param>
+          <!-- You must define here the portlet Name -->
+          <name>ChatNotificationApplication</name>
+          <description>ChatNotificationApplication</description>
+          <object type="org.exoplatform.commons.addons.PortletModel">
+            <field name="contentId">
+              <string>chat/ChatNotificationApplication</string>
+            </field>
+            <!--
+            <field name="portletPrefs">
+              <map type="java.util.HashMap">
+                <entry>
+                  <key><string>pref1</string></key>
+                  <value><string>value1</string></value>
+                </entry>
+              </map>
+            </field>
+            -->
+            <field name="permissions">
+              <collection type="java.util.ArrayList">
+                <value>
+                  <string>*:/platform/users</string>
+                </value>
+              </collection>
+            </field>
+            <field name="showInfoBar">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationState">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationMode">
+              <boolean>false</boolean>
+            </field>
+          </object>
+        </object-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+
+
+
+
+  <!--  FAVORITES APPLICATION  -->
+
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.commons.addons.AddOnService</target-component>
+    <component-plugin>
+      <name>addPlugin</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.commons.addons.AddOnPluginImpl</type>
+      <description>add application Config</description>
+      <init-params>
+        <value-param>
+          <name>priority</name>
+          <value>1</value>
+        </value-param>
+        <value-param>
+          <name>containerName</name>
+          <value>middle-topNavigation-container</value>
+        </value-param>
+        <object-param>
+          <!-- You must define here the portlet Name -->
+          <name>FavoritesApplication</name>
+          <description>FavoritesApplication</description>
+          <object type="org.exoplatform.commons.addons.PortletModel">
+            <field name="contentId">
+              <string>portlet-pack/FavoritesApplication</string>
+            </field>
+            <!--
+            <field name="portletPrefs">
+              <map type="java.util.HashMap">
+                <entry>
+                  <key><string>pref1</string></key>
+                  <value><string>value1</string></value>
+                </entry>
+              </map>
+            </field>
+            -->
+            <field name="permissions">
+              <collection type="java.util.ArrayList">
+                <value>
+                  <string>*:/platform/users</string>
+                </value>
+              </collection>
+            </field>
+            <field name="showInfoBar">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationState">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationMode">
+              <boolean>false</boolean>
+            </field>
+          </object>
+        </object-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+
+
+
+
+
+  <!--  TODO APPLICATION ON HOMEPAGE -->
+
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.commons.addons.AddOnService</target-component>
+    <component-plugin>
+      <name>addPlugin</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.commons.addons.AddOnPluginImpl</type>
+      <description>add application Config</description>
+      <init-params>
+        <value-param>
+          <name>priority</name>
+          <value>1</value>
+        </value-param>
+        <value-param>
+          <name>containerName</name>
+          <value>top-application-container</value>
+        </value-param>
+        <object-param>
+          <!-- You must define here the portlet Name -->
+          <name>TodoApplication</name>
+          <description>TodoApplication</description>
+          <object type="org.exoplatform.commons.addons.PortletModel">
+            <field name="contentId">
+              <string>demo-extension/TodoApplication</string>
+            </field>
+            <!--
+            <field name="portletPrefs">
+              <map type="java.util.HashMap">
+                <entry>
+                  <key><string>pref1</string></key>
+                  <value><string>value1</string></value>
+                </entry>
+              </map>
+            </field>
+            -->
+            <field name="permissions">
+              <collection type="java.util.ArrayList">
+                <value>
+                  <string>*:/platform/users</string>
+                </value>
+              </collection>
+            </field>
+            <field name="showInfoBar">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationState">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationMode">
+              <boolean>false</boolean>
+            </field>
+          </object>
+        </object-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+
+
+
+
+
+  <!--  NEWS CLV ON HOMEPAGE -->
+
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.commons.addons.AddOnService</target-component>
+    <component-plugin>
+      <name>addPlugin</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.commons.addons.AddOnPluginImpl</type>
+      <description>add application Config</description>
+      <init-params>
+        <value-param>
+          <name>priority</name>
+          <value>1</value>
+        </value-param>
+        <value-param>
+          <name>containerName</name>
+          <value>top-application-container</value>
+        </value-param>
+        <object-param>
+          <!-- You must define here the portlet Name -->
+          <name>ContentListViewerPortlet</name>
+          <description>ContentListViewerPortlet</description>
+          <object type="org.exoplatform.commons.addons.PortletModel">
+            <field name="contentId">
+              <string>presentation/ContentListViewerPortlet</string>
+            </field>
+            <field name="portletPrefs">
+              <map type="java.util.HashMap">
+                <entry>
+                  <key><string>folderPath</string></key>
+                  <value><string>repository:collaboration:/sites/intranet/web contents/news</string></value>
+                </entry>
+                <entry>
+                  <key><string>orderBy</string></key>
+                  <value><string>exo:dateCreated</string></value>
+                </entry>
+                <entry>
+                  <key><string>orderType</string></key>
+                  <value><string>ASC</string></value>
+                </entry>
+                <entry>
+                  <key><string>header</string></key>
+                  <value><string>Company News</string></value>
+                </entry>
+                <entry>
+                  <key><string>formViewTemplatePath</string></key>
+                  <value><string>/exo:ecm/views/templates/content-list-viewer/list/OneColumnHome.gtmpl</string></value>
+                </entry>
+                <entry>
+                  <key><string>paginatorTemplatePath</string></key>
+                  <value><string>/exo:ecm/views/templates/content-list-viewer/paginators/EmptyPaginator.gtmpl</string></value>
+                </entry>
+                <entry>
+                  <key><string>basePath</string></key>
+                  <value><string>detail</string></value>
+                </entry>
+                <entry>
+                  <key><string>itemsPerPage</string></key>
+                  <value><string>5</string></value>
+                </entry>
+                <entry>
+                  <key><string>showTitle</string></key>
+                  <value><string>true</string></value>
+                </entry>
+                <entry>
+                  <key><string>showDateCreated</string></key>
+                  <value><string>true</string></value>
+                </entry>
+                <entry>
+                  <key><string>showHeader</string></key>
+                  <value><string>true</string></value>
+                </entry>
+                <entry>
+                  <key><string>showLink</string></key>
+                  <value><string>true</string></value>
+                </entry>
+                <entry>
+                  <key><string>showReadmore</string></key>
+                  <value><string>false</string></value>
+                </entry>
+                <entry>
+                  <key><string>showRssLink</string></key>
+                  <value><string>true</string></value>
+                </entry>
+              </map>
+            </field>
+            <field name="permissions">
+              <collection type="java.util.ArrayList">
+                <value>
+                  <string>*:/platform/users</string>
+                </value>
+              </collection>
+            </field>
+            <field name="showInfoBar">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationState">
+              <boolean>false</boolean>
+            </field>
+            <field name="showApplicationMode">
+              <boolean>false</boolean>
+            </field>
+          </object>
+        </object-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+
+
+</configuration>
