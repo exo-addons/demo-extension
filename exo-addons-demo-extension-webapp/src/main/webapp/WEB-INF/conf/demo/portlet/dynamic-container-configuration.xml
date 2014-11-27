@@ -75,67 +75,6 @@
 
 
 
-  <!--  CHAT NOTIFICATION  -->
-
-
-  <external-component-plugins>
-    <target-component>org.exoplatform.commons.addons.AddOnService</target-component>
-    <component-plugin>
-      <name>addPlugin</name>
-      <set-method>addPlugin</set-method>
-      <type>org.exoplatform.commons.addons.AddOnPluginImpl</type>
-      <description>add application Config</description>
-      <init-params>
-        <value-param>
-          <name>priority</name>
-          <value>1</value>
-        </value-param>
-        <value-param>
-          <name>containerName</name>
-          <value>middle-topNavigation-container</value>
-        </value-param>
-        <object-param>
-          <!-- You must define here the portlet Name -->
-          <name>ChatNotificationApplication</name>
-          <description>ChatNotificationApplication</description>
-          <object type="org.exoplatform.commons.addons.PortletModel">
-            <field name="contentId">
-              <string>chat/ChatNotificationApplication</string>
-            </field>
-            <!--
-            <field name="portletPrefs">
-              <map type="java.util.HashMap">
-                <entry>
-                  <key><string>pref1</string></key>
-                  <value><string>value1</string></value>
-                </entry>
-              </map>
-            </field>
-            -->
-            <field name="permissions">
-              <collection type="java.util.ArrayList">
-                <value>
-                  <string>*:/platform/users</string>
-                </value>
-              </collection>
-            </field>
-            <field name="showInfoBar">
-              <boolean>false</boolean>
-            </field>
-            <field name="showApplicationState">
-              <boolean>false</boolean>
-            </field>
-            <field name="showApplicationMode">
-              <boolean>false</boolean>
-            </field>
-          </object>
-        </object-param>
-      </init-params>
-    </component-plugin>
-  </external-component-plugins>
-
-
-
 
   <!--  FAVORITES APPLICATION  -->
 
