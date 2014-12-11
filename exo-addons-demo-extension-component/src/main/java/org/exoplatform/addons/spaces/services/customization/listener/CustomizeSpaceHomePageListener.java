@@ -115,4 +115,13 @@ public class CustomizeSpaceHomePageListener extends SpaceListenerPlugin {
     public void spaceAccessEdited(SpaceLifeCycleEvent event) {
 
     }
+    @Override
+    public void addInvitedUser(SpaceLifeCycleEvent var1){
+
+    }
+
+    @Override
+    public void addPendingUser(SpaceLifeCycleEvent var1) {
+
+    }
 }
