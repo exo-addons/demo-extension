@@ -34,34 +34,6 @@
           <scope>provided</scope>
       </dependency>
     <dependency>
-      <groupId>org.exoplatform.addons.chat</groupId>
-      <artifactId>server</artifactId>
-      <version>${chat.addon.version}</version>
-      <type>war</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.exoplatform.addons.chat</groupId>
-      <artifactId>application</artifactId>
-      <version>${chat.addon.version}</version>
-      <type>war</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.exoplatform.addons.chat</groupId>
-      <artifactId>exo-addons-chat-extension</artifactId>
-      <version>${chat.addon.version}</version>
-      <type>war</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.exoplatform.addons.chat</groupId>
-      <artifactId>exo-addons-chat-extension-config</artifactId>
-      <version>${chat.addon.version}</version>
-      <type>jar</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.exoplatform.addons.portlets</groupId>
       <artifactId>exo-addons-demo-portlets-webapp</artifactId>
       <version>${portlet.pack.version}</version>
