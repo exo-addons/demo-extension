@@ -62,7 +62,7 @@
                     <field  name="password"><string>gtngtn</string></field>
                     <field  name="firstName"><string>Root</string></field>
                     <field  name="lastName"><string>Root</string></field>
-                    <field  name="email"><string>root@localhost</string></field>
+                    <field  name="email"><string>root.exo@gmail.com</string></field>
                     <field  name="groups">
                       <string>
                         *:/platform/administrators,*:/platform/users,
@@ -79,7 +79,7 @@
                     <field  name="password"><string>gtngtn</string></field>
                     <field  name="firstName"><string>John</string></field>
                     <field  name="lastName"><string>Smith</string></field>
-                    <field  name="email"><string>john@localhost</string></field>
+                    <field  name="email"><string>john.smith.exop@gmail.com</string></field>
                     <field  name="groups">
                       <string>
                         *:/platform/administrators,*:/platform/users,
