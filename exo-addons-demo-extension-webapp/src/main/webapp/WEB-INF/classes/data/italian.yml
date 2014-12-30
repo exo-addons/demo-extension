@@ -8,14 +8,14 @@ users:
   position: Administrator
   firstname: John
   lastname: Smith
-  email: john@acme.com
+  email: john.smith.exop@gmail.com
   isAdmin: true
   avatar: eXo-Face-John.png
 - username: fabio
   position: Sales Manager
   firstname: Fabio
   lastname: Marcello
-  email: fabio@acme.com
+  email: mary.williams.exo@gmail.com
   avatar: eXo-Face-James.png
 - username: laura
   position: HR Manager

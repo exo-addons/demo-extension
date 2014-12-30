@@ -8,20 +8,20 @@ users:
   position: Administrator
   firstname: John
   lastname: Smith
-  email: john@acme.com
+  email: john.smith.exop@gmail.com
   isAdmin: true
   avatar: eXo-Face-John.png
 - username: james
   position: Web designer
   firstname: James
   lastname: Potter
-  email: james@acme.com
+  email: james.potter.exo@gmail.com
   avatar: eXo-Face-James.png
 - username: mary
   position: HR Manager
   firstname: Mary
   lastname: Williams
-  email: mary@acme.com
+  email: mary.williams.exo@gmail.com
   avatar: eXo-Face-Mary.png
 - username: jack
   position: Developer

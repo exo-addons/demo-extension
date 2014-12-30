@@ -8,7 +8,7 @@ users:
   position: Administrateur
   firstname: John
   lastname: Martin
-  email: john@acme.com
+  email: john.smith.exop@gmail.com
   isAdmin: true
   avatar: eXo-Face-John.png
 - username: jean
@@ -21,7 +21,7 @@ users:
   position: Responsable RH
   firstname: Marie
   lastname: Coubertin
-  email: marie@acme.com
+  email: mary.williams.exo@gmail.com
   avatar: eXo-Face-Mary.png
 - username: jack
   position: Developeur
