@@ -36,7 +36,17 @@
       <artifactId>platform-welcome-screens-component</artifactId>
       <scope>provided</scope>
     </dependency>
-    <dependency>
+      <dependency>
+          <groupId>org.exoplatform.ecms</groupId>
+          <artifactId>ecms-core-webui-explorer</artifactId>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.exoplatform.platform-ui</groupId>
+          <artifactId>platform-ui-webui-core</artifactId>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
       <groupId>org.exoplatform.commons</groupId>
       <artifactId>commons-api</artifactId>
       <scope>provided</scope>

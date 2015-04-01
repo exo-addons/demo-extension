@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+    <UIActionBar>
+        <tooltip>
+            <PrintDocument>Print</PrintDocument>
+            <SharePublicLink>Share document</SharePublicLink>
+            <SpaceDocument>Move</SpaceDocument>
+        </tooltip>
+    </UIActionBar>
+    <UITabForm>
+        <label>
+            <printDocument>Print document</printDocument>
+            <sharePublicLink>Share document</sharePublicLink>
+            <spaceDocument>Move to space</spaceDocument>
+        </label>
+    </UITabForm>
+    <UIShareSettings>
+        <label>
+            <link>
+                <title>Link to share</title>
+                <warning>This is the public address for this file. Use carefully, others can download your file even if it is stored in your Private space </warning>
+            </link>
+            <button>
+                <close>Close</close>
+            </button>
+        </label>
+    </UIShareSettings>
+    <UIPopupWindow>
+        <title>
+            <UISpaceListForm>Moving Document</UISpaceListForm>
+            <UIShareSettings>Public link</UIShareSettings>
+        </title>
+    </UIPopupWindow>
+</bundle>

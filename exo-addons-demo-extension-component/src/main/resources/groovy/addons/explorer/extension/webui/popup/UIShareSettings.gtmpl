@@ -1,0 +1,17 @@
+<div class="$uicomponent.id">
+	<ul class="singleMessage popupMessage resizable">
+		<li>
+			<span>
+				<%=_ctx.appRes(uicomponent.getId() + ".label.link.title")%>:
+			</span>
+		</li>
+		<li>	
+			<span>
+				<%=uicomponent.getPublicURL() %>
+			</span>
+		</li>
+	</ul>
+	<div class="uiAction uiActionBorder">
+		<button type="button" onclick="<%=uicomponent.event("Close")%>" class="btn"><%=_ctx.appRes(uicomponent.getId() + ".label.button.close")%></button>
+	</div>
+</div>
