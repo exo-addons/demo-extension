@@ -56,6 +56,7 @@ public class DocumentService {
     storeFile("Fiche_solution_Exo_Platform.pdf", "social_intranet", false, null, username);
     storeFile("May MTD 2013 Funnel report Week 21.pptx", "marketing_analytics", false, null, Utils.MARY);
     storeFile("PUR1207_02_RFP_Final.docx", "social_intranet", false, null, Utils.JOHN);
+    storeVideos("Highlights on eXo Platform 4.mp4", "ask_a_colleague", false, null, Utils.JOHN, null, "collaboration", "videos");
   }
 
   public void uploadNews()
@@ -185,6 +186,48 @@ public class DocumentService {
         InputStream inputStream = Utils.getFile(filename, type);
         jcrContent.setProperty("jcr:data", inputStream);
         session.save();
+      }
+
+
+    }
+    catch (Exception e)
+    {
+      System.out.println("JCR::" + e.getMessage());
+    }
+    endSession();
+  }
+
+  protected void storeVideos(String filename, String name, boolean isPrivateContext, String uuid, String username, String path, String workspace, String type) {
+
+    SessionProvider sessionProvider = startSessionAs(username);
+
+    try {
+      //get info
+      Session session = sessionProvider.getSession(workspace, repositoryService_.getCurrentRepository());
+
+      Node homeNode;
+
+      Node rootNode = session.getRootNode();
+
+      homeNode = rootNode.getNode(getSpacePath(name));
+
+      Node docNode = homeNode.getNode("Documents");
+
+      if (!docNode.hasNode(filename) && (uuid==null || "---".equals(uuid))) {
+        Node fileNode = docNode.addNode(filename, "nt:file");
+        Node jcrContent = fileNode.addNode("jcr:content", "nt:resource");
+        InputStream inputStream = Utils.getFile(filename, type);
+        jcrContent.setProperty("jcr:data", inputStream);
+        jcrContent.setProperty("jcr:lastModified", Calendar.getInstance());
+        jcrContent.setProperty("jcr:encoding", "UTF-8");
+        if (filename.endsWith(".mp4")) {
+          jcrContent.setProperty("jcr:mimeType", "video/mp4");
+        }
+        session.save();
+        if (!"root".equals(name)) {
+          listenerService_.broadcast(FILE_CREATED_ACTIVITY, null, fileNode);
+        }
+
       }
 
 

@@ -30,7 +30,7 @@ var demoExtension = new DemoExtension();
     });
 
   });
-})(jqchat);
+})(jQuery);
 
 
 function DemoExtension() {
@@ -46,14 +46,14 @@ DemoExtension.prototype.initOptions = function(options) {
   this.urlSave = options.urlSave;
 
   this.notifEventInt = window.clearInterval(this.notifEventInt);
-  this.notifEventInt = setInterval(jqchat.proxy(this.refreshElements, this), 1000);
+  this.notifEventInt = setInterval(jQuery.proxy(this.refreshElements, this), 1000);
   this.refreshElements();
 
 };
 
 
 DemoExtension.prototype.startPopulating = function() {
-  jqchat(".btn-start").addClass("disabled");
+  jQuery(".btn-start").addClass("disabled");
 
   demoExtension.populate(1, function() {
     demoExtension.populate(2, function () {
@@ -66,7 +66,7 @@ DemoExtension.prototype.startPopulating = function() {
                   demoExtension.populate(9, function () {
                     demoExtension.populate(9, function() {
                       demoExtension.populate(10, function() {
-                        jqchat(".btn-start").removeClass("disabled");
+                        jQuery(".btn-start").removeClass("disabled");
                       });
                     });
                   });
@@ -83,7 +83,7 @@ DemoExtension.prototype.startPopulating = function() {
 
 DemoExtension.prototype.populate = function(filter, callback) {
 
-  jqchat.ajax({
+  jQuery.ajax({
     url: this.urlStart,
     dataType: "json",
     data: {
@@ -106,7 +106,7 @@ DemoExtension.prototype.populate = function(filter, callback) {
 
 DemoExtension.prototype.saveCustomData = function(username, fullname, language, callback) {
 
-  jqchat.ajax({
+  jQuery.ajax({
     url: this.urlSave,
     dataType: "json",
     data: {
@@ -132,7 +132,7 @@ DemoExtension.prototype.saveCustomData = function(username, fullname, language, 
 
 DemoExtension.prototype.refreshElements = function() {
 
-  jqchat.ajax({
+  jQuery.ajax({
     url: this.urlElements,
     dataType: "json",
     context: this,
@@ -143,7 +143,7 @@ DemoExtension.prototype.refreshElements = function() {
     error: function () {
       //setTimeout(jqchat.proxy(this.startPopulating, this), 3000);
       console.log("error in server call");
-      jqchat(".btn-start").removeClass("disabled");
+      jQuery(".btn-start").removeClass("disabled");
     }
   });
 };
@@ -164,7 +164,7 @@ DemoExtension.prototype.updateElementsContainer = function(elements) {
     html += '  </div>';
     html += '</div>';
 
-    jqchat(".elements-container").html(html);
+    jQuery(".elements-container").html(html);
 
   }
 };
