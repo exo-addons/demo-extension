@@ -1,32 +1,35 @@
 Demo Bundle Add-On
-============
+==================
 
-This Demo add-on will prepare eXo Platform 4 with Demo data :
+This demo add-on will populate eXo Platform 4 with sample data for demonstration purposes. This data include:
 - Users
+- Social activities & comments
 - Spaces
 - Documents
-- Agenda
-- Forums
-- Activities
+- Wiki pages
+- Calendar events
+- Forum discussion
+- etc.
 
-It will also add new Applications, such as :
-- eXo Chat (https://github.com/exo-addons/chat-application)
-- A list of News using eXo WCM
-- An RSS Application
-- A Mockup Application to show Interactive Home
+It will also add new pages and mockup applications, such as :
+- A mockup "Expenses Report" application accessible from the site's navigation menu.
+- A mockup CRM application on the Sales Space's navigation menu.
+- A "Favorites" application on the top toolbar (operational, not a mockup)
+- An RSS application (operational, not a mockup)
+- A news page displaying both news articles created within eXo (using WCM) and an external RSS feed.
 
-You can discuss or find help on [eXo Demo Extension Community](http://community.exoplatform.com/portal/g/:spaces:demo_extension/demo_extension)
+
+You can discuss this or find help in [the Demo Extension's space](http://community.exoplatform.com/portal/g/:spaces:demo_extension/demo_extension) on eXo Platform's community site.
 
 <img src="https://raw.github.com/exo-addons/demo-extension/master/data/screenshots/demo-home.png" alt="eXo Demo Extension on Platform 4" width="800">
 
 Be Up and Running
-===============
+=================
 
 Jump to Wiki Install Page : [Build and Install](https://github.com/exo-addons/demo-extension/wiki/Build-and-Install)
 
-
 License
-===============
+========
 
 This is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as
