@@ -1,7 +1,7 @@
 Demo Bundle Add-On
 ==================
 
-This demo add-on will populate eXo Platform 4 with sample data for demonstration purposes. This data include:
+This demo add-on will populate eXo Platform 4 with sample data for demonstration purposes. This includes:
 - Users
 - Social activities & comments
 - Spaces
@@ -19,14 +19,14 @@ It will also add new pages and mockup applications, such as :
 - A news page displaying both news articles created within eXo (using WCM) and an external RSS feed.
 
 
-You can discuss this or find help in [the Demo Extension's space](http://community.exoplatform.com/portal/g/:spaces:demo_extension/demo_extension) on eXo Platform's community site.
+For discussion and help on this add-on, you may join [the Demo Extension's space](http://community.exoplatform.com/portal/g/:spaces:demo_extension/demo_extension) on the eXo Platform community site.
 
 <img src="https://raw.github.com/exo-addons/demo-extension/master/data/screenshots/demo-home.png" alt="eXo Demo Extension on Platform 4" width="800">
 
 Be Up and Running
 =================
 
-Jump to Wiki Install Page : [Build and Install](https://github.com/exo-addons/demo-extension/wiki/Build-and-Install)
+Jump to the installation wiki page: [Build and Install](https://github.com/exo-addons/demo-extension/wiki/Build-and-Install)
 
 License
 ========
