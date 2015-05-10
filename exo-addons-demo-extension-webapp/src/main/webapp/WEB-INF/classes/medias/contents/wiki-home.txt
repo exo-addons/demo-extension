@@ -1,21 +1,20 @@
-= Welcome to your new Social Intranet! =
+= **Welcome to your new Social Intranet!** =
 
 \\
 
-|[[image:http://www.acme.com/social-resources/skin/images/Activity/starterActImg.png||style="" width="300px"]] |(((
-This is your Wiki. It will help you to keep an eye on important things happening in your social intranet.
+|[[image:http://www.exoplatform.com/rest/jcr/repository/collaboration/sites/website/web%20contents/10.Homepage/Slider/images/connect-banner.png||style="" width="800px"]] |(((
+This is your Wiki. It will help you keep an eye on important things happening in your social intranet's knowledge base.
 
-Connect and discuss with others
+=== **Connect and discuss with others** ===
 Build your network by connecting with colleagues in Connections. They will be able to follow, comment or like all the ideas, moods, status updates, links or documents that you share above. Let the discussion start!
 
-Discover the power of social collaboration
+=== **Discover the power of social collaboration** ===
 You can do a lot of useful things with Documents, Wikis, Forums and Calendars applications. Important things you do with them will be summarised automatically in the activity stream with just the right level of information to keep you and your network updated.
 
-Use spaces for team or project matters
+=== **Use spaces for your teams or projects** ===
 Create or join collaboration Spaces for your teams, projects or communities. Spaces are ideal places for collaborating on specific topics. All activity happening in your spaces is also available in the activity stream.
 
-Anywhere at anytime\\
-
+=== **Anywhere, anytime** ===
 Download mobile applications from the iOS App Store and Google Play. With your mobile device, you can also check the activity stream. 
 )))
 
