@@ -12,7 +12,7 @@ import org.exoplatform.social.core.manager.RelationshipManager;
 import org.exoplatform.social.core.model.AvatarAttachment;
 import org.exoplatform.webui.exception.MessageException;
 
-import javax.enterprise.context.ApplicationScoped;
+import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 @Named("userService")
-@ApplicationScoped
+@SessionScoped
 public class UserService {
 
   OrganizationService organizationService_;

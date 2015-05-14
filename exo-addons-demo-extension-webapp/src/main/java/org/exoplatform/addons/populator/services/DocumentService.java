@@ -9,7 +9,7 @@ import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
 import org.exoplatform.services.security.MembershipEntry;
 
-import javax.enterprise.context.ApplicationScoped;
+import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jcr.*;
@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.logging.Logger;
 
 @Named("documentService")
-@ApplicationScoped
+@SessionScoped
 public class DocumentService {
 
   Logger log = Logger.getLogger("DocumentService");
