@@ -15,6 +15,7 @@ import org.exoplatform.webui.exception.MessageException;
 import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -123,6 +124,7 @@ public class UserService {
       if (identity!=null) {
         Profile profile = identity.getProfile();
         profile.setProperty(Profile.POSITION, position);
+        profile.setListUpdateTypes(Arrays.asList(Profile.UpdateType.CONTACT));
         try {
           identityManager_.updateProfile(profile);
         } catch (MessageException e) {
@@ -143,6 +145,8 @@ public class UserService {
       AvatarAttachment avatarAttachment = Utils.getAvatarAttachment(fileName);
       Profile p = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username, true).getProfile();
       p.setProperty(Profile.AVATAR, avatarAttachment);
+      p.setListUpdateTypes(Arrays.asList(Profile.UpdateType.AVATAR));
+
       Map<String, Object> props = p.getProperties();
 
       // Removes avatar url and resized avatar
