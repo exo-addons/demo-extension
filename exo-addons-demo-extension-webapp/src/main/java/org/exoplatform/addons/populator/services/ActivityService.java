@@ -54,6 +54,7 @@ public class ActivityService {
     activity.setBody(activityBean.getBody());
     activity.setTitle(activityBean.getBody());
     activity.setUserId(identity.getId());
+    activity.setType("DEFAULT_ACTIVITY");
     activity = activityManager_.saveActivity(identity, activity);
 /*
     Thread.sleep(500);
