@@ -9,14 +9,14 @@ import org.exoplatform.social.core.space.SpaceUtils;
 import org.exoplatform.social.core.space.impl.DefaultSpaceApplicationHandler;
 import org.exoplatform.social.core.space.model.Space;
 
-import javax.enterprise.context.ApplicationScoped;
+import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 import java.util.logging.Logger;
 
 @Named("spaceService")
-@ApplicationScoped
+@SessionScoped
 public class SpaceService {
 
   org.exoplatform.social.core.space.spi.SpaceService spaceService_;

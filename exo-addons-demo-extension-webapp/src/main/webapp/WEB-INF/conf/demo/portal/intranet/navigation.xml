@@ -28,13 +28,13 @@
   <page-nodes>
 
     <node>
-      <uri>acme_expenses_report</uri>
-      <name>acme_expenses_report</name>
+      <uri>acme-expenses-report</uri>
+      <name>acme-expenses-report</name>
       <label xml:lang="en">Acme Expenses Report</label>
       <visibility>DISPLAYED</visibility>
-      <page-reference>portal::intranet::acme_expenses_report</page-reference>
+      <page-reference>portal::intranet::acme-expenses-report</page-reference>
       <node>
-        <uri>acme_expenses_report/demo</uri>
+        <uri>acme-expenses-report/demo</uri>
         <name>demo</name>
         <label xml:lang="en">Demo</label>
         <visibility>HIDDEN</visibility>

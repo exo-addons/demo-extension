@@ -1,10 +1,11 @@
 package org.exoplatform.addons.populator.portlet.todo;
 
 import juzu.Path;
+import juzu.Response;
 import juzu.View;
-import juzu.request.RenderContext;
 import juzu.template.Template;
 import org.exoplatform.addons.populator.services.Utils;
+import org.exoplatform.web.application.RequestContext;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -36,29 +37,29 @@ public class TodoApplication
   Template maryTemplate;
 
   @View
-  public void index(RenderContext renderContext) throws IOException
+  public Response index() throws IOException
   {
-    String remoteUser = renderContext.getSecurityContext().getRemoteUser();
+    String remoteUser = RequestContext.getCurrentInstance().getRemoteUser();
 
     if (Utils.JOHN.equals(remoteUser))
     {
-      johnTemplate.render();
+      return johnTemplate.ok();
     }
     else if (Utils.ROBERT.equals(remoteUser))
     {
-      robertTemplate.render();
+      return robertTemplate.ok();
     }
     else if (Utils.JAMES.equals(remoteUser))
     {
-      jamesTemplate.render();
+      return jamesTemplate.ok();
     }
     else if (Utils.MARY.equals(remoteUser))
     {
-      maryTemplate.render();
+      return maryTemplate.ok();
     }
     else
     {
-      indexTemplate.render();
+      return indexTemplate.ok();
     }
   }
 

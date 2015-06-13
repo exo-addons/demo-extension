@@ -8,7 +8,7 @@ import org.exoplatform.forum.service.Utils;
 import org.exoplatform.poll.service.Poll;
 import org.exoplatform.poll.service.PollService;
 
-import javax.enterprise.context.ApplicationScoped;
+import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jcr.Node;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Named("forumService")
-@ApplicationScoped
+@SessionScoped
 public class ForumService {
 
   Logger log = Logger.getLogger("ForumService");

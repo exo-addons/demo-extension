@@ -1,16 +1,15 @@
 package org.exoplatform.addons.populator.services;
 
+import juzu.SessionScoped;
 import org.exoplatform.addons.populator.bean.ActivityBean;
 import org.exoplatform.social.common.RealtimeListAccess;
 import org.exoplatform.social.core.activity.model.ExoSocialActivity;
 import org.exoplatform.social.core.activity.model.ExoSocialActivityImpl;
 import org.exoplatform.social.core.identity.model.Identity;
 import org.exoplatform.social.core.identity.provider.OrganizationIdentityProvider;
-import org.exoplatform.social.core.identity.provider.SpaceIdentityProvider;
 import org.exoplatform.social.core.manager.ActivityManager;
 import org.exoplatform.social.core.manager.IdentityManager;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 @Named("activityService")
-@ApplicationScoped
+@SessionScoped
 public class ActivityService {
 
   Logger log = Logger.getLogger("ActivityService");
@@ -55,6 +54,7 @@ public class ActivityService {
     activity.setBody(activityBean.getBody());
     activity.setTitle(activityBean.getBody());
     activity.setUserId(identity.getId());
+    activity.setType("DEFAULT_ACTIVITY");
     activity = activityManager_.saveActivity(identity, activity);
 /*
     Thread.sleep(500);
