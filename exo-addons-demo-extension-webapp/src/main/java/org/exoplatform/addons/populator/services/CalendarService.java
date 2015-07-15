@@ -9,14 +9,14 @@ import org.exoplatform.calendar.service.Utils;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.Group;
 
-import javax.enterprise.context.ApplicationScoped;
+import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.*;
 import java.util.logging.Logger;
 
 @Named("calendarService")
-@ApplicationScoped
+@SessionScoped
 public class CalendarService {
 
   org.exoplatform.calendar.service.CalendarService calendarService_;

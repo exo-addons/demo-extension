@@ -6,14 +6,14 @@ import org.exoplatform.wiki.mow.core.api.wiki.PageImpl;
 import org.exoplatform.wiki.resolver.TitleResolver;
 import org.xwiki.rendering.syntax.Syntax;
 
-import javax.enterprise.context.ApplicationScoped;
+import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 import java.util.logging.Logger;
 
 @Named("wikiService")
-@ApplicationScoped
+@SessionScoped
 public class WikiService {
 
   org.exoplatform.wiki.service.WikiService wikiService_;

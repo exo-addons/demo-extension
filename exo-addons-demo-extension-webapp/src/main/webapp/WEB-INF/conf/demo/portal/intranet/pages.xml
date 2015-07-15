@@ -144,8 +144,8 @@
 
   </page>
   <page>
-    <name>acme_expenses_report</name>
-    <title>acme_expenses_report</title>
+    <name>acme-expenses-report</name>
+    <title>acme-expenses-report</title>
     <access-permissions>*:/platform/users</access-permissions>
     <edit-permission>*:/platform/administrators</edit-permission>
     <show-max-window>false</show-max-window>

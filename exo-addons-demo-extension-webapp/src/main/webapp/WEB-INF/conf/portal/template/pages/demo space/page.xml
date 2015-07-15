@@ -66,6 +66,7 @@
                 </portlet>
                 <show-info-bar>false</show-info-bar>
             </portlet-application>
+<!--
             <portlet-application>
                 <portlet>
                     <application-ref>portlet-pack</application-ref>
@@ -80,6 +81,7 @@
                 </portlet>
                 <show-info-bar>false</show-info-bar>
             </portlet-application>
+ -->
             <portlet-application>
                 <portlet>
                     <application-ref>portlet-pack</application-ref>
