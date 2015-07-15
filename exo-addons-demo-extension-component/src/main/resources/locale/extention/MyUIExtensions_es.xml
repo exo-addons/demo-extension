@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+    <UIActionBar>
+        <tooltip>
+            <PrintDocument>Imprimir</PrintDocument>
+            <SharePublicLink>Compartir un documento</SharePublicLink>
+            <SpaceDocument>Mover</SpaceDocument>
+        </tooltip>
+    </UIActionBar>
+    <UITabForm>
+        <label>
+            <printDocument>Imprimir un documento</printDocument>
+            <sharePublicLink>Compartir un documento</sharePublicLink>
+            <spaceDocument>Mover a otro espacio</spaceDocument>
+        </label>
+    </UITabForm>
+    <UIShareSettings>
+        <label>
+            <link>
+                <title>Enlace para compartir</title>
+                <warning>Esta es la dirección pública del archivo. Úsela con precaución, cualquiera que la tenga puede descargar el archivo aunque se almacene en su espacio privado.</warning>
+            </link>
+            <button>
+                <close>Cerrar</close>
+            </button>
+        </label>
+    </UIShareSettings>
+    <UIPopupWindow>
+        <title>
+            <UISpaceListForm>Moviendo Documento</UISpaceListForm>
+            <UIShareSettings>Enlace Público</UIShareSettings>
+        </title>
+    </UIPopupWindow>
+</bundle>
