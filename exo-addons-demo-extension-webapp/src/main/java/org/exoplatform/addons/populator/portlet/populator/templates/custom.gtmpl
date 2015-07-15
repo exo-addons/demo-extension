@@ -27,6 +27,7 @@
         <option value="default" selected>Default</option>
         <option value="french">French</option>
         <option value="italian">Italian</option>
+        <option value="spanish">Spanish</option>
       </select></label>
     </div>
 

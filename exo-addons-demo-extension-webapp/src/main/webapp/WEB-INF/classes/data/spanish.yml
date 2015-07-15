@@ -1,0 +1,267 @@
+defaults:
+- mary: maria
+  james: jose
+  robert: roberto
+  user: <USERNAME>
+users:
+- username: john
+  position: Administrador
+  firstname: John
+  lastname: Gracia
+  email: john.smith.exop@gmail.com
+  isAdmin: true
+  avatar: eXo-Face-John.png
+- username: jose
+  position: Diseñador Web
+  firstname: Jose
+  lastname: Carmona
+  email: jose@acme.com
+  avatar: eXo-Face-James.png
+- username: maria
+  position: Responsable de RH
+  firstname: Maria
+  lastname: Huete
+  email: mary.williams.exo@gmail.com
+  avatar: eXo-Face-Mary.png
+- username: toni
+  position: Programador
+  firstname: Toni
+  lastname: Quesada
+  email: toni@acme.com
+  avatar: eXo-Face-Jack.png
+- username: roberto
+  position: Gerente
+  firstname: Roberto
+  lastname: Merino
+  email: roberto@acme.com
+  avatar: eXo-Face-Robert.png
+- username: <USERNAME>
+  position: Jefe de Proyecto
+  firstname: <FIRSTNAME>
+  lastname: <LASTNAME>
+  email: <USERNAME>@acme.com
+  avatar: eXo-Face-Benjamin.png
+
+relations:
+- inviting: <USERNAME>
+  invited: john
+- inviting: <USERNAME>
+  invited: maria
+- inviting: <USERNAME>
+  invited: roberto
+  confirm: false
+- inviting: toni
+  invited: <USERNAME>
+  confirm: false
+- inviting: jose
+  invited: john
+- inviting: jose
+  invited: maria
+- inviting: john
+  invited: maria
+- inviting: john
+  invited: roberto
+- inviting: maria
+  invited: roberto
+
+spaces:
+- displayName: Discusiones Generales
+  prettyName: public_discussions
+  creator: john
+  avatar: eXo-Space-Public-color.png
+  members:
+    - <USERNAME>
+    - maria
+    - jose
+    - roberto
+- displayName: Proyecto Intranet Social
+  prettyName: social_intranet
+  creator: <USERNAME>
+  avatar: eXo-Space-Social-color.png
+  members:
+    - john
+    - jose
+- displayName: Equipo Comercial
+  prettyName: sales
+  creator: <USERNAME>
+  avatar: eXo-Space-Sales-color.png
+  members:
+    - jose
+    - roberto
+- displayName: Marketing
+  prettyName: marketing_analytics
+  creator: <USERNAME>
+  avatar: eXo-Space-Marketing-color.png
+  members:
+    - roberto
+    - maria
+- displayName: Recursos Humanos
+  prettyName: human_resources
+  creator: maria
+  avatar: eXo-Space-RH-color.png
+  members:
+    - roberto
+    - <USERNAME>
+- displayName: Pregunta a un Compañero
+  prettyName: ask_a_colleague
+  creator: john
+  avatar: eXo-Space-Intranet-color.png
+  members:
+    - roberto
+    - maria
+    - jose
+    - <USERNAME>
+
+calendars:
+- user: john
+  calendars:
+  - name: John Gracia
+    color: powder_blue
+    type: user
+    events:
+      - title: Reunión CP
+        day: monday
+        start: 10:00
+        end: 12:00
+- user: <USERNAME>
+  calendars:
+  - name: <FULLNAME>
+    color: powder_blue
+    type: user
+    events:
+      - title: Revisión de especificaciones
+        day: monday
+        start: 17:00
+        end: 19:00
+      - title: Reunión de equipo
+        day: tuesday
+        start: 14:00
+        end: 18:00
+      - title: Reunión EOW
+        day: friday
+        start: 13:00
+        end: 15:00
+  - name: Discusiones Generales
+    color: orange
+    events:
+      - title: Migriación de la Intranet
+        day: wednesday
+        start: 10:00
+        end: 14:00
+      - title: Cena de Empresa
+        day: thursday
+        start: 17:30
+        end: 20:00
+  - name: Equipo Comercial
+    color: moss_green
+    events:
+      - title: Revisión de proceso
+        day: monday
+        start: 10:00
+        end: 11:30
+      - title: Demo de producto
+        day: wednesday
+        start: 15:00
+        end: 16:00
+      - title: Seminario de ventas
+        day: thursday
+        start: 11:00
+        end: 12:00
+  - name: Proyecto Intranet Social
+    color: light_purple
+    events:
+      - title: Demo Intranet
+        day: thursday
+        start: 13:00
+        end: 17:00
+      - title: Sesión de Preguntas
+        day: friday
+        start: 16:00
+        end: 17:00
+  - name: Recursos Humanos
+    color: gray
+    events:
+      - title: Reunión Semanal de RRHH
+        day: friday
+        start: 10:00
+        end: 11:30
+  - name: Marketing
+    color: pink
+    events:
+      - title: Estudio de Captación
+        day: tuesday
+        start: 9:30
+        end: 12:30
+      - title: Actualización de Análisis
+        day: wednesday
+        start: 17:00
+        end: 19:00
+
+wikis:
+  - title: Wiki Home
+    type: portal
+    owner: intranet
+    filename: wiki-home.txt
+  - title: Especificaciones Flujo Actividad
+    filename: activity-stream-engagement.txt
+    parent: Wiki Home
+    new: true
+  - title: Guía Cómo hacerlo
+    filename: how-to-guide.txt
+    parent: Wiki Home
+    new: true
+  - title: Gestión de ausencias
+    filename: leave-planning.txt
+    parent: Wiki Home
+    new: true
+  - title: Notas de Reuniones
+    parent: Wiki Home
+    wikis:
+      - title: 0107 Company Meeting
+      - title: 0114 Company Meeting
+        wikis:
+          - title: Attachments
+  - title: Intercambio de conocimientos
+    parent: Wiki Home
+    wikis:
+      - title: Eres nuevo
+      - title: Organización de la Intranet
+  - title: Soluciones en el mercado
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Nuevos empleado
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Propuestas gráficas
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+
+activities:
+  - from: <USERNAME>
+    body: Estoy con @maria en París
+    likes:
+      - john
+      - jose
+    comments:
+      - from: maria
+        body: Agradable café en París
+  - from: john
+    body: No te olvides del seminario la próxima semana
+    likes:
+      - <USERNAME>
+      - john
+      - maria
+      - roberto
+    comments:
+      - from: <USERNAME>
+        body: en la sala principal?
+      - from: john
+        body: Sí y también en línea
+      - from: maria
+        body: de hecho @john, recuerdame enviarte una invitación
+      - from: john
+        body: dalo por hecho @maria
+
