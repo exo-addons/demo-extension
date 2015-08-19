@@ -11,8 +11,8 @@
   <name>eXo Addons - Demo Set Extension Package</name>
   <properties>
   <!-- 3rd party libraries versions -->
-    <chat.addon.version>1.0.0</chat.addon.version>
-    <portlet.pack.version>1.2.x-SNAPSHOT</portlet.pack.version>
+    <chat.addon.version>1.1.0</chat.addon.version>
+    <portlet.pack.version>1.2.0</portlet.pack.version>
   </properties>
   <dependencies>
     <dependency>
