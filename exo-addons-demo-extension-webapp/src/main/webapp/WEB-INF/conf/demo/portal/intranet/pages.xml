@@ -18,150 +18,233 @@
     Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
     02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
--->
+  -->
 
 
-<page-set>
+  <page-set>
 
-  <page>
-    <name>demo</name>
-    <title>demo</title>
-    <access-permissions>*:/platform/users</access-permissions>
-    <edit-permission>*:/platform/administrators</edit-permission>
-    <show-max-window>false</show-max-window>
-    <portlet-application>
-      <portlet>
-        <application-ref>demo-extension</application-ref>
-        <portlet-ref>PopulatorApplication</portlet-ref>
-      </portlet>
-      <access-permissions>Everyone</access-permissions>
-      <show-info-bar>false</show-info-bar>
-    </portlet-application>
-  </page>
-  <page>
-    <name>news</name>
-    <title>news</title>
-    <access-permissions>*:/platform/users</access-permissions>
-    <edit-permission>*:/platform/administrators</edit-permission>
-    <show-max-window>false</show-max-window>
+    <page>
+      <name>demo</name>
+      <title>demo</title>
+      <access-permissions>*:/platform/users</access-permissions>
+      <edit-permission>*:/platform/administrators</edit-permission>
+      <show-max-window>false</show-max-window>
+      <portlet-application>
+        <portlet>
+          <application-ref>demo-extension</application-ref>
+          <portlet-ref>PopulatorApplication</portlet-ref>
+        </portlet>
+        <access-permissions>Everyone</access-permissions>
+        <show-info-bar>false</show-info-bar>
+      </portlet-application>
+    </page>
+    <page>
+      <name>news</name>
+      <title>news</title>
+      <access-permissions>*:/platform/users</access-permissions>
+      <edit-permission>*:/platform/administrators</edit-permission>
+      <show-max-window>false</show-max-window>
 
-    <container id="PopMain" template="system:/groovy/portal/webui/container/UITableColumnContainer.gtmpl">
-    <access-permissions>Everyone</access-permissions>
-      <container id="PopLeft" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
-      <access-permissions>Everyone</access-permissions>
+      <container id="TopMain" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+        <access-permissions>Everyone</access-permissions>
         <portlet-application>
-          <portlet>
-            <application-ref>presentation</application-ref>
-            <portlet-ref>ContentListViewerPortlet</portlet-ref>
-            <preferences>
-              <preference>
-                <name>folderPath</name>
-                <value>repository:collaboration:/sites/intranet/web contents/news</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>orderBy</name>
-                <value>exo:dateCreated</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>orderType</name>
-                <value>ASC</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>header</name>
-                <value>Company News</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>formViewTemplatePath</name>
-                <value>/exo:ecm/views/templates/content-list-viewer/list/OneColumn.gtmpl</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>paginatorTemplatePath</name>
-                <value>/exo:ecm/views/templates/content-list-viewer/paginators/EmptyPaginator.gtmpl</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>basePath</name>
-                <value>detail</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>itemsPerPage</name>
-                <value>5</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>showTitle</name>
-                <value>true</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>showDateCreated</name>
-                <value>true</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>showHeader</name>
-                <value>true</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>showLink</name>
-                <value>true</value>
-                <read-only>false</read-only>
-              </preference>
-              <preference>
-                <name>showRssLink</name>
-                <value>true</value>
-                <read-only>false</read-only>
-              </preference>
-            </preferences>
-          </portlet>
-          <title>News</title>
+            <portlet>
+              <application-ref>presentation</application-ref>
+              <portlet-ref>ContentListViewerPortlet</portlet-ref>
+              <preferences>
+                <preference>
+                  <name>folderPath</name>
+                  <value>repository:collaboration:/sites/intranet/web contents/cartoons</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>orderBy</name>
+                  <value>exo:dateCreated</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>orderType</name>
+                  <value>ASC</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>header</name>
+                  <value>Company News</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>formViewTemplatePath</name>
+                  <value>/exo:ecm/views/templates/content-list-viewer/list/eXoSlideshowCLV.gtmpl</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>paginatorTemplatePath</name>
+                  <value>/exo:ecm/views/templates/content-list-viewer/paginators/EmptyPaginator.gtmpl</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>basePath</name>
+                  <value>detail</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>itemsPerPage</name>
+                  <value>100</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showTitle</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showDateCreated</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showHeader</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showLink</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showRssLink</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+              </preferences>
+            </portlet>
+            <title>Slides</title>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>false</show-info-bar>
+            <show-application-state>false</show-application-state>
+            <show-application-mode>false</show-application-mode>
+          </portlet-application>
+
+      </container>
+
+      <container id="PopMain" template="system:/groovy/portal/webui/container/UITableColumnContainer.gtmpl">
+        <access-permissions>Everyone</access-permissions>
+        <container id="PopLeft" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
           <access-permissions>Everyone</access-permissions>
-          <show-info-bar>false</show-info-bar>
-          <show-application-state>false</show-application-state>
-          <show-application-mode>false</show-application-mode>
-        </portlet-application>
-      </container>
+          <portlet-application>
+            <portlet>
+              <application-ref>presentation</application-ref>
+              <portlet-ref>ContentListViewerPortlet</portlet-ref>
+              <preferences>
+                <preference>
+                  <name>folderPath</name>
+                  <value>repository:collaboration:/sites/intranet/web contents/news</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>orderBy</name>
+                  <value>exo:dateCreated</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>orderType</name>
+                  <value>ASC</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>header</name>
+                  <value>Company News</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>formViewTemplatePath</name>
+                  <value>/exo:ecm/views/templates/content-list-viewer/list/OneColumn.gtmpl</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>paginatorTemplatePath</name>
+                  <value>/exo:ecm/views/templates/content-list-viewer/paginators/EmptyPaginator.gtmpl</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>basePath</name>
+                  <value>detail</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>itemsPerPage</name>
+                  <value>5</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showTitle</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showDateCreated</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showHeader</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showLink</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+                <preference>
+                  <name>showRssLink</name>
+                  <value>true</value>
+                  <read-only>false</read-only>
+                </preference>
+              </preferences>
+            </portlet>
+            <title>News</title>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>false</show-info-bar>
+            <show-application-state>false</show-application-state>
+            <show-application-mode>false</show-application-mode>
+          </portlet-application>
+        </container>
 
-      <container id="PopRight" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
-      <access-permissions>Everyone</access-permissions>
-        <portlet-application>
-          <portlet>
-            <application-ref>portlet-pack</application-ref>
-            <portlet-ref>RssApplication</portlet-ref>
-          </portlet>
+        <container id="PopRight" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
           <access-permissions>Everyone</access-permissions>
-          <show-info-bar>false</show-info-bar>
-        </portlet-application>
-      </container>
-    </container>
-
-  </page>
-  <page>
-    <name>acme-expenses-report</name>
-    <title>acme-expenses-report</title>
-    <access-permissions>*:/platform/users</access-permissions>
-    <edit-permission>*:/platform/administrators</edit-permission>
-    <show-max-window>false</show-max-window>
-
-    <container id="PopMain" template="system:/groovy/portal/webui/container/UITableColumnContainer.gtmpl">
-    <access-permissions>Everyone</access-permissions>
-      <container id="PopLeft" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
-      <access-permissions>Everyone</access-permissions>
-
+          <portlet-application>
+            <portlet>
+              <application-ref>portlet-pack</application-ref>
+              <portlet-ref>RssApplication</portlet-ref>
+            </portlet>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>false</show-info-bar>
+          </portlet-application>
+        </container>
       </container>
 
-      <container id="PopRight" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
-      <access-permissions>Everyone</access-permissions>
+    </page>
+    <page>
+      <name>acme-expenses-report</name>
+      <title>acme-expenses-report</title>
+      <access-permissions>*:/platform/users</access-permissions>
+      <edit-permission>*:/platform/administrators</edit-permission>
+      <show-max-window>false</show-max-window>
 
+      <container id="PopMain" template="system:/groovy/portal/webui/container/UITableColumnContainer.gtmpl">
+        <access-permissions>Everyone</access-permissions>
+        <container id="PopLeft" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+          <access-permissions>Everyone</access-permissions>
+
+        </container>
+
+        <container id="PopRight" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+          <access-permissions>Everyone</access-permissions>
+
+        </container>
       </container>
-    </container>
 
-  </page>
-</page-set>
+    </page>
+  </page-set>

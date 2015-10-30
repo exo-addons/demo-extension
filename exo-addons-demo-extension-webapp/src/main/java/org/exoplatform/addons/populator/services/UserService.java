@@ -63,8 +63,8 @@ public class UserService {
   {
     for (RelationBean relation:relations)
     {
-      Identity idInviting = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, relation.getInviting());
-      Identity idInvited = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, relation.getInvited());
+      Identity idInviting = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, relation.getInviting(),false);
+      Identity idInvited = identityManager_.getOrCreateIdentity(OrganizationIdentityProvider.NAME, relation.getInvited(),false);
       relationshipManager_.inviteToConnect(idInviting, idInvited);
       if (relation.getConfirm())
       {
