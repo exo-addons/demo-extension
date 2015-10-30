@@ -1,0 +1,31 @@
+<nodeTypes xmlns:jcr="http://www.jcp.org/jcr/1.5" xmlns:mix="http://www.jcp.org/jcr/mix/1.5" xmlns:nt="http://www.jcp.org/jcr/nt/1.5">
+	<nodeType hasOrderableChildNodes="false" isMixin="false" name="exo:cartoon" primaryItemName="">
+		<supertypes>
+			<supertype>nt:base</supertype>
+		</supertypes>
+		<propertyDefinitions>
+			<propertyDefinition autoCreated="true" mandatory="true" multiple="false" name="jcr:primaryType" onParentVersion="COMPUTE" protected="true" requiredType="Name">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition autoCreated="false" mandatory="false" multiple="false" name="exo:linkTarget" onParentVersion="COPY" protected="false" requiredType="String">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition autoCreated="false" mandatory="false" multiple="true" name="jcr:mixinTypes" onParentVersion="COMPUTE" protected="true" requiredType="Name">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition autoCreated="false" mandatory="false" multiple="false" name="exo:linkContent" onParentVersion="COPY" protected="false" requiredType="String">
+				<valueConstraints/>
+			</propertyDefinition>
+			<propertyDefinition autoCreated="false" mandatory="false" multiple="false" name="exo:text" onParentVersion="COPY" protected="false" requiredType="String">
+				<valueConstraints/>
+			</propertyDefinition>
+		</propertyDefinitions>
+		<childNodeDefinitions>
+			<childNodeDefinition autoCreated="false" defaultPrimaryType="nt:file" mandatory="false" name="exo:image" onParentVersion="COPY" protected="false" sameNameSiblings="false">
+				<requiredPrimaryTypes>
+					<requiredPrimaryType>nt:file</requiredPrimaryType>
+				</requiredPrimaryTypes>
+			</childNodeDefinition>
+		</childNodeDefinitions>
+	</nodeType>
+</nodeTypes>

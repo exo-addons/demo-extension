@@ -74,6 +74,17 @@ public class DocumentService {
         session.save();
 
       }
+      if (!session.getRootNode().hasNode("sites/intranet/web contents/cartoons"))
+      {
+        InputStream inputStream = Utils.getFile("cartoons-sysview.xml", "contents");
+
+        session.importXML("/sites/intranet/web contents",
+                inputStream,
+                ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW);
+
+        session.save();
+
+      }
     } catch (IOException e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
     } catch (RepositoryException e) {

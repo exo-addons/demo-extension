@@ -1,0 +1,59 @@
+<%
+import javax.jcr.Node;
+import org.exoplatform.services.wcm.utils.WCMCoreUtils;
+
+def currentNode = uicomponent.getNode() ;
+def  text = currentNode.getProperty("exo:text").getString();
+
+def  linkTarget = currentNode.getProperty("exo:linkTarget").getString();
+def  linkContent = currentNode.getProperty("exo:linkContent").getString();
+
+def imgNode=currentNode.getNode("exo:image");
+def imgSrc = WCMCoreUtils.generateImageURI(imgNode,null);
+
+%>
+
+<style type="text/css">
+
+
+#bg_my_intro {
+    background: transparent url('/portal/rest/jcr/repository/collaboration/sites/acme/medias/images/bg_intro.png');
+    position: relative;
+    bottom: 71px;
+    height: 71px;
+    width: 955px;
+}
+
+#my_intro {
+    margin: 8px 0 0;
+    width: 504px;
+    float: right;
+    height: 69px;
+    color: #FFFFFF !important;
+}
+
+#my_intro a {
+    color: #FFFFFF;
+    font-size: 10px;
+    text-decoration: underline;
+    text-align: right !important;
+    margin: 0 0 0 27px;
+    background: url('/portal/rest/jcr/repository/collaboration/sites/acme/medias/images/puce_blanche.png') no-repeat left center;
+    padding: 0 11px 0 14px;
+
+}
+
+
+
+</style>
+
+
+	<img src="$imgSrc" title="" height="366px" width="955px"/>
+<div id="bg_my_intro">
+<div id="my_intro"><p></p>
+				<h3 style="float: right;width: 100%;text-align: right;	margin: 0 11px 0 0;line-height: 13px !important;font-style: italic !important;font-weight: bold !important;color: white;font-size: 1.17em;">$text</h3>
+
+<p style="text-align: right;"><a href="$linkTarget" target="_blank">$linkContent</a>
+				</p>
+</div>
+		</div>

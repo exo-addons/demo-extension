@@ -18,16 +18,16 @@
     Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
     02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
--->
+  -->
 
-<configuration
+  <configuration
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
    xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
 
 
-  <!-- Deploy template for Content List Viewer Portlet -->
-  <external-component-plugins>
+   <!-- Deploy template for Content List Viewer Portlet -->
+   <external-component-plugins>
     <target-component>org.exoplatform.services.cms.views.ApplicationTemplateManagerService</target-component>
     <component-plugin>
       <name>clv.templates.plugin</name>
@@ -48,9 +48,9 @@
           <description>One Column Home template</description>
           <object type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
             <field name="title">
-            	 <string>One Column Home</string>
-												</field>
-												<field name="templateName">
+              <string>One Column Home</string>
+            </field>
+            <field name="templateName">
               <string>OneColumnHome.gtmpl</string>
             </field>
             <field name="category">
@@ -62,19 +62,107 @@
           <name>One Column Links template</name>
           <description>One Column Links template</description>
           <object type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
-             <field name="title">
-            	 <string>One Column Links</string>
-												</field>
-	           <field name="templateName">
-              <string>OneColumnLinks.gtmpl</string>
-            </field>
-            <field name="category">
-              <string>list</string>
-            </field>
-          </object>
-        </object-param>
-      </init-params>
-    </component-plugin>
-  </external-component-plugins>
+           <field name="title">
+            <string>One Column Links</string>
+          </field>
+          <field name="templateName">
+            <string>OneColumnLinks.gtmpl</string>
+          </field>
+          <field name="category">
+            <string>list</string>
+          </field>
+        </object>
+      </object-param>
+          <object-param>
+              <name>eXo Slideshow template</name>
+              <description>eXo Slideshow template</description>
+              <object type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
+                  <field name="title">
+                      <string>eXo Slideshow Template</string>
+                  </field>
+                  <field name="templateName">
+                      <string>eXoSlideshowCLV.gtmpl</string>
+                  </field>
+                  <field name="category">
+                      <string>list</string>
+                  </field>
+              </object>
+          </object-param>
+    </init-params>
+  </component-plugin>
+</external-component-plugins>
+
+    <external-component-plugins>
+        <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
+        <component-plugin>
+            <name>add.nodeType</name>
+            <set-method>addPlugin</set-method>
+            <type>org.exoplatform.services.jcr.impl.AddNodeTypePlugin</type>
+            <priority>100</priority>
+            <init-params>
+                <values-param>
+                    <name>autoCreatedInNewRepository</name>
+                    <description>Node types configuration file</description>
+                    <value>war:/conf/demo/ecms/wcm/cartoon-nodetype-configuration.xml</value>
+                </values-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
+
+    <external-component-plugins>
+        <target-component>org.exoplatform.services.cms.templates.TemplateService</target-component>
+        <component-plugin>
+            <name>addTemplates</name>
+            <set-method>addTemplates</set-method>
+            <type>org.exoplatform.services.cms.templates.impl.TemplatePlugin</type>
+            <init-params>
+                <value-param>
+                    <name>autoCreateInNewRepository</name>
+                    <value>true</value>
+                </value-param>
+                <value-param>
+                    <name>storedLocation</name>
+                    <value>war:/conf/demo/ecms/wcm/nodetype-templates</value>
+                </value-param>
+                <object-param>
+                    <name>template.configuration</name>
+                    <description>configuration for the location of nodetypes templates to inject in jcr</description>
+                    <object type="org.exoplatform.services.cms.templates.impl.TemplateConfig">
+                        <field  name="nodeTypes">
+                            <collection type="java.util.ArrayList">
+                                <value>
+                                    <object type="org.exoplatform.services.cms.templates.impl.TemplateConfig$NodeType">
+                                        <field  name="nodetypeName"><string>exo:cartoon</string></field>
+                                        <field  name="documentTemplate"><boolean>true</boolean></field>
+                                        <field  name="label"><string>Cartoon</string></field>
+                                        <field  name="referencedView">
+                                            <collection type="java.util.ArrayList">
+                                                <value>
+                                                    <object type="org.exoplatform.services.cms.templates.impl.TemplateConfig$Template">
+                                                        <field name="templateFile"><string>/cartoon/views/view1.gtmpl</string></field>
+                                                        <field name="roles"><string>*</string></field>
+                                                    </object>
+                                                </value>
+                                            </collection>
+                                        </field>
+                                        <field  name="referencedDialog">
+                                            <collection type="java.util.ArrayList">
+                                                <value>
+                                                    <object type="org.exoplatform.services.cms.templates.impl.TemplateConfig$Template">
+                                                        <field name="templateFile"><string>/cartoon/dialogs/dialog1.gtmpl</string></field>
+                                                        <field name="roles"><string>*:/platform/web-contributors</string></field>
+                                                    </object>
+                                                </value>
+                                            </collection>
+                                        </field>
+                                    </object>
+                                </value>
+                            </collection>
+                        </field>
+                    </object>
+                </object-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
 
 </configuration>

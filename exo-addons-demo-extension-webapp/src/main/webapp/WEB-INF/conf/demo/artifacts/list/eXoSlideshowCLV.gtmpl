@@ -1,0 +1,244 @@
+<%
+/**
+ * Created by The eXo Platform SAS
+ * Author : eXoPlatform
+ *          chuong.phan@exoplatform.com, phan.le.thanh.chuong@gmail.com
+ * Aug 20, 2009
+ */
+import org.exoplatform.services.wcm.utils.WCMCoreUtils;
+import org.exoplatform.wcm.webui.paginator.UICustomizeablePaginator;
+import org.exoplatform.wcm.webui.clv.UICLVPortlet;
+import org.exoplatform.wcm.webui.Utils;
+%>
+<style>
+.CLV {
+	margin: 20px 20px 0 20px;
+}
+
+.Contents {
+	padding: 20px;
+	margin: 20px 0;
+}
+
+.Column1 .Content {
+	padding: 10px 10px 0 10px;
+}
+
+.Column1 .Content .Title {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.Column1 .Content .DateAndMail {
+	color: #CCC;
+}
+
+.TitleBarM {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 4px 14px;
+}
+.UICLVPortlet .RssIcon {
+	margin-top: 2px;
+	padding-left: 11px;
+}
+.uiContentBoxSlider {
+	position: relative;
+	height: 370px;
+	margin: 20px;
+	float: left;
+	max-width: 100%;
+}
+#bg_my_intro {
+	background: transparent url('/portal/rest/jcr/repository/collaboration/sites/acme/medias/images/bg_intro.png');
+	position: relative;
+	bottom: 71px;
+	height: 71px;
+	width: 100%;
+}
+
+#my_intro {
+	margin: 8px 0 0;
+	width: 504px;
+	float: right;
+	height: 69px;
+	color: #FFFFFF !important;
+}
+
+#my_intro a {
+	color: #FFC21E;
+	font-size: 10px;
+	text-decoration: underline;
+	text-align: right !important;
+	margin: 0 0 0 27px;
+	background: url('/portal/rest/jcr/repository/collaboration/sites/acme/medias/images/puce_blanche.png') no-repeat left center;
+	padding: 0 11px 0 14px;
+
+}
+.content {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+require(["SHARED/jquery"], function(jquery) {
+	var i = 1;
+	jquery( document ).ready(function() {
+		setInterval(function(){
+			var idToHide = i;
+			var nbElem = jquery( "div[id^='fade']" ).length;
+			var idToShow = idToHide +1;
+			if (idToHide==nbElem) {
+				idToShow=1;
+			}
+			console.log("Hide fade"+idToHide+", show fade"+idToShow);
+
+			jquery("#fade"+idToHide).fadeTo("slow", 0);
+			jquery("#fade"+idToShow).fadeTo("slow", 1);
+
+
+			if (i==nbElem) {
+				i=1;
+			} else {
+				i++;
+			}
+		}, 3000);
+	});
+
+
+
+});
+
+
+</script>
+
+<div id="$uicomponent.id" class="eXoSlideshowCLV">
+  <div class="CLV">
+    <%
+      def header = uicomponent.getHeader();
+      def rssLink = uicomponent.getRssLink();
+      def isShowRssLink = uicomponent.isShowRssLink();
+      def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) && header != null && header.trim().length() != 0;
+
+      if (uicomponent.getUIPageIterator().getAvailable() == 0) {
+        %>
+          <div style="height: 20px; text-align: center; font-size: 13px; background: white; padding: 10px; margin: 5px;">
+            <span><%= _ctx.appRes(uicomponent.getParent().getMessageKey()) %></span>
+</div>
+        <%
+      } else {
+          def currentPageData = uicomponent.getCurrentPageData();
+          def i =0;
+          %>
+
+          <div class="uiGrayLightBox TopBoxHeader ClearFix">
+      <%
+            if (isShowHeader) {
+      %>
+              <div class="TitleBarL">
+                    <div class="TitleBarR">
+                          <div class="TitleBarM">$header</div>
+</div>
+              </div>
+<%
+}
+%>
+
+</div>
+
+
+                <div class="uiContentBoxSlider">
+
+            <%
+              for (viewNode in currentPageData) {
+                if(!Utils.isViewable(viewNode)) continue;
+                i++;
+                def isShowTitle = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_TITLE);
+                def isShowDate = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_DATE_CREATED);
+                def isShowLink = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_LINK);
+                def isShowReadmore = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_READMORE);
+
+                def itemLink = uicomponent.getURL(viewNode);
+                def itemDateCreated = uicomponent.getCreatedDate(viewNode);
+                def itemOwner = uicomponent.getAuthor(viewNode);
+
+                def itemName = viewNode.getName();
+                def itemTitle = uicomponent.getTitle(viewNode);
+                if (itemTitle != null && itemTitle.trim().length() != 0) itemName = itemTitle;
+
+def  text = viewNode.getProperty("exo:text").getString();
+
+def  linkTarget = viewNode.getProperty("exo:linkTarget").getString();
+def  linkContent = viewNode.getProperty("exo:linkContent").getString();
+
+def imgNode=viewNode.getNode("exo:image");
+def imgSrc = WCMCoreUtils.generateImageURI(imgNode,null);
+
+def opacity="opacity:1;";
+if (i!=1) {
+  opacity="opacity:0;";
+}
+
+%>
+
+<div id="fade$i" class="content" style="$opacity">
+
+<img src="$imgSrc" title="" style="height:366px !important;width:955px !important; max-width: none !important;"/>
+<div id="bg_my_intro">
+<div id="my_intro">
+<p></p>
+                    <h3 style="float: right;width: 100%;text-align: right;  margin: 0 11px 0 0;line-height: 13px !important;font-style: italic !important;font-weight: bold !important;color: white;font-size: 1.17em;">$text</h3>
+
+<p style="text-align: right;margin: 40px 0 10px;"><a href="$linkTarget" target="_blank">$linkContent</a></p>
+</div>
+                </div>
+
+</div>
+          <%
+              } //end for
+%>
+
+<%
+String labelRefreshAction = _ctx.appRes("UICLVPresentation.action.refresh");
+def isShowRefresh = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_REFRESH_BUTTON);
+
+%>
+
+
+<%
+
+if (isShowRefresh) {
+	%>
+	<div class="captionFunc clearfix">
+	<%
+	String link = uicomponent.event("Refresh");
+	%>
+	<div class="captionRefresh pull-left">
+	<a href="$link" class="btn" rel="tooltip" data-placement="bottom" title="$labelRefreshAction">$labelRefreshAction</a>
+                </div>
+
+	</div>
+          <%
+            }
+            if (uicomponent.showPaginator()) {
+          %>
+              <div class="paginatorDefault">
+          <%
+                uicomponent.renderChild(UICustomizeablePaginator.class);%>
+              </div>
+	<%
+}
+%>
+
+</div> <!-- end uiContentBox -->
+
+      <%
+      }
+      %>
+</div> <!-- end CLV -->
+</div> <!-- end eXoSlideshowCLV -->
+
