@@ -38,14 +38,6 @@
       <type>pom</type>
       <scope>import</scope>
     </dependency>
-<!--
-    <dependency>
-      <groupId>org.juzu</groupId>
-      <artifactId>juzu-bom-core</artifactId>
-      <version>${juzu.version}</version>
-      <scope>provided</scope>
-    </dependency>
--->
     <dependency>
       <groupId>org.juzu</groupId>
       <artifactId>juzu-core</artifactId>
@@ -137,9 +129,7 @@
       <groupId>org.exoplatform.forum</groupId>
       <artifactId>forum-component-common</artifactId>
       <scope>provided</scope>
-    </dependency>
-
-
+      </dependency>
   </dependencies>
   <build>
     <finalName>demo-extension</finalName>
@@ -147,5 +137,28 @@
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
       </plugin>
+                <plugin>
+                    <groupId>org.codehaus.gmaven</groupId>
+                    <artifactId>gmaven-plugin</artifactId>
+                    <version>1.5</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <providerSelection>1.8</providerSelection>
+                                <sources>
+                                    <fileset>
+                                        <directory>${project.build.outputDirectory}</directory>
+                                        <includes>
+                                            <include>**/*.groovy</include>
+                                        </includes>
+                                    </fileset>
+                                </sources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
     </plugins>
   </build></project>

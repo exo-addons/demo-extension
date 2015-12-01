@@ -4,7 +4,7 @@
   <parent>
     <artifactId>addons-parent-pom</artifactId>
     <groupId>org.exoplatform.addons</groupId>
-    <version>3</version>
+    <version>4</version>
     <relativePath />
   </parent>
   <groupId>org.exoplatform.addons.demo</groupId>
@@ -22,6 +22,14 @@
         <role>Owner</role>
       </roles>
     </developer>
+    <developer>
+      <id>khemais.menzli</id>
+      <name>Khemais Menzli</name>
+      <email>khemais.menzli@exoplatform.com</email>
+      <roles>
+        <role>Developer,Architecture</role>
+      </roles>
+    </developer>
   </developers>
   <modules>
     <module>exo-addons-demo-extension-config</module>
@@ -37,10 +45,8 @@
   </scm>
   <properties>
     <!-- 3rd party libraries versions -->
-    <commons-lang3.version>3.1</commons-lang3.version>
-    <exoplatform.version>4.3.0-M2</exoplatform.version>
-    <javax.enterprise.cdi.version>1.0-SP4</javax.enterprise.cdi.version>
-    <juzu.version>1.0.0-cr2</juzu.version>
+    <exoplatform.version>4.3.x-SNAPSHOT</exoplatform.version>
+    <juzu.version>1.1.0</juzu.version>
     <!-- **************************************** -->
     <!-- Jenkins Settings -->
     <!-- **************************************** -->
@@ -52,16 +58,7 @@
   </properties>
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>javax.enterprise</groupId>
-        <artifactId>cdi-api</artifactId>
-        <version>${javax.enterprise.cdi.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>${commons-lang3.version}</version>
-      </dependency>
+
       <dependency>
         <groupId>org.exoplatform.addons.demo</groupId>
         <artifactId>exo-addons-demo-extension-webapp</artifactId>

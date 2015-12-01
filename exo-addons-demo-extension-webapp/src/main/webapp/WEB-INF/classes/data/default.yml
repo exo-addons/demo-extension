@@ -198,46 +198,46 @@ calendars:
         end: 19:00
 
 wikis:
-  - title: Wiki Home
+  - title: WikiHome
     type: portal
     owner: intranet
     filename: wiki-home.txt
   - title: Activity Stream Engagement
     filename: activity-stream-engagement.txt
-    parent: Wiki Home
+    parent: WikiHome
     new: true
   - title: How-To Guide
     filename: how-to-guide.txt
-    parent: Wiki Home
+    parent: WikiHome
     new: true
   - title: Leave Planning
     filename: leave-planning.txt
-    parent: Wiki Home
+    parent: WikiHome
     new: true
   - title: Meeting Notes
-    parent: Wiki Home
+    parent: WikiHome
     wikis:
       - title: 0107 Company Meeting
       - title: 0114 Company Meeting
         wikis:
           - title: Attachments
   - title: General Knowledge
-    parent: Wiki Home
+    parent: WikiHome
     wikis:
       - title: New in the Company
       - title: Intranet Team Organization
   - title: Sofware Vendors
     type: group
     owner: spaces/social_intranet
-    parent: Wiki Home
+    parent: WikiHome
   - title: Employee Onboarding
     type: group
     owner: spaces/social_intranet
-    parent: Wiki Home
+    parent: WikiHome
   - title: Web Design Proposals
     type: group
     owner: spaces/social_intranet
-    parent: Wiki Home
+    parent: WikiHome
 
 activities:
   - from: <USERNAME>

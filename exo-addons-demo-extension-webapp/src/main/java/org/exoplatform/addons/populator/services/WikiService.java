@@ -1,12 +1,13 @@
 package org.exoplatform.addons.populator.services;
 
+import juzu.SessionScoped;
 import org.exoplatform.addons.populator.bean.WikiBean;
 import org.exoplatform.portal.config.model.PortalConfig;
-import org.exoplatform.wiki.mow.core.api.wiki.PageImpl;
+import org.exoplatform.wiki.mow.api.Page;
+import org.exoplatform.wiki.mow.api.Wiki;
 import org.exoplatform.wiki.resolver.TitleResolver;
 import org.xwiki.rendering.syntax.Syntax;
 
-import juzu.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
@@ -52,7 +53,7 @@ public class WikiService {
 
     try
     {
-      if (forceNew && !title.equals("Wiki Home"))
+      if (forceNew && !title.equals("WikiHome"))
       {
         if (wikiService_.isExisting(type, owner, TitleResolver.getId(title, false)))
         {
@@ -60,23 +61,23 @@ public class WikiService {
         }
       }
 
-      PageImpl page;
+      Page page;
       if (wikiService_.isExisting(type, owner, TitleResolver.getId(title, false)))
       {
-        page = (PageImpl) wikiService_.getPageById(type, owner, TitleResolver.getId(title, false));
+        page = wikiService_.getPageOfWikiByName(type, owner, TitleResolver.getId(title, false));
       }
       else
       {
-        page = (PageImpl) wikiService_.createPage(type, owner, title, TitleResolver.getId(parent, false));
+        page = wikiService_.createPage(new Wiki(type, owner), TitleResolver.getId(parent, false), new Page(title,title));
       }
 
       String content = "= "+title+" =";
       if (filename!=null)
         content = Utils.getWikiPage(filename);
-      page.getContent().setText(content);
-      page.setSyntax(Syntax.XWIKI_2_0.toIdString());
-      page.checkin();
-      page.checkout();
+      page.setContent(content);
+      page.setSyntax(Syntax.XWIKI_2_1.toIdString());
+      wikiService_.updatePage(page, null);
+      //wikiService_.createVersionOfPage(page);
 
       if (wikiBean.getWikis()!=null && wikiBean.getWikis().size()>0)
       {

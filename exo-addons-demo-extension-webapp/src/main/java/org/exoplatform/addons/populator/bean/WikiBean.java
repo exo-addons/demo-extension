@@ -7,7 +7,7 @@ public class WikiBean {
   String type = "portal";
   String owner = "intranet";
   String filename = null;
-  String parent = "Wiki Home";
+  String parent = "WikiHome";
   Boolean isNew = false;
   List<WikiBean> wikis;
 
