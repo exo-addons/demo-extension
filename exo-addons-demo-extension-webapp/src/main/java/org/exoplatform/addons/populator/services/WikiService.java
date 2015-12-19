@@ -3,6 +3,7 @@ package org.exoplatform.addons.populator.services;
 import juzu.SessionScoped;
 import org.exoplatform.addons.populator.bean.WikiBean;
 import org.exoplatform.portal.config.model.PortalConfig;
+import org.exoplatform.wiki.WikiException;
 import org.exoplatform.wiki.mow.api.Page;
 import org.exoplatform.wiki.mow.api.Wiki;
 import org.exoplatform.wiki.resolver.TitleResolver;
@@ -30,7 +31,16 @@ public class WikiService {
   {
     for (WikiBean wiki:wikis)
     {
-      createOrEditPage(wiki, wiki.getParent());
+      try {
+        if(wikiService_.getWikiByTypeAndOwner(wiki.getType(), wiki.getOwner()) == null) {
+          log.info("Wiki : Create wiki " + wiki.getType() + ":" + wiki.getOwner());
+          wikiService_.createWiki(wiki.getType(), wiki.getOwner());
+        }
+        createOrEditPage(wiki, wiki.getParent());
+      } catch (WikiException e) {
+        log.severe("Cannot create wiki page : " + e.getMessage());
+      }
+
     }
   }
 

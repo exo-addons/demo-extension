@@ -228,15 +228,15 @@ wikis:
       - title: Intranet Team Organization
   - title: Sofware Vendors
     type: group
-    owner: spaces/social_intranet
+    owner: /spaces/social_intranet
     parent: WikiHome
   - title: Employee Onboarding
     type: group
-    owner: spaces/social_intranet
+    owner: /spaces/social_intranet
     parent: WikiHome
   - title: Web Design Proposals
     type: group
-    owner: spaces/social_intranet
+    owner: /spaces/social_intranet
     parent: WikiHome
 
 activities:
