@@ -24,7 +24,7 @@
   <parent>
     <artifactId>demo-extension</artifactId>
     <groupId>org.exoplatform.addons.demo</groupId>
-      <version>1.3.x-SNAPSHOT</version>
+      <version>1.3.0-RC2</version>
   </parent>
   <artifactId>exo-addons-demo-extension-webapp</artifactId>
   <packaging>war</packaging>
